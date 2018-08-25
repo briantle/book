@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="288.951171875" prefWidth="509.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="35.0" layoutY="36.0" prefHeight="26.0" prefWidth="31.0" text="Title" />
+    <TextField layoutX="166.0" layoutY="36.0" prefWidth="200.0" />
+    <Label layoutX="35.0" layoutY="83.0" prefHeight="26.0" prefWidth="69.0" text="Summary" />
+    <TextField layoutX="166.0" layoutY="83.0" prefWidth="200.0" />
+    <Label layoutX="35.0" layoutY="122.0" prefHeight="26.0" prefWidth="101.0" text="Year Published" />
+    <TextField layoutX="166.0" layoutY="122.0" prefWidth="200.0" />
+    <Label layoutX="35.0" layoutY="157.0" prefHeight="26.0" prefWidth="45.0" text="ISBN" />
+    <TextField layoutX="166.0" layoutY="157.0" prefWidth="200.00009999999747" />
+    <Label layoutX="35.0" layoutY="196.0" prefHeight="26.0" prefWidth="87.0" text="Date Added" />
+    <Button layoutX="201.0" layoutY="240.0" mnemonicParsing="false" text="Save" />
+    <Label layoutX="166.0" layoutY="199.0" prefHeight="25.9998779296875" prefWidth="199.9998779296875" text="Label" />
+  </children>
+</AnchorPane>
