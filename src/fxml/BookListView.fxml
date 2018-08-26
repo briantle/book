@@ -3,11 +3,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
 
-<HBox alignment="CENTER" prefHeight="288.0" prefWidth="698.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<BorderPane prefHeight="347.0" prefWidth="729.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <!-- TODO Add Nodes -->
-  <children>
-    <ListView prefHeight="288.0" prefWidth="696.0" />
-  </children>
-</HBox>
+  <center>
+    <ListView prefHeight="375.0" prefWidth="773.0" />
+  </center>
+</BorderPane>

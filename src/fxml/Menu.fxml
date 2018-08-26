@@ -5,19 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="312.0" prefWidth="496.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <!-- TODO Add Nodes -->
+<BorderPane prefHeight="312.0" prefWidth="496.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.MenuController">
   <top>
     <MenuBar>
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Quit" fx:id="menuQuit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Books">
           <items>
-            <MenuItem mnemonicParsing="false" text="Book List" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Book List" fx:id="bookList" />
           </items>
         </Menu>
       </menus>
