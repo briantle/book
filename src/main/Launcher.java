@@ -42,6 +42,5 @@ public class Launcher extends Application
 	}
 	public static void setMainPane(BorderPane mainPane) {
 		Launcher.mainPane = mainPane;
-	}
-	
+	}	
 }

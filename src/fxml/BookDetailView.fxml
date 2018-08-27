@@ -5,19 +5,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="288.951171875" prefWidth="509.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<BorderPane prefHeight="415.951171875" prefWidth="674.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <!-- TODO Add Nodes -->
-  <children>
-    <Label layoutX="35.0" layoutY="36.0" prefHeight="26.0" prefWidth="31.0" text="Title" />
-    <TextField layoutX="166.0" layoutY="36.0" prefWidth="200.0" />
-    <Label layoutX="35.0" layoutY="83.0" prefHeight="26.0" prefWidth="69.0" text="Summary" />
-    <TextField layoutX="166.0" layoutY="83.0" prefWidth="200.0" />
-    <Label layoutX="35.0" layoutY="122.0" prefHeight="26.0" prefWidth="101.0" text="Year Published" />
-    <TextField layoutX="166.0" layoutY="122.0" prefWidth="200.0" />
-    <Label layoutX="35.0" layoutY="157.0" prefHeight="26.0" prefWidth="45.0" text="ISBN" />
-    <TextField layoutX="166.0" layoutY="157.0" prefWidth="200.00009999999747" />
-    <Label layoutX="35.0" layoutY="196.0" prefHeight="26.0" prefWidth="87.0" text="Date Added" />
-    <Button layoutX="201.0" layoutY="240.0" mnemonicParsing="false" text="Save" />
-    <Label layoutX="166.0" layoutY="199.0" prefHeight="25.9998779296875" prefWidth="199.9998779296875" text="Label" />
-  </children>
+  <bottom>
+    <Button fx:id="saveButton" focusTraversable="true" mnemonicParsing="false" rotate="0.0" text="Save" textAlignment="LEFT" translateX="300.0" translateY="0.0" underline="false" />
+  </bottom>
+  <center>
+    <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="592.0">
+      <children>
+        <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label text="Summary" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label text="Year Published" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label text="ISBN" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label text="Date Added" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="isbn" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="yearPublished" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="summary" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="title" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </center>
 </BorderPane>
