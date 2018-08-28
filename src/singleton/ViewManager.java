@@ -16,24 +16,33 @@ public class ViewManager
 {
 	private static final Logger logger = LogManager.getLogger(ViewManager.class);
 	private static ViewManager instance = null;
+	private BookDetailController currController = null;
 	
+	public BookDetailController getCurrController() {
+		return currController;
+	}
+
 	public void changeView(ViewType view, Object data)
 	{	
 		try
 		{
+			currController = null;
 			BorderPane newRoot = null;
 			BorderPane currRoot = Launcher.getMainPane();
-			if (view == ViewType.BOOK_LIST)
-			{
+			if (view == ViewType.BOOK_LIST){
 				//logger.debug("Loaded list view");
+				currController = null;
 				newRoot = (BorderPane) FXMLLoader.load(getClass().getResource("/fxml/BookListView.fxml"));
 			}
-			else if (view == ViewType.BOOK_DETAIL)
-			{
+			else if (view == ViewType.BOOK_DETAIL){
 				//logger.debug("Loaded detail view");
-				newRoot = (BorderPane) FXMLLoader.load(getClass().getResource("/fxml/BookDetailView.fxml"));
-				BookDetailController controller = new BookDetailController();
-				controller.setSelectedBook((Book) data);
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
+
+				currController = new BookDetailController();
+				currController.setSelectedBook((Book) data);
+				
+				loader.setController(currController);
+				newRoot = loader.load();
 			}
 			// Clears the view in order to prevent overlap
 			currRoot.setCenter(null);

@@ -119,3 +119,20 @@
 12:03:12.200 INFO  controllers.BookDetailController : Clicked on save button
 12:03:12.455 INFO  controllers.BookDetailController : Clicked on save button
 12:03:15.834 DEBUG singleton.ViewManager : Loaded list view
+12:09:48.634 INFO  controllers.BookListController$1 : Double clicked on: Book 1
+12:09:48.715 ERROR singleton.ViewManager : Failed to switch views
+12:11:15.981 INFO  controllers.BookListController$1 : Double clicked on: Book 1
+12:11:16.055 DEBUG controllers.BookDetailController : FUCKKK
+12:18:28.624 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:19:30.910 INFO  controllers.BookListController$1 : Double clicked on: Book 1
+12:20:18.171 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:22:59.455 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:23:47.284 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:23:47.356 ERROR singleton.ViewManager : Failed to switch views
+12:24:52.027 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:25:38.999 INFO  controllers.BookListController$1 : Double clicked on: Book 1
+12:25:39.070 ERROR singleton.ViewManager : Failed to switch views
+12:26:57.379 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+12:27:25.910 INFO  controllers.BookListController$1 : Double clicked on: Book 1
+12:27:34.780 INFO  controllers.BookDetailController : Clicked on save button
+12:27:38.592 INFO  controllers.BookListController$1 : Double clicked on: Book 3
