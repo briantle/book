@@ -3,38 +3,40 @@ package controllers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Callback;
 import model.Book;
 import enums.ViewType;
+import exceptions.GatewayException;
+import gateways.BookTableGateway;
 import singleton.ViewManager;
 
 public class BookListController 
 {
 	@FXML private ListView<Book> bookList;
 	private static Logger log = LogManager.getLogger();
+	BookTableGateway gw = null;
 	
-	public void initialize()
+	public void initialize() throws GatewayException
 	{
-		ObservableList<Book> items = bookList.getItems();
-		
-		// create some fake data for assignment 1
-		// and populate the list with that data
-		for (int i = 1; i <= 3; i++)
-		{
-			Book book = new Book("Book " + i, "Summary", 1984, "4589", "03/03/2018");
-			items.add(book);
-		}
+		// Get a reference to the database and connect to it
+		gw = new BookTableGateway();
+		// Get the list of books from the database and then display them on the listView
+		bookList.setItems(gw.getBooks());
 		populateListView();
+		// Log out of database
+		gw.closeConnection();
 		
 		// is called when the user clicks somewhere on the list view
-		bookList.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+		bookList.setOnMouseClicked(new EventHandler<MouseEvent>()
+		{
 			@Override
 			public void handle(MouseEvent click) 
 			{
@@ -46,7 +48,6 @@ public class BookListController
 					ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
 				}
 			}
-			
 		});
 	}
 	
@@ -62,13 +63,38 @@ public class BookListController
 				{
 					@Override
 					protected void updateItem(Book b, boolean empty)
-					{
+					{	
 						// Checks if we passed in a null object
 						super.updateItem(b, empty);
 						// If the book we passed in is not null, then we can display the book's title
 						// to the list view
 						if (b != null)
+						{
 							setText(b.getTitle());
+							Button btn = new Button("Delete");
+							btn.setTranslateX(800);
+							setGraphic(btn);
+							btn.setOnMouseClicked(new EventHandler<MouseEvent>()
+							{
+								@Override
+								public void handle(MouseEvent click) 
+								{
+									try {
+										// Get a refernce to the database
+										BookTableGateway gw = new BookTableGateway();
+										// Delete the book
+										gw.deleteBook(b);
+										// Close connection to database
+										gw.closeConnection();
+										// Update the listview to reflect changes
+										ViewManager.getInstance().changeView(ViewType.BOOK_LIST, null);
+									} catch (GatewayException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+							});
+						}
 					}
 				};
 				return bCell;

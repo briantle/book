@@ -22,7 +22,7 @@ public class ViewManager
 		return currController;
 	}
 
-	public void changeView(ViewType view, Object data)
+	public void changeView(ViewType view, Book book)
 	{	
 		try
 		{
@@ -30,17 +30,14 @@ public class ViewManager
 			BorderPane newRoot = null;
 			BorderPane currRoot = Launcher.getMainPane();
 			if (view == ViewType.BOOK_LIST){
-				//logger.debug("Loaded list view");
 				currController = null;
 				newRoot = (BorderPane) FXMLLoader.load(getClass().getResource("/fxml/BookListView.fxml"));
 			}
-			else if (view == ViewType.BOOK_DETAIL){
-				//logger.debug("Loaded detail view");
+			else if (view == ViewType.BOOK_DETAIL)
+			{
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
-
-				currController = new BookDetailController();
-				currController.setSelectedBook((Book) data);
 				
+				currController = new BookDetailController(book);
 				loader.setController(currController);
 				newRoot = loader.load();
 			}

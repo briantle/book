@@ -12,7 +12,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import singleton.ViewManager;
-
+/**
+ * 
+ * CS 4743 Assignment2 by Brian Le
+ * 
+ * @author Brian
+ *
+ */
 public class Launcher extends Application 
 {
 	private static Logger log = LogManager.getLogger(Launcher.class);
@@ -32,8 +38,8 @@ public class Launcher extends Application
 		
 		this.mainPane = root;
 	}
-	public static void main(String[] args)
-	{
+	
+	public static void main(String[] args){
 		launch(args);
 	}
 	

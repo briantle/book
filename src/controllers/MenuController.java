@@ -10,14 +10,13 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import model.Book;
 import singleton.ViewManager;
 
 public class MenuController 
 {
 	private static Logger logger = LogManager.getLogger();
-	
-	@FXML private MenuItem menuQuit;
-	@FXML private MenuItem bookList;
+	@FXML private MenuItem menuQuit, bookList, addBook;
 	
 	@FXML private void handleMenuAction(ActionEvent event) throws IOException
 	{
@@ -27,5 +26,8 @@ public class MenuController
 		// Displays a list of books
 		if (event.getSource() == bookList)
 			ViewManager.getInstance().changeView(ViewType.BOOK_LIST ,null);
+		// Opens up the book detail view with empty book information
+		if (event.getSource() == addBook)
+			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, new Book());
 	}
 }
