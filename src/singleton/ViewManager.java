@@ -29,7 +29,8 @@ public class ViewManager
 			currController = null;
 			BorderPane newRoot = null;
 			BorderPane currRoot = Launcher.getMainPane();
-			if (view == ViewType.BOOK_LIST){
+			if (view == ViewType.BOOK_LIST)
+			{
 				currController = null;
 				newRoot = (BorderPane) FXMLLoader.load(getClass().getResource("/fxml/BookListView.fxml"));
 			}

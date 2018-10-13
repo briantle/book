@@ -22,6 +22,10 @@ public class Book
 	private LocalDateTime lastModified;
 	private Timestamp dateAdded;
 	
+	/**
+	 * Empty Book Constructor
+	 * Called when clicking Add Book or getting book info from the database
+	 */
 	public Book()
 	{
 		id = 0;
@@ -32,6 +36,20 @@ public class Book
 		lastModified = null;
 		dateAdded = new Timestamp(System.currentTimeMillis());
 	}
+	/**
+	 * Book constructor that is used when saving or updating a book
+	 */
+	public Book(int id, String title, String summary, int yearPublished, String isbn, LocalDateTime lastModified, Timestamp dateAdded)
+	{
+		this.id = id;
+		this.title = title;
+		this.summary = summary;
+		this.yearPublished = yearPublished;
+		this.isbn = isbn;
+		this.lastModified = lastModified;
+		this.dateAdded = dateAdded;
+	}
+	
 	/**
 	 * 
 	 * @throws GatewayException
@@ -48,8 +66,6 @@ public class Book
 		if (!val.validYear(this.getYearPublished()))
 			throw new GatewayException("Invalid Year Published: Book not saved!");
 	}
-	
-	
 	
 	public LocalDateTime getLastModified() {
 		return lastModified;

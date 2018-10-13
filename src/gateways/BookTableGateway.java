@@ -112,7 +112,7 @@ public class BookTableGateway
 	 * @param bookToUpdate
 	 * @throws GatewayException 
 	 */
-	public void updateBook(Book bookToUpdate) throws GatewayException
+	public void updateBook(Book bookToUpdate, String errMsg) throws GatewayException
 	{
 		try 
 		{
@@ -129,7 +129,7 @@ public class BookTableGateway
 				
 				// 
 				if (!bookToUpdate.getLastModified().equals(rs.getTimestamp("last_modified").toLocalDateTime()))
-					throw new GatewayException("Book is not up to date! Go back to the book list to get the updated version of the book.");
+					throw new GatewayException(errMsg);
 				
 				prepStatement.setString(1, bookToUpdate.getTitle());
 				prepStatement.setString(2, bookToUpdate.getSummary());
@@ -148,9 +148,6 @@ public class BookTableGateway
 					bookToUpdate.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
 				
 			}
-			// Audit trail
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

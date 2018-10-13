@@ -57,15 +57,15 @@ public class BookDetailController
 				// Make sure the values in the book are valid before saving them in the database
 				newBook.validateBook();
 				// Gain access to the database
-				BookTableGateway gw = new BookTableGateway();
+				BookTableGateway gateway = new BookTableGateway();
 				// This book doesn't exist in the database, so we are going to insert it into the database
-				if (!gw.isBookInDB(newBook.getId()))
-					gw.saveBook(newBook);
+				if (!gateway.isBookInDB(newBook.getId()))
+					gateway.saveBook(newBook);
 				// The book already exists in the database, so let's update it
 				else
-					gw.updateBook(newBook);
+					gateway.updateBook(newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
 				// Close connection to database
-				gw.closeConnection();
+				gateway.closeConnection();
 				// Copy the changes made to the original book
 				selectedBook = newBook;
 			} 
@@ -83,8 +83,39 @@ public class BookDetailController
 			}
 		}
 	}
-
+	public boolean isBookDifferent()
+	{
+		if (selectedBook.getTitle() != tfTitle.getText())
+			return true;
+		else if (selectedBook.getSummary() != tfSummary.getText())
+			return true;
+		else if (selectedBook.getYearPublished() != Integer.valueOf(tfYearPublished.getText()))
+			return true;
+		else if (selectedBook.getIsbn() != tfISBN.getText())
+			return true;
+		return false;
+	}
 	public void setSelectedBook(Book selectedBook) {
 		this.selectedBook = selectedBook;
 	}
+	public Book getSelectedBook() {
+		return selectedBook;
+	}
+
+	public TextField getTfTitle() {
+		return tfTitle;
+	}
+
+	public TextField getTfSummary() {
+		return tfSummary;
+	}
+
+	public TextField getTfYearPublished() {
+		return tfYearPublished;
+	}
+
+	public TextField getTfISBN() {
+		return tfISBN;
+	}
+	
 }
