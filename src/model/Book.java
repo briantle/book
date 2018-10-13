@@ -3,6 +3,7 @@ package model;
 import validation.Validator;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,19 +15,21 @@ public class Book
 	private static Logger log = LogManager.getLogger();
 	
 	private int id;
+	private int yearPublished;
 	private String title;
 	private String summary;
-	private int yearPublished;
 	private String isbn;
+	private LocalDateTime lastModified;
 	private Timestamp dateAdded;
 	
 	public Book()
 	{
 		id = 0;
-		this.title = "";
-		this.summary = null;
-		this.yearPublished = 0;
-		this.isbn = null;
+		title = "";
+		summary = null;
+		yearPublished = 0;
+		isbn = null;
+		lastModified = null;
 		dateAdded = new Timestamp(System.currentTimeMillis());
 	}
 	/**
@@ -46,6 +49,14 @@ public class Book
 			throw new GatewayException("Invalid Year Published: Book not saved!");
 	}
 	
+	
+	
+	public LocalDateTime getLastModified() {
+		return lastModified;
+	}
+	public void setLastModified(LocalDateTime lastModified) {
+		this.lastModified = lastModified;
+	}
 	public int getId() {
 		return id;
 	}

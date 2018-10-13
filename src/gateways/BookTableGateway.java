@@ -94,6 +94,15 @@ public class BookTableGateway
 				// Store the id in the book model
 				bookToSave.setId(key.getInt(1));
 			
+			// Audit Trail
+			query = "select * from Book where id = ?";
+			prepStatement = conn.prepareStatement(query);
+			prepStatement.setInt(1, bookToSave.getId());
+			rs = prepStatement.executeQuery();
+			
+			if (rs.next()) 
+				bookToSave.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -101,8 +110,9 @@ public class BookTableGateway
 	/**
 	 * 
 	 * @param bookToUpdate
+	 * @throws GatewayException 
 	 */
-	public void updateBook(Book bookToUpdate)
+	public void updateBook(Book bookToUpdate) throws GatewayException
 	{
 		try 
 		{
@@ -116,14 +126,30 @@ public class BookTableGateway
 			if (rs.next()) 
 			{
 				prepStatement = conn.prepareStatement(updateQuery);
+				
+				// 
+				if (!bookToUpdate.getLastModified().equals(rs.getTimestamp("last_modified").toLocalDateTime()))
+					throw new GatewayException("Book is not up to date! Go back to the book list to get the updated version of the book.");
+				
 				prepStatement.setString(1, bookToUpdate.getTitle());
 				prepStatement.setString(2, bookToUpdate.getSummary());
 				prepStatement.setInt(3, bookToUpdate.getYearPublished());
 				prepStatement.setString(4, bookToUpdate.getIsbn());
 				prepStatement.setInt(5, bookToUpdate.getId());
-				
 				prepStatement.executeUpdate();
+				
+				// Update the last modified date for the book in the detail controller
+				selectQuery = "select * from Book where id = ?";
+				prepStatement = conn.prepareStatement(selectQuery);
+				prepStatement.setInt(1, bookToUpdate.getId());
+				rs = prepStatement.executeQuery();
+				
+				if (rs.next()) 
+					bookToUpdate.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
+				
 			}
+			// Audit trail
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -174,6 +200,7 @@ public class BookTableGateway
 				dbBook.setYearPublished(rs.getInt("year_published"));
 				dbBook.setIsbn(rs.getString("isbn"));
 				dbBook.setDateAdded(rs.getTimestamp("date"));
+				dbBook.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
 				
 				bookList.add(dbBook);
 			}
