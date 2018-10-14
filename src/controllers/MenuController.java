@@ -42,21 +42,25 @@ public class MenuController
 				{
 					if (result.get() == ButtonType.YES)
 					{
-						BookTableGateway gateway = new BookTableGateway();
 						try
 						{
 								Book bdBook = bdController.getSelectedBook();
 								Book changedBook = new Book(bdBook.getId(), bdController.getTfTitle().toString(), bdController.getTfSummary().toString(), Integer.valueOf(bdController.getTfYearPublished().toString()), bdController.getTfISBN().toString(), bdBook.getLastModified(), bdBook.getDateAdded());
+								// Before we insert or update the book, we want to validate the input first
+								changedBook.validateBook();
+								// Gain access to the database
+								BookTableGateway gateway = new BookTableGateway();
 								// Book already exists in database, so lets update it
 								if (gateway.isBookInDB(changedBook.getId()))
 									gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
 								// It doesn't exist, so save it	
 								else
 									gateway.saveBook(changedBook);
+								// Close connection to the database
+								gateway.closeConnection();
 							} catch (GatewayException e) {
 								e.printStackTrace();
 							}
-						gateway.closeConnection();
 					}
 					Platform.exit();
 				}

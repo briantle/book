@@ -85,14 +85,22 @@ public class BookDetailController
 	}
 	public boolean isBookDifferent()
 	{
-		if (!selectedBook.getTitle().equals(tfTitle.getText()))
+		// If one has an empty title and the other one doesn't
+		if (selectedBook.getTitle() == "" && !tfTitle.getText().trim().isEmpty() || selectedBook.getTitle() != "" && tfTitle.getText().trim().isEmpty()) 
 			return true;
-		else if (!selectedBook.getSummary().equals(tfSummary.getText()))
+		// If both have titles and they don't match
+		else if (selectedBook.getTitle() != "" && !tfTitle.getText().trim().isEmpty() && selectedBook.getTitle() != tfTitle.getText())
 			return true;
-		else if (!Integer.valueOf(selectedBook.getYearPublished()).equals(Integer.valueOf(tfYearPublished.getText())))
+		// The summaries don't match
+		if (selectedBook.getSummary() != tfSummary.getText())
 			return true;
-		else if (!selectedBook.getIsbn().equals(tfISBN.getText()))
+		// If the year published don't match
+		if (!Integer.valueOf(selectedBook.getYearPublished()).equals(Integer.valueOf(tfYearPublished.getText())))
 			return true;
+		// The ISBNs don't match
+		if (selectedBook.getIsbn() != tfISBN.getText())
+			return true;
+		// All the fields are similar
 		return false;
 	}
 	public void setSelectedBook(Book selectedBook) {

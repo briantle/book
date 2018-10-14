@@ -38,6 +38,7 @@ public class ViewManager
 			{
 				if (currController != null && currController.isBookDifferent())
 				{
+					
 					Alert confirmAlert = new Alert(AlertType.NONE);
 					confirmAlert.setHeaderText("Confirm Save Changes");
 					confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
@@ -48,9 +49,11 @@ public class ViewManager
 					{
 						try
 						{
-								BookTableGateway gateway = new BookTableGateway();
 								Book bdBook = currController.getSelectedBook();
 								Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
+								// Before we insert or update the book, we want to validate the input first
+								changedBook.validateBook();
+								BookTableGateway gateway = new BookTableGateway();
 								// Book already exists in database, so lets update it
 								if (gateway.isBookInDB(changedBook.getId()))
 									gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
@@ -85,9 +88,11 @@ public class ViewManager
 						{
 							try
 							{
-									BookTableGateway gateway = new BookTableGateway();
 									Book bdBook = currController.getSelectedBook();
 									Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
+									// Before we insert or update the book, we want to validate the input first
+									changedBook.validateBook();
+									BookTableGateway gateway = new BookTableGateway();
 									// Book already exists in database, so lets update it
 									if (gateway.isBookInDB(changedBook.getId()))
 										gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");

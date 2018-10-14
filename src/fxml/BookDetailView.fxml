@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,20 +15,31 @@
       <children>
         <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Label text="Summary" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Label text="Year Published" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <Label text="ISBN" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <Label text="Date Added" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label text="Publisher" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label text="Year Published" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label text="ISBN" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label text="Date Added" GridPane.columnIndex="0" GridPane.rowIndex="5" />
         <TextField id="titleField" fx:id="tfTitle" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         <TextField fx:id="tfSummary" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="tfYearPublished" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField fx:id="tfISBN" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label text="Label" id="dateAdded" fx:id="dateAdded" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="tfYearPublished" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <TextField fx:id="tfISBN" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label fx:id="dateAdded" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <ComboBox fx:id="publisherComboBox" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
