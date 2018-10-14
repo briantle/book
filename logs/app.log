@@ -718,3 +718,44 @@
 19:02:25.299 INFO  gateways.BookTableGateway : Connected to database
 19:02:25.334 INFO  gateways.BookTableGateway : In Update Book
 19:02:25.455 INFO  gateways.BookTableGateway : Logged out of database
+00:24:26.130 INFO  gateways.BookTableGateway : Connected to database
+00:24:26.182 INFO  gateways.BookTableGateway : Logged out of database
+00:29:51.917 INFO  controllers.MenuController :  what the hell?
+00:30:44.150 INFO  controllers.MenuController :  what the hell?
+00:34:39.900 INFO  controllers.BookDetailController : nigga da fuck is tf summary?null
+00:35:31.766 INFO  controllers.BookDetailController : nigga da fuck is tf summary?null
+00:36:25.721 INFO  controllers.BookDetailController : nigga da fuck is tf summary?null
+00:39:09.876 INFO  gateways.BookTableGateway : Connected to database
+00:39:09.922 INFO  gateways.BookTableGateway : Logged out of database
+00:39:15.883 INFO  controllers.BookDetailController : fuck 1
+00:39:49.360 INFO  gateways.BookTableGateway : Connected to database
+00:39:49.424 INFO  gateways.BookTableGateway : Logged out of database
+00:39:53.681 INFO  controllers.BookDetailController : fuck 1
+00:43:16.949 INFO  controllers.BookDetailController : 1
+00:44:22.380 INFO  controllers.BookDetailController : 1
+00:45:08.825 INFO  controllers.BookDetailController : The fuck is selected book title? 
+00:45:08.829 INFO  controllers.BookDetailController : 1
+00:46:11.496 INFO  controllers.BookDetailController : The fuck is selected book title? 
+00:46:11.500 INFO  controllers.BookDetailController : 1
+00:46:47.571 INFO  controllers.BookDetailController : The fuck is selected book title? 
+00:46:47.576 INFO  controllers.BookDetailController : 1
+09:31:50.003 INFO  controllers.BookDetailController : nigga
+09:32:37.289 INFO  controllers.BookDetailController : nigga
+09:32:40.010 INFO  gateways.BookTableGateway : Connected to database
+09:32:40.109 INFO  gateways.BookTableGateway : Logged out of database
+09:34:27.544 INFO  controllers.BookDetailController : nigga
+09:35:24.630 INFO  controllers.BookDetailController : nigga
+09:35:55.404 INFO  controllers.BookDetailController : nigga
+09:37:28.005 INFO  controllers.MenuController : Exception here? why?
+09:39:07.233 INFO  controllers.MenuController : Exception here? why?
+09:39:56.083 INFO  controllers.MenuController : Exception here? why?
+09:40:07.575 INFO  gateways.BookTableGateway : Connected to database
+09:40:07.625 INFO  gateways.BookTableGateway : Logged out of database
+09:40:19.808 INFO  controllers.BookDetailController : nigga
+09:40:21.902 INFO  gateways.BookTableGateway : Connected to database
+09:40:21.933 INFO  gateways.BookTableGateway : Logged out of database
+09:40:46.229 INFO  controllers.BookDetailController : 2
+09:50:33.829 INFO  controllers.BookDetailController : summary field is: null
+09:51:30.943 INFO  controllers.BookDetailController : summary field is: null
+09:53:11.651 INFO  controllers.BookDetailController : summary field is: null
+09:53:11.655 INFO  controllers.MenuController : Exception here? why?

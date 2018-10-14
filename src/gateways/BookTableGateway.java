@@ -47,7 +47,7 @@ public class BookTableGateway
 			ds.setPassword(prop.getProperty("MYSQL_DB_PASS"));
 			
 			conn = ds.getConnection();
-			logger.info("Connected to database");
+			logger.info("Connected to database in Book Table Gateway");
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 			throw new GatewayException(e);
@@ -215,7 +215,7 @@ public class BookTableGateway
 		{
 			try {
 				conn.close();
-				logger.info("Logged out of database");
+				logger.info("Logged out of database in Book Table Gateway");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

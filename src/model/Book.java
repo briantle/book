@@ -16,6 +16,7 @@ public class Book
 	
 	private int id;
 	private int yearPublished;
+	private Publisher publisher;
 	private String title;
 	private String summary;
 	private String isbn;
@@ -32,6 +33,7 @@ public class Book
 		title = "";
 		summary = null;
 		yearPublished = 0;
+		publisher = new Publisher();
 		isbn = null;
 		lastModified = null;
 		dateAdded = new Timestamp(System.currentTimeMillis());
