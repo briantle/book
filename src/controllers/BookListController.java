@@ -45,7 +45,11 @@ public class BookListController
 				{
 					Book selectedBook = bookList.getSelectionModel().getSelectedItem();
 					log.info("Double clicked on: " + selectedBook.getTitle());
-					ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
+					try {
+						ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
+					} catch (GatewayException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});

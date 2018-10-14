@@ -85,13 +85,13 @@ public class BookDetailController
 	}
 	public boolean isBookDifferent()
 	{
-		if (selectedBook.getTitle() != tfTitle.getText())
+		if (!selectedBook.getTitle().equals(tfTitle.getText()))
 			return true;
-		else if (selectedBook.getSummary() != tfSummary.getText())
+		else if (!selectedBook.getSummary().equals(tfSummary.getText()))
 			return true;
-		else if (selectedBook.getYearPublished() != Integer.valueOf(tfYearPublished.getText()))
+		else if (!Integer.valueOf(selectedBook.getYearPublished()).equals(Integer.valueOf(tfYearPublished.getText())))
 			return true;
-		else if (selectedBook.getIsbn() != tfISBN.getText())
+		else if (!selectedBook.getIsbn().equals(tfISBN.getText()))
 			return true;
 		return false;
 	}
