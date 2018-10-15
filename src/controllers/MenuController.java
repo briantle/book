@@ -32,38 +32,20 @@ public class MenuController
 			BookDetailController bdController = ViewManager.getInstance().getCurrController();
 			if (bdController != null && bdController.isBookDifferent())
 			{
-				Alert confirmAlert = new Alert(AlertType.NONE);
-				confirmAlert.setHeaderText("Confirm Save Changes");
-				confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
-				confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 				// Gets the button that the user clicked on
-				Optional<ButtonType> result = confirmAlert.showAndWait();
-				if (result.get() != ButtonType.CANCEL)
+				Optional<ButtonType> result = ViewManager.getInstance().getButtonResult();
+				if (result.get() == ButtonType.YES)
 				{
-					if (result.get() == ButtonType.YES)
+					try
 					{
-						try
-						{
-								Book bdBook = bdController.getSelectedBook();
-								Book changedBook = new Book(bdBook.getId(), bdController.getTfTitle().toString(), bdController.getTfSummary().toString(), Integer.valueOf(bdController.getTfYearPublished().toString()), bdController.getTfISBN().toString(), bdBook.getLastModified(), bdBook.getDateAdded());
-								// Before we insert or update the book, we want to validate the input first
-								changedBook.validateBook();
-								// Gain access to the database
-								BookTableGateway gateway = new BookTableGateway();
-								// Book already exists in database, so lets update it
-								if (gateway.isBookInDB(changedBook.getId()))
-									gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
-								// It doesn't exist, so save it	
-								else
-									gateway.saveBook(changedBook);
-								// Close connection to the database
-								gateway.closeConnection();
-							} catch (GatewayException e) {
-								e.printStackTrace();
-							}
+						ViewManager.getInstance().saveBookChanges();
+						Platform.exit();
+					} catch (GatewayException e) {
+						e.printStackTrace();
 					}
-					Platform.exit();
 				}
+				else if (result.get() == ButtonType.NO)
+					Platform.exit();
 			}
 			else
 				Platform.exit();

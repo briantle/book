@@ -38,33 +38,17 @@ public class ViewManager
 			{
 				if (currController != null && currController.isBookDifferent())
 				{
-					
-					Alert confirmAlert = new Alert(AlertType.NONE);
-					confirmAlert.setHeaderText("Confirm Save Changes");
-					confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
-					confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 					// Gets the button that the user clicked on
-					Optional<ButtonType> result = confirmAlert.showAndWait();
+					Optional<ButtonType> result = getButtonResult();
 					if (result.get() == ButtonType.YES)
 					{
 						try
 						{
-								Book bdBook = currController.getSelectedBook();
-								Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
-								// Before we insert or update the book, we want to validate the input first
-								changedBook.validateBook();
-								BookTableGateway gateway = new BookTableGateway();
-								// Book already exists in database, so lets update it
-								if (gateway.isBookInDB(changedBook.getId()))
-									gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
-								// It doesn't exist, so save it	
-								else
-									gateway.saveBook(changedBook);
-								gateway.closeConnection();
-								switchToListView(newRoot, currRoot);
-							} catch (GatewayException e) {
-								e.printStackTrace();
-							}
+							saveBookChanges();
+							switchToListView(newRoot, currRoot);
+						} catch (GatewayException e) {
+							e.printStackTrace();
+						}
 					}
 					else if (result.get() == ButtonType.NO)
 						switchToListView(newRoot, currRoot);
@@ -76,39 +60,21 @@ public class ViewManager
 			{
 				if (currController != null && currController.isBookDifferent())
 				{
-					Alert confirmAlert = new Alert(AlertType.NONE);
-					confirmAlert.setHeaderText("Confirm Save Changes");
-					confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
-					confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 					// Gets the button that the user clicked on
-					Optional<ButtonType> result = confirmAlert.showAndWait();
-					if (result.get() != ButtonType.CANCEL)
+					Optional<ButtonType> result = getButtonResult();
+					if (result.get() == ButtonType.YES)
 					{
-						if (result.get() == ButtonType.YES)
+						try
 						{
-							try
-							{
-									Book bdBook = currController.getSelectedBook();
-									Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
-									// Before we insert or update the book, we want to validate the input first
-									changedBook.validateBook();
-									BookTableGateway gateway = new BookTableGateway();
-									// Book already exists in database, so lets update it
-									if (gateway.isBookInDB(changedBook.getId()))
-										gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
-									// It doesn't exist, so save it	
-									else
-										gateway.saveBook(changedBook);
-
-									gateway.closeConnection();
-									switchToListView(newRoot, currRoot);
-								} 
-								catch (GatewayException e) {
-									e.printStackTrace();
-								}
+							saveBookChanges();
+							switchToDetailView(book, newRoot, currRoot);
+						} 
+						catch (GatewayException e) {
+							e.printStackTrace();
 						}
-						switchToDetailView(book, newRoot, currRoot);
 					}
+					else if (result.get() == ButtonType.NO)
+						switchToDetailView(book, newRoot, currRoot);
 				}
 				else
 					switchToDetailView(book, newRoot, currRoot);
@@ -118,6 +84,32 @@ public class ViewManager
 			logger.error("Failed to switch views");
 			ie.printStackTrace();
 		}
+	}
+	public void saveBookChanges() throws GatewayException
+	{
+		Book bdBook = currController.getSelectedBook();
+		Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
+		// Before we insert or update the book, we want to validate the input first
+		changedBook.validateBook();
+		BookTableGateway gateway = new BookTableGateway();
+		// Book already exists in database, so lets update it
+		if (gateway.isBookInDB(changedBook.getId()))
+			gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
+		// It doesn't exist, so save it	
+		else
+			gateway.saveBook(changedBook);
+
+		gateway.closeConnection();
+	}
+	public Optional<ButtonType> getButtonResult()
+	{
+		Alert confirmAlert = new Alert(AlertType.NONE);
+		confirmAlert.setHeaderText("Confirm Save Changes");
+		confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
+		confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+		// Gets the button that the user clicked on
+		Optional<ButtonType> result = confirmAlert.showAndWait();
+		return result;
 	}
 	public void switchToListView(BorderPane newRoot, BorderPane currRoot) throws IOException
 	{

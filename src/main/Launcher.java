@@ -47,7 +47,6 @@ public class Launcher extends Application
 		primaryStage.setTitle("Book Record");
 		// Display the menu
 		primaryStage.show();
-		
 		this.mainPane = root;
 		
 		// This handles the case of the user clicking the red X in the top right of the program
@@ -60,12 +59,8 @@ public class Launcher extends Application
 				// We are in the book detail view
 				if (bdController != null && bdController.isBookDifferent()) 
 				{
-					Alert confirmAlert = new Alert(AlertType.NONE);
-					confirmAlert.setHeaderText("Confirm Save Changes");
-					confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
-					confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 					// Gets the button that the user clicked on
-					Optional<ButtonType> result = confirmAlert.showAndWait();
+					Optional<ButtonType> result = ViewManager.getInstance().getButtonResult();
 					// We don't want to save changes or close the program
 					if (result.get() == ButtonType.CANCEL) 
 						// Stops the application from closingS
@@ -78,22 +73,15 @@ public class Launcher extends Application
 						{
 							try
 							{
-								BookTableGateway gateway = new BookTableGateway();
-								Book bdBook = bdController.getSelectedBook();
-								Book changedBook = new Book(bdBook.getId(), bdController.getTfTitle().getText(), bdController.getTfSummary().getText(), Integer.valueOf(bdController.getTfYearPublished().getText()), bdController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
-								// Book already exists in database, so lets update it
-								if (gateway.isBookInDB(changedBook.getId()))
-									gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
-								// It doesn't exist, so save it	
-								else
-									gateway.saveBook(changedBook);
-								gateway.closeConnection();
+								ViewManager.getInstance().saveBookChanges();
 								Platform.exit();
 							}
 							catch (GatewayException e) {
 								e.printStackTrace();
 							}
 						}
+						else if (result.get() == ButtonType.NO)
+							Platform.exit();
 					}
 				}
 				else
