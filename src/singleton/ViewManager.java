@@ -28,7 +28,7 @@ public class ViewManager
 		return currController;
 	}
 
-	public void changeView(ViewType view, Book book) throws GatewayException
+	public void changeView(ViewType view, Book book)
 	{	
 		try
 		{
@@ -45,9 +45,11 @@ public class ViewManager
 						try
 						{
 							saveBookChanges();
+							logger.info("still running anyway?");
 							switchToListView(newRoot, currRoot);
 						} catch (GatewayException e) {
 							e.printStackTrace();
+							showErrAlert(e.getMessage());
 						}
 					}
 					else if (result.get() == ButtonType.NO)
@@ -71,6 +73,7 @@ public class ViewManager
 						} 
 						catch (GatewayException e) {
 							e.printStackTrace();
+							showErrAlert(e.getMessage());
 						}
 					}
 					else if (result.get() == ButtonType.NO)
@@ -98,8 +101,13 @@ public class ViewManager
 		// It doesn't exist, so save it	
 		else
 			gateway.saveBook(changedBook);
-
-		gateway.closeConnection();
+			gateway.closeConnection();
+	}
+	public void showErrAlert(String exceptionMsg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setHeaderText("ERROR");
+		errAlert.setContentText(exceptionMsg);
+		errAlert.showAndWait();
 	}
 	public Optional<ButtonType> getButtonResult()
 	{

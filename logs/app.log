@@ -759,3 +759,17 @@
 09:51:30.943 INFO  controllers.BookDetailController : summary field is: null
 09:53:11.651 INFO  controllers.BookDetailController : summary field is: null
 09:53:11.655 INFO  controllers.MenuController : Exception here? why?
+09:44:31.743 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+09:44:31.770 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+09:49:51.632 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+09:49:51.653 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+09:57:25.256 INFO  controllers.MenuController : why the fuck ru u running this?
+09:58:30.814 INFO  controllers.MenuController : why the fuck ru u running this?
+09:59:16.148 INFO  controllers.MenuController : why the fuck ru u running this?
+09:59:17.385 INFO  singleton.ViewManager : b4 this bullshitttt
+10:01:37.895 INFO  controllers.MenuController : why the fuck ru u running this?
+10:01:38.961 INFO  singleton.ViewManager : b4 this bullshitttt
+10:02:28.092 INFO  controllers.MenuController : why the fuck ru u running this?
+10:02:29.300 INFO  singleton.ViewManager : b4 this bullshitttt
+10:03:50.762 INFO  controllers.MenuController : why the fuck ru u running this?
+10:03:52.549 INFO  singleton.ViewManager : b4 this bullshitttt

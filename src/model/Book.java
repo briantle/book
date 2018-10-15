@@ -33,7 +33,7 @@ public class Book
 		title = "";
 		summary = null;
 		yearPublished = 0;
-		publisher = new Publisher();
+		//publisher = new Publisher();
 		isbn = null;
 		lastModified = null;
 		dateAdded = new Timestamp(System.currentTimeMillis());

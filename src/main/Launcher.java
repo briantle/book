@@ -71,21 +71,18 @@ public class Launcher extends Application
 						// We want to save the changes made to the book
 						if (result.get() == ButtonType.YES)
 						{
-							try
-							{
+							try{
 								ViewManager.getInstance().saveBookChanges();
-								Platform.exit();
 							}
-							catch (GatewayException e) {
+							catch (GatewayException e)
+							{
 								e.printStackTrace();
+								event.consume();
+								ViewManager.getInstance().showErrAlert(e.getMessage());
 							}
 						}
-						else if (result.get() == ButtonType.NO)
-							Platform.exit();
 					}
 				}
-				else
-					Platform.exit();
 			}
 		});
 	}

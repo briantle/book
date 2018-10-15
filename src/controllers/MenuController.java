@@ -42,6 +42,7 @@ public class MenuController
 						Platform.exit();
 					} catch (GatewayException e) {
 						e.printStackTrace();
+						ViewManager.getInstance().showErrAlert(e.getMessage());
 					}
 				}
 				else if (result.get() == ButtonType.NO)

@@ -29,7 +29,7 @@ public class Validator
 	 */
 	public boolean validSummary(String summary)
 	{
-		if (summary.length() >= 65536)
+		if (summary == null || summary.length() >= 65536)
 			return false;
 		return true;
 	}
@@ -59,7 +59,7 @@ public class Validator
 	 */
 	public boolean validISBN(String isbn)
 	{
-		if (isbn.length() > 13)
+		if (isbn == null || isbn.length() > 13)
 			return false;
 		return true;
 	}
