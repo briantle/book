@@ -6,11 +6,9 @@ import org.apache.logging.log4j.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.TextAlignment;
 import javafx.util.Callback;
 import model.Book;
 import enums.ViewType;
@@ -22,17 +20,12 @@ public class BookListController
 {
 	@FXML private ListView<Book> bookList;
 	private static Logger log = LogManager.getLogger();
-	BookTableGateway gw = null;
 	
 	public void initialize() throws GatewayException
 	{
-		// Get a reference to the database and connect to it
-		gw = new BookTableGateway();
 		// Get the list of books from the database and then display them on the listView
-		bookList.setItems(gw.getBooks());
+		bookList.setItems(ViewManager.getInstance().getBookGateway().getBooks());
 		populateListView();
-		// Log out of database
-		gw.closeConnection();
 		
 		// is called when the user clicks somewhere on the list view
 		bookList.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -79,19 +72,12 @@ public class BookListController
 								@Override
 								public void handle(MouseEvent click) 
 								{
-									try {
-										// Get a refernce to the database
-										BookTableGateway gw = new BookTableGateway();
-										// Delete the book
-										gw.deleteBook(b);
-										// Close connection to database
-										gw.closeConnection();
-										// Update the listview to reflect changes
-										ViewManager.getInstance().changeView(ViewType.BOOK_LIST, null);
-									} catch (GatewayException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+									// Get a refernce to the database
+									BookTableGateway gw = ViewManager.getInstance().getBookGateway();
+									// Delete the book
+									gw.deleteBook(b);
+									// Update the listview to reflect changes
+									ViewManager.getInstance().changeView(ViewType.BOOK_LIST, null);
 								}
 							});
 						}

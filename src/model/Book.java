@@ -5,23 +5,20 @@ import validation.Validator;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import exceptions.GatewayException;
+import javafx.collections.ObservableList;
 
 public class Book 
 {
-	private static Logger log = LogManager.getLogger();
-	
 	private int id;
 	private int yearPublished;
-	private Publisher publisher;
 	private String title;
 	private String summary;
 	private String isbn;
 	private LocalDateTime lastModified;
 	private Timestamp dateAdded;
+	private Publisher pub;
+	private ObservableList<AuditTrailEntry> auditTrailList;
 	
 	/**
 	 * Empty Book Constructor
@@ -33,15 +30,15 @@ public class Book
 		title = "";
 		summary = null;
 		yearPublished = 0;
-		//publisher = new Publisher();
 		isbn = null;
 		lastModified = null;
 		dateAdded = new Timestamp(System.currentTimeMillis());
+		pub = new Publisher();
 	}
 	/**
 	 * Book constructor that is used when saving or updating a book
 	 */
-	public Book(int id, String title, String summary, int yearPublished, String isbn, LocalDateTime lastModified, Timestamp dateAdded)
+	public Book(int id, String title, String summary, int yearPublished, String isbn, LocalDateTime lastModified, Timestamp dateAdded, Publisher pub)
 	{
 		this.id = id;
 		this.title = title;
@@ -50,6 +47,7 @@ public class Book
 		this.isbn = isbn;
 		this.lastModified = lastModified;
 		this.dateAdded = dateAdded;
+		this.pub = pub;
 	}
 	
 	/**
@@ -69,6 +67,18 @@ public class Book
 			throw new GatewayException("Invalid Year Published: Book not saved!");
 	}
 	
+	public Publisher getPub() {
+		return pub;
+	}
+	public void setPub(Publisher pub) {
+		this.pub = pub;
+	}
+	public ObservableList<AuditTrailEntry> getAuditTrailList() {
+		return auditTrailList;
+	}
+	public void setAuditTrailList(ObservableList<AuditTrailEntry> auditTrailList) {
+		this.auditTrailList = auditTrailList;
+	}
 	public LocalDateTime getLastModified() {
 		return lastModified;
 	}

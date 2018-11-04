@@ -773,3 +773,68 @@
 10:02:29.300 INFO  singleton.ViewManager : b4 this bullshitttt
 10:03:50.762 INFO  controllers.MenuController : why the fuck ru u running this?
 10:03:52.549 INFO  singleton.ViewManager : b4 this bullshitttt
+17:50:38.427 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+17:50:58.861 INFO  controllers.BookDetailController : Clicked on save button
+17:50:58.867 INFO  gateways.BookTableGateway : In Save Book
+17:51:07.874 INFO  gateways.BookTableGateway : In Update Book
+17:51:25.898 INFO  controllers.BookDetailController : Clicked on save button
+17:51:29.416 INFO  controllers.BookDetailController : Clicked on save button
+17:51:29.419 INFO  gateways.BookTableGateway : In Save Book
+17:51:34.526 INFO  gateways.BookTableGateway : In Update Book
+17:51:38.432 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:21:32.607 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:21:59.035 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcvxc
+18:22:32.805 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:22:37.720 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:22:42.443 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+18:22:51.985 INFO  gateways.BookTableGateway : In Update Book
+18:22:52.000 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:24:35.323 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:24:39.391 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcvxc
+18:24:45.743 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:27:34.773 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:27:37.537 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+18:27:43.261 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:28:06.070 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:28:08.792 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+18:28:16.024 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:29:08.018 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:29:11.309 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcvxc
+18:29:15.542 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+18:29:44.709 INFO  gateways.BookTableGateway : Connected to database in Book Table Gateway
+18:29:47.657 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+18:29:50.177 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcvxc
+18:29:53.496 INFO  gateways.BookTableGateway : In Update Book
+18:29:58.051 INFO  gateways.BookTableGateway : Logged out of database in Book Table Gateway
+09:58:35.546 INFO  gateways.GatewayManager : Connected to database
+09:58:41.380 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcdfsfsdfsdfsdfvxc
+10:00:17.210 INFO  gateways.GatewayManager : Connected to database
+10:00:20.688 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcdfsfsdfsdfsdfvxc
+10:00:26.395 INFO  gateways.GatewayManager : Logged out of database
+10:02:19.615 INFO  gateways.GatewayManager : Connected to database
+10:02:22.684 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+10:02:33.024 INFO  gateways.GatewayManager : Logged out of database
+10:04:01.483 INFO  gateways.GatewayManager : Connected to database
+10:04:04.770 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+10:04:10.655 INFO  gateways.GatewayManager : Logged out of database
+10:09:26.161 INFO  gateways.GatewayManager : Connected to database
+10:09:29.744 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+10:09:36.353 INFO  gateways.GatewayManager : Logged out of database
+10:12:24.464 INFO  gateways.GatewayManager : Connected to database
+10:12:27.956 INFO  controllers.BookListController$1 : Double clicked on: fsdfsdf
+10:12:32.202 INFO  controllers.BookDetailController : Clicked on save button
+10:12:32.244 INFO  gateways.BookTableGateway : In Update Book
+10:12:45.863 INFO  controllers.BookListController$1 : Double clicked on: vvxcvxcdfsfsdfsdfsdfvxc
+10:12:55.499 INFO  controllers.BookDetailController : Clicked on save button
+10:12:55.541 INFO  gateways.BookTableGateway : In Update Book
+10:13:00.615 INFO  gateways.BookTableGateway : In Delete Book
+10:13:02.319 INFO  gateways.BookTableGateway : In Delete Book
+10:13:05.698 INFO  gateways.GatewayManager : Logged out of database
+14:00:20.703 INFO  gateways.GatewayManager : Connected to database
+14:00:47.456 INFO  controllers.BookDetailController : Clicked on save button
+14:00:47.506 INFO  gateways.BookTableGateway : In Save Book
+14:00:53.433 INFO  controllers.BookListController$1 : Double clicked on: test
+14:00:55.410 INFO  controllers.BookDetailController : Clicked on save button
+14:00:55.513 INFO  gateways.BookTableGateway : In Update Book
+14:01:34.598 INFO  controllers.BookListController$1 : Double clicked on: test
+14:01:38.290 INFO  gateways.GatewayManager : Logged out of database

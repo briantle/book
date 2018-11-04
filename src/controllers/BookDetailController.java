@@ -1,22 +1,30 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import exceptions.GatewayException;
 import gateways.BookTableGateway;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import model.Book;
-
+import model.Publisher;
+import singleton.ViewManager;
 public class BookDetailController
 {
 	private static Logger log = LogManager.getLogger();
@@ -25,11 +33,38 @@ public class BookDetailController
 	@FXML private Button saveButton;
 	@FXML private TextField tfTitle, tfSummary, tfYearPublished, tfISBN;
 	@FXML private Label dateAdded;
+	@FXML private ComboBox<Publisher> publisherComboBox;
+	ObservableList<Publisher> publisherList;
 	
-	public BookDetailController(Book book) {
+	public BookDetailController(Book book, ObservableList<Publisher> publisherList) {
 		this.selectedBook = book;
+		this.publisherList = publisherList;
 	}
-	
+	private void populateComboBox()
+	{
+		Callback<ListView<Publisher>, ListCell<Publisher>> cellFactory = new Callback<ListView<Publisher>, ListCell<Publisher>>() 
+		{
+		    @Override
+		    public ListCell<Publisher> call(ListView<Publisher> l) 
+		    {
+		        return new ListCell<Publisher>() 
+		        {
+		            @Override
+		            protected void updateItem(Publisher pub, boolean empty) 
+		            {
+		            	// Populate the combo box with the publishers
+		                super.updateItem(pub, empty);
+		                if (pub == null || empty) 
+		                    setGraphic(null);
+		                else 
+		                    setText(pub.getPublisherName());
+		            }
+		        };
+		    }
+		};
+		publisherComboBox.setButtonCell(cellFactory.call(null));
+		publisherComboBox.setCellFactory(cellFactory);
+	}
 	public void initialize() 
 	{
 		tfTitle.setText(selectedBook.getTitle());
@@ -38,9 +73,14 @@ public class BookDetailController
 		tfISBN.setText(selectedBook.getIsbn());
 		// Displays the time stamp in Month/Day/Year format
 		dateAdded.setText(new SimpleDateFormat("MM/dd/yyyy").format(selectedBook.getDateAdded()));
+		// Populate the combobox with the list of publishers
+		publisherComboBox.setItems(publisherList);
+		populateComboBox();
+		// Default the combobox value to whichever publisher the book has selected
+		publisherComboBox.getSelectionModel().select(selectedBook.getPub().getId());
 	}
-	
-	@FXML public void handleButtonAction(ActionEvent action) throws IOException 
+	@FXML 
+	public void handleButtonAction(ActionEvent action) throws IOException 
 	{
 		if (action.getSource() == saveButton) 
 		{
@@ -48,24 +88,19 @@ public class BookDetailController
 			try 
 			{
 				// Make a temporary book in case the validation fails
-				Book newBook = selectedBook;
-				newBook.setTitle(tfTitle.getText());
-				newBook.setSummary(tfSummary.getText());
-				newBook.setYearPublished(Integer.valueOf(tfYearPublished.getText()));
-				newBook.setIsbn(tfISBN.getText());
+				Book newBook = new Book(selectedBook.getId(), tfTitle.getText(), tfSummary.getText(), Integer.valueOf(tfYearPublished.getText()), tfISBN.getText()
+						               , selectedBook.getLastModified(), selectedBook.getDateAdded(), getPublisherSelection());
 				
 				// Make sure the values in the book are valid before saving them in the database
 				newBook.validateBook();
-				// Gain access to the database
-				BookTableGateway gateway = new BookTableGateway();
+				// Get reference to the database
+				BookTableGateway gateway = ViewManager.getInstance().getBookGateway();
 				// This book doesn't exist in the database, so we are going to insert it into the database
 				if (!gateway.isBookInDB(newBook.getId()))
 					gateway.saveBook(newBook);
 				// The book already exists in the database, so let's update it
 				else
 					gateway.updateBook(newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
-				// Close connection to database
-				gateway.closeConnection();
 				// Copy the changes made to the original book
 				selectedBook = newBook;
 			} 
@@ -86,44 +121,49 @@ public class BookDetailController
 	public boolean isBookDifferent()
 	{
 		// If one has an empty title and the other one doesn't
-		if (selectedBook.getTitle() == "" && !tfTitle.getText().trim().isEmpty() || selectedBook.getTitle() != "" && tfTitle.getText().trim().isEmpty()) 
+		if (selectedBook.getTitle() == "" && !tfTitle.getText().trim().isEmpty() || selectedBook.getTitle() != "" && tfTitle.getText().trim().isEmpty())
 			return true;
 		// If both have titles and they don't match
-		else if (selectedBook.getTitle() != "" && !tfTitle.getText().trim().isEmpty() && selectedBook.getTitle() != tfTitle.getText())
+		else if (selectedBook.getTitle() != "" && !tfTitle.getText().trim().isEmpty() && selectedBook.getTitle().compareTo(tfTitle.getText()) != 0) 
 			return true;
 		// The summaries don't match
-		if (selectedBook.getSummary() != tfSummary.getText())
+		if (selectedBook.getSummary().compareTo(tfSummary.getText()) != 0)
 			return true;
 		// If the year published don't match
 		if (!Integer.valueOf(selectedBook.getYearPublished()).equals(Integer.valueOf(tfYearPublished.getText())))
 			return true;
 		// The ISBNs don't match
-		if (selectedBook.getIsbn() != tfISBN.getText())
+		if (selectedBook.getIsbn().compareTo(tfISBN.getText()) != 0)
 			return true;
+		/*
+		// Publishers don't match
+		if (!selectedBook.getPub().equals(getPublisherSelection()))
+		return true;
 		// All the fields are similar
+		 */
 		return false;
 	}
+	/********************* Setters *******************/
 	public void setSelectedBook(Book selectedBook) {
 		this.selectedBook = selectedBook;
 	}
+	/******************** Getters ***********************/
 	public Book getSelectedBook() {
 		return selectedBook;
 	}
-
 	public TextField getTfTitle() {
 		return tfTitle;
 	}
-
 	public TextField getTfSummary() {
 		return tfSummary;
 	}
-
 	public TextField getTfYearPublished() {
 		return tfYearPublished;
 	}
-
 	public TextField getTfISBN() {
 		return tfISBN;
+	}	
+	public Publisher getPublisherSelection() {
+		return publisherComboBox.getSelectionModel().getSelectedItem();
 	}
-	
 }

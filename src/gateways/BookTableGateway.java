@@ -1,22 +1,19 @@
 package gateways;
 
 import java.sql.ResultSet;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.mysql.jdbc.Statement;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import exceptions.GatewayException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.AuditTrailEntry;
 import model.Book;
 public class BookTableGateway 
 {
@@ -25,48 +22,22 @@ public class BookTableGateway
 	private ResultSet rs = null;
 	private PreparedStatement prepStatement = null;
 	
-	/**
-	 * Constructor for BookTableGateway that attempts to connect to
-	 * the Book database using login info from a properties file.
-	 * 
-	 * @throws GatewayException
-	 */
-	public BookTableGateway() throws GatewayException
-	{
-		Properties prop = new Properties();
-		FileInputStream fis = null;
-		try 
-		{
-			fis = new FileInputStream("db.properties");
-			prop.load(fis);
-			fis.close();
-			
-			MysqlDataSource ds = new MysqlDataSource(); 
-			ds.setURL(prop.getProperty("MYSQL_DB_URL"));
-			ds.setUser(prop.getProperty("MYSQL_DB_USER"));
-			ds.setPassword(prop.getProperty("MYSQL_DB_PASS"));
-			
-			conn = ds.getConnection();
-			logger.info("Connected to database in Book Table Gateway");
-		} catch (IOException | SQLException e) {
-			e.printStackTrace();
-			throw new GatewayException(e);
-		}
+	public BookTableGateway(Connection conn) {
+		this.conn = conn;
 	}
 	/**
 	 * 
 	 * @param bookToDelete
 	 */
-	public void deleteBook(Book bookToDelete) {
+	public void deleteBook(Book bookToDelete) 
+	{
 		logger.info("In Delete Book");
 		String query = "delete from Book where id = ?";
-		
 		try {
 			prepStatement = conn.prepareStatement(query);
 			prepStatement.setInt(1, bookToDelete.getId());
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -85,7 +56,6 @@ public class BookTableGateway
 			prepStatement.setString(2, bookToSave.getSummary());
 			prepStatement.setInt(3, bookToSave.getYearPublished());
 			prepStatement.setString(4, bookToSave.getIsbn());
-			
 			prepStatement.execute();
 			
 			// Get ID of the just inserted book model
@@ -102,7 +72,6 @@ public class BookTableGateway
 			
 			if (rs.next()) 
 				bookToSave.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -126,8 +95,7 @@ public class BookTableGateway
 			if (rs.next()) 
 			{
 				prepStatement = conn.prepareStatement(updateQuery);
-				
-				// 
+				// We are trying to update an out of date book
 				if (!bookToUpdate.getLastModified().equals(rs.getTimestamp("last_modified").toLocalDateTime()))
 					throw new GatewayException(errMsg);
 				
@@ -146,7 +114,6 @@ public class BookTableGateway
 				
 				if (rs.next()) 
 					bookToUpdate.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
-				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -207,18 +174,27 @@ public class BookTableGateway
 		}
 		return bookList;
 	}
-	// Closes connection to database
-	public void closeConnection() 
+	public ObservableList<AuditTrailEntry> getAuditTrails(int bookId)
 	{
-		// If we are still connected to the database, we want to log out of it
-		if (conn != null)
+		logger.info("Getting Audit Trails for book at id: " + bookId);
+		ObservableList<AuditTrailEntry> auditTrailList = FXCollections.observableArrayList();
+		String query = "select * from BookAuditTrail audit join Book book on audit.book_id = book.id where book.id = ? order by audit.date_added asc";
+		try 
 		{
-			try {
-				conn.close();
-				logger.info("Logged out of database in Book Table Gateway");
-			} catch (SQLException e) {
-				e.printStackTrace();
+			prepStatement = conn.prepareStatement(query);
+			prepStatement.setInt(1, bookId);
+			rs = prepStatement.executeQuery();
+			while (rs.next())
+			{
+				AuditTrailEntry audit = new AuditTrailEntry(rs.getString("entry_msg"));
+				audit.setId(rs.getInt("id"));
+				audit.setDateAdded(rs.getTimestamp("date_added"));
+				auditTrailList.add(audit);
 			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return auditTrailList;
 	}
 }

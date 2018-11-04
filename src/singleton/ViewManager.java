@@ -10,6 +10,8 @@ import controllers.BookDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
 import gateways.BookTableGateway;
+import gateways.GatewayManager;
+import gateways.PublisherTableGateway;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -22,12 +24,23 @@ public class ViewManager
 {
 	private static final Logger logger = LogManager.getLogger(ViewManager.class);
 	private static ViewManager instance = null;
+	private GatewayManager gwManager;
+	private BookTableGateway bookGateway;
+	private PublisherTableGateway pubGateway;
 	private BookDetailController currController = null;
-	
-	public BookDetailController getCurrController() {
-		return currController;
-	}
 
+	// Setup database connection
+	private ViewManager()
+	{
+		try {
+			gwManager = new GatewayManager();
+			bookGateway = new BookTableGateway(gwManager.getConn());
+			pubGateway = new PublisherTableGateway(gwManager.getConn());
+		} catch (GatewayException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void changeView(ViewType view, Book book)
 	{	
 		try
@@ -45,9 +58,10 @@ public class ViewManager
 						try
 						{
 							saveBookChanges();
-							logger.info("still running anyway?");
 							switchToListView(newRoot, currRoot);
-						} catch (GatewayException e) {
+						} 
+						catch (GatewayException e)
+						{
 							e.printStackTrace();
 							showErrAlert(e.getMessage());
 						}
@@ -71,7 +85,8 @@ public class ViewManager
 							saveBookChanges();
 							switchToDetailView(book, newRoot, currRoot);
 						} 
-						catch (GatewayException e) {
+						catch (GatewayException e)
+						{
 							e.printStackTrace();
 							showErrAlert(e.getMessage());
 						}
@@ -91,19 +106,20 @@ public class ViewManager
 	public void saveBookChanges() throws GatewayException
 	{
 		Book bdBook = currController.getSelectedBook();
-		Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText(), Integer.valueOf(currController.getTfYearPublished().getText()), currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded());
+		Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText()
+		, Integer.valueOf(currController.getTfYearPublished().getText()) 
+		, currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded(), currController.getPublisherSelection());
 		// Before we insert or update the book, we want to validate the input first
 		changedBook.validateBook();
-		BookTableGateway gateway = new BookTableGateway();
 		// Book already exists in database, so lets update it
-		if (gateway.isBookInDB(changedBook.getId()))
-			gateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
+		if (bookGateway.isBookInDB(changedBook.getId()))
+			bookGateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
 		// It doesn't exist, so save it	
 		else
-			gateway.saveBook(changedBook);
-			gateway.closeConnection();
+			bookGateway.saveBook(changedBook);
 	}
-	public void showErrAlert(String exceptionMsg) {
+	public void showErrAlert(String exceptionMsg)
+	{
 		Alert errAlert = new Alert(AlertType.ERROR);
 		errAlert.setHeaderText("ERROR");
 		errAlert.setContentText(exceptionMsg);
@@ -131,7 +147,7 @@ public class ViewManager
 	public void switchToDetailView(Book book, BorderPane newRoot, BorderPane currRoot) throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
-		currController = new BookDetailController(book);
+		currController = new BookDetailController(book, pubGateway.fetchPublishers());
 		loader.setController(currController);
 		newRoot = loader.load();
 		// Clears the view in order to prevent overlap
@@ -144,5 +160,17 @@ public class ViewManager
 		if (instance == null)
 			instance = new ViewManager();
 		return instance;
+	}
+	
+	public BookDetailController getCurrController() {
+		return currController;
+	}
+
+	public GatewayManager getGwManager() {
+		return gwManager;
+	}
+
+	public BookTableGateway getBookGateway() {
+		return bookGateway;
 	}
 }

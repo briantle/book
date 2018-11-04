@@ -38,6 +38,19 @@ public class Launcher extends Application
 	public static BorderPane mainPane;
 	
 	@Override
+	public void init() throws Exception
+	{
+		super.init();
+		ViewManager.getInstance();
+	}
+	
+	@Override
+	public void stop()
+	{
+		// Stop connection to database
+		ViewManager.getInstance().getGwManager().closeConnection();
+	}
+	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
 		// Get a reference to the main menu view

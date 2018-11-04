@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class AuditTrailEntry 
 {
 	int id;
-	Timestamp date_added;
+	Timestamp dateAdded;
 	String message;
 	
 	public AuditTrailEntry(String message) {
@@ -29,12 +29,12 @@ public class AuditTrailEntry
 		this.id = id;
 	}
 
-	public Timestamp getDate_added() {
-		return date_added;
+	public Timestamp getDateAdded() {
+		return dateAdded;
 	}
 
-	public void setDate_added(Timestamp date_added) {
-		this.date_added = date_added;
+	public void setDateAdded(Timestamp dateAdded) {
+		this.dateAdded = dateAdded;
 	}
 
 	public String getMessage() {
