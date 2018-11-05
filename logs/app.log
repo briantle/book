@@ -838,3 +838,178 @@
 14:00:55.513 INFO  gateways.BookTableGateway : In Update Book
 14:01:34.598 INFO  controllers.BookListController$1 : Double clicked on: test
 14:01:38.290 INFO  gateways.GatewayManager : Logged out of database
+15:34:37.722 INFO  gateways.GatewayManager : Connected to database
+15:34:42.444 INFO  controllers.BookListController$1 : Double clicked on: test
+15:34:55.253 INFO  controllers.BookDetailController : Clicked on save button
+15:34:55.296 INFO  gateways.BookTableGateway : In Update Book
+15:35:02.050 INFO  controllers.BookListController$1 : Double clicked on: test
+15:38:32.598 INFO  gateways.GatewayManager : Connected to database
+15:38:36.595 INFO  controllers.BookListController$1 : Double clicked on: test
+15:38:42.069 INFO  controllers.BookDetailController : Clicked on save button
+15:38:42.119 INFO  gateways.BookTableGateway : In Update Book
+15:38:46.080 INFO  controllers.BookListController$1 : Double clicked on: test
+15:39:52.938 INFO  gateways.GatewayManager : Connected to database
+15:39:56.614 INFO  controllers.BookListController$1 : Double clicked on: test
+15:40:28.591 INFO  gateways.GatewayManager : Connected to database
+15:40:33.478 INFO  controllers.BookListController$1 : Double clicked on: test
+15:40:39.227 INFO  gateways.GatewayManager : Logged out of database
+15:56:06.498 INFO  gateways.GatewayManager : Connected to database
+15:56:10.513 INFO  controllers.BookListController$1 : Double clicked on: test
+15:56:16.164 INFO  controllers.BookDetailController : Clicked on save button
+15:56:16.379 INFO  gateways.BookTableGateway : In Update Book
+15:56:20.134 INFO  controllers.BookListController$1 : Double clicked on: test
+17:23:15.523 INFO  gateways.GatewayManager : Connected to database
+17:23:19.294 INFO  controllers.BookListController$1 : Double clicked on: test
+17:23:22.926 INFO  controllers.BookDetailController : Clicked on save button
+17:23:22.964 INFO  gateways.BookTableGateway : In Update Book
+17:24:10.099 INFO  gateways.GatewayManager : Connected to database
+17:24:13.468 INFO  controllers.BookListController$1 : Double clicked on: testfdsfsdfsdfd
+17:24:17.946 INFO  controllers.BookDetailController : Clicked on save button
+17:24:17.990 INFO  gateways.BookTableGateway : In Update Book
+17:24:19.638 INFO  gateways.GatewayManager : Logged out of database
+18:00:24.285 INFO  gateways.GatewayManager : Connected to database
+18:00:27.837 INFO  controllers.BookListController$1 : Double clicked on: test
+18:00:29.103 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:02:34.906 INFO  gateways.GatewayManager : Connected to database
+18:02:38.130 INFO  controllers.BookListController$1 : Double clicked on: test
+18:02:39.110 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:02:39.186 ERROR singleton.ViewManager : Failed to switch views
+18:03:31.522 INFO  gateways.GatewayManager : Connected to database
+18:03:37.019 INFO  gateways.GatewayManager : Logged out of database
+18:04:49.765 INFO  gateways.GatewayManager : Connected to database
+18:09:16.699 INFO  gateways.GatewayManager : Connected to database
+18:09:21.311 INFO  controllers.BookListController$1 : Double clicked on: test
+18:09:24.938 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:09:24.986 ERROR singleton.ViewManager : Failed to switch views
+18:13:44.666 INFO  gateways.GatewayManager : Connected to database
+18:13:48.333 INFO  controllers.BookListController$1 : Double clicked on: test
+18:13:49.566 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:13:49.616 ERROR singleton.ViewManager : Failed to switch views
+18:13:51.056 INFO  gateways.GatewayManager : Logged out of database
+18:13:55.330 INFO  gateways.GatewayManager : Connected to database
+18:14:00.170 INFO  controllers.BookListController$1 : Double clicked on: test
+18:14:01.455 INFO  gateways.GatewayManager : Logged out of database
+18:14:14.208 INFO  gateways.GatewayManager : Connected to database
+18:14:18.041 INFO  gateways.GatewayManager : Logged out of database
+18:14:31.362 INFO  gateways.GatewayManager : Connected to database
+18:14:38.303 INFO  controllers.BookListController$1 : Double clicked on: test
+18:14:39.546 INFO  gateways.GatewayManager : Logged out of database
+18:14:44.752 INFO  gateways.GatewayManager : Connected to database
+18:14:48.791 INFO  controllers.BookListController$1 : Double clicked on: test
+18:14:50.534 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:14:50.576 ERROR singleton.ViewManager : Failed to switch views
+18:14:53.303 INFO  controllers.BookListController$1 : Double clicked on: test
+18:14:54.221 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:14:54.260 ERROR singleton.ViewManager : Failed to switch views
+18:14:57.955 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 0
+18:14:57.999 ERROR singleton.ViewManager : Failed to switch views
+18:14:59.974 INFO  gateways.GatewayManager : Logged out of database
+18:15:12.573 INFO  gateways.GatewayManager : Connected to database
+18:15:21.084 INFO  gateways.GatewayManager : Connected to database
+18:15:23.838 INFO  gateways.GatewayManager : Logged out of database
+18:15:53.113 INFO  gateways.GatewayManager : Connected to database
+18:15:56.347 INFO  controllers.BookListController$1 : Double clicked on: test
+18:15:57.101 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:15:57.140 ERROR singleton.ViewManager : Failed to switch views
+18:15:58.575 INFO  gateways.GatewayManager : Logged out of database
+18:17:59.872 INFO  gateways.GatewayManager : Connected to database
+18:18:03.167 INFO  controllers.BookListController$1 : Double clicked on: test
+18:18:04.209 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:18:04.282 ERROR singleton.ViewManager : Failed to switch views
+18:18:07.372 INFO  gateways.GatewayManager : Logged out of database
+18:19:30.893 INFO  gateways.GatewayManager : Connected to database
+18:27:13.183 INFO  gateways.GatewayManager : Connected to database
+18:27:17.477 INFO  controllers.BookListController$1 : Double clicked on: test
+18:27:18.457 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:27:18.549 ERROR singleton.ViewManager : Failed to switch views
+18:27:53.890 INFO  gateways.GatewayManager : Connected to database
+18:27:58.095 INFO  controllers.BookListController$1 : Double clicked on: test
+18:27:59.450 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:27:59.548 ERROR singleton.ViewManager : Failed to switch views
+18:28:51.778 INFO  gateways.GatewayManager : Connected to database
+18:28:54.414 INFO  controllers.BookListController$1 : Double clicked on: test
+18:28:55.519 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:28:55.557 ERROR singleton.ViewManager : Failed to switch views
+18:30:53.167 INFO  gateways.GatewayManager : Connected to database
+18:30:56.691 INFO  controllers.BookListController$1 : Double clicked on: test
+18:30:57.523 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:30:57.560 ERROR singleton.ViewManager : Failed to switch views
+18:32:56.006 INFO  gateways.GatewayManager : Connected to database
+18:32:59.437 INFO  controllers.BookListController$1 : Double clicked on: test
+18:33:00.619 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:33:00.974 ERROR singleton.ViewManager : Failed to switch views
+18:35:17.466 INFO  gateways.GatewayManager : Connected to database
+18:35:21.395 INFO  controllers.BookListController$1 : Double clicked on: test
+18:35:22.257 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:35:22.556 ERROR singleton.ViewManager : Failed to switch views
+18:39:13.199 INFO  gateways.GatewayManager : Connected to database
+18:39:16.074 INFO  controllers.BookListController$1 : Double clicked on: test
+18:39:16.924 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:39:16.964 ERROR singleton.ViewManager : Failed to switch views
+18:39:29.194 INFO  gateways.GatewayManager : Connected to database
+18:39:32.388 INFO  controllers.BookListController$1 : Double clicked on: test
+18:39:33.315 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:39:33.346 ERROR singleton.ViewManager : Failed to switch views
+18:40:57.341 INFO  gateways.GatewayManager : Connected to database
+18:41:00.476 INFO  controllers.BookListController$1 : Double clicked on: test
+18:42:47.562 INFO  gateways.GatewayManager : Connected to database
+18:42:50.422 INFO  controllers.BookListController$1 : Double clicked on: test
+18:45:58.175 INFO  gateways.GatewayManager : Connected to database
+18:46:01.129 INFO  controllers.BookListController$1 : Double clicked on: test
+18:48:06.785 INFO  gateways.GatewayManager : Connected to database
+18:48:09.884 INFO  controllers.BookListController$1 : Double clicked on: test
+18:48:10.747 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:48:50.373 INFO  gateways.GatewayManager : Connected to database
+18:48:53.443 INFO  controllers.BookListController$1 : Double clicked on: test
+18:48:54.321 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:50:28.648 INFO  gateways.GatewayManager : Connected to database
+18:50:31.467 INFO  controllers.BookListController$1 : Double clicked on: test
+18:50:32.539 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:50:32.588 ERROR singleton.ViewManager : Failed to switch views
+18:51:20.162 INFO  gateways.GatewayManager : Connected to database
+18:51:22.956 INFO  controllers.BookListController$1 : Double clicked on: test
+18:51:23.782 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:51:23.826 ERROR singleton.ViewManager : Failed to switch views
+18:52:31.529 INFO  gateways.GatewayManager : Connected to database
+18:52:34.672 INFO  controllers.BookListController$1 : Double clicked on: test
+18:52:35.427 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:52:35.470 ERROR singleton.ViewManager : Failed to switch views
+18:53:53.449 INFO  gateways.GatewayManager : Connected to database
+18:53:56.374 INFO  controllers.BookListController$1 : Double clicked on: test
+18:53:57.354 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+18:54:10.125 INFO  gateways.GatewayManager : Connected to database
+18:54:49.992 INFO  gateways.GatewayManager : Connected to database
+18:57:06.396 INFO  gateways.GatewayManager : Connected to database
+18:59:24.064 INFO  gateways.GatewayManager : Connected to database
+19:00:12.939 INFO  gateways.GatewayManager : Connected to database
+19:00:16.510 INFO  controllers.BookListController$1 : Double clicked on: test
+19:00:17.475 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+19:00:20.570 INFO  controllers.BookListController$1 : Double clicked on: test
+19:00:57.604 INFO  gateways.GatewayManager : Connected to database
+19:01:51.481 INFO  gateways.GatewayManager : Connected to database
+19:01:54.680 INFO  controllers.BookListController$1 : Double clicked on: test
+19:02:26.891 INFO  gateways.GatewayManager : Connected to database
+19:02:53.380 INFO  gateways.GatewayManager : Connected to database
+19:03:59.903 INFO  gateways.GatewayManager : Connected to database
+19:06:45.326 INFO  gateways.GatewayManager : Connected to database
+19:07:40.995 INFO  gateways.GatewayManager : Connected to database
+19:07:46.160 INFO  controllers.BookDetailController : Clicked on save button
+19:07:56.233 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 0
+19:10:44.045 INFO  gateways.GatewayManager : Connected to database
+19:10:53.292 INFO  controllers.BookListController$1 : Double clicked on: test
+19:10:55.258 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+19:10:59.792 INFO  controllers.BookListController$1 : Double clicked on: test
+19:11:05.904 INFO  controllers.BookDetailController : Clicked on save button
+19:11:05.942 INFO  gateways.BookTableGateway : In Update Book
+19:11:07.529 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+19:11:13.883 INFO  controllers.BookListController$1 : Double clicked on: testfdsfds
+19:11:17.454 INFO  controllers.BookDetailController : Clicked on save button
+19:11:17.493 INFO  gateways.BookTableGateway : In Update Book
+19:11:20.432 INFO  controllers.BookListController$1 : Double clicked on: testfdsfds
+19:11:20.992 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+19:12:02.523 INFO  gateways.GatewayManager : Connected to database
+19:12:05.676 INFO  controllers.BookListController$1 : Double clicked on: testfdsfds
+19:12:22.715 INFO  controllers.BookDetailController : Clicked on save button
+19:12:22.758 INFO  gateways.BookTableGateway : In Update Book
+19:12:24.124 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+19:12:32.979 INFO  gateways.GatewayManager : Logged out of database

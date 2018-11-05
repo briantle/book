@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 import exceptions.GatewayException;
 import javafx.collections.ObservableList;
+import singleton.ViewManager;
 
 public class Book 
 {
@@ -19,7 +20,6 @@ public class Book
 	private Timestamp dateAdded;
 	private Publisher pub;
 	private ObservableList<AuditTrailEntry> auditTrailList;
-	
 	/**
 	 * Empty Book Constructor
 	 * Called when clicking Add Book or getting book info from the database
@@ -73,11 +73,14 @@ public class Book
 	public void setPub(Publisher pub) {
 		this.pub = pub;
 	}
-	public ObservableList<AuditTrailEntry> getAuditTrailList() {
-		return auditTrailList;
+	public ObservableList<AuditTrailEntry> getAuditTrailList()
+	{
+		setAuditTrailList();
+		return this.auditTrailList;
 	}
-	public void setAuditTrailList(ObservableList<AuditTrailEntry> auditTrailList) {
-		this.auditTrailList = auditTrailList;
+	public void setAuditTrailList()
+	{
+		this.auditTrailList = ViewManager.getInstance().getBookGateway().getAuditTrails(this.id);
 	}
 	public LocalDateTime getLastModified() {
 		return lastModified;

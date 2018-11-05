@@ -8,14 +8,11 @@ import org.apache.logging.log4j.Logger;
 
 import enums.ViewType;
 import exceptions.GatewayException;
-import gateways.BookTableGateway;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Alert.AlertType;
 import model.Book;
 import singleton.ViewManager;
 
@@ -56,6 +53,6 @@ public class MenuController
 			ViewManager.getInstance().changeView(ViewType.BOOK_LIST ,null);
 		// Opens up the book detail view with empty book information
 		if (event.getSource() == addBook)
-			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, new Book());
+			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, null);
 	}
 }

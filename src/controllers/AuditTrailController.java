@@ -15,31 +15,35 @@ import javafx.util.Callback;
 import model.AuditTrailEntry;
 import model.Book;
 import singleton.ViewManager;
-import gateways.BookTableGateway;
 public class AuditTrailController 
 {
 	private Logger log = LogManager.getLogger();
+	private ObservableList<AuditTrailEntry> auditTrailList;
 	@FXML
 	private TextField bookAuditTrail;
 	@FXML
 	private ListView<AuditTrailEntry> auditListView;
 	@FXML 
-	private Button goBack;
+	private Button goBackButton;
 	private Book selectedBook;
 	
-	public AuditTrailController(Book book, ObservableList<AuditTrailEntry> auditTrailList){
+	public AuditTrailController(Book book, ObservableList<AuditTrailEntry> auditTrailList)
+	{
 		this.selectedBook = book;
-		this.auditListView.setItems(auditTrailList);
+		this.auditTrailList = auditTrailList;
+		ViewManager.getInstance().setCurrController(null);
 	}
 	
-	public void initialize(){
-		bookAuditTrail.setText("Audit Trail for " + selectedBook.getTitle());
+	public void initialize()
+	{
+		auditListView.setItems(auditTrailList);
 		populateListView();
+		bookAuditTrail.setText("Audit Trail for " + selectedBook.getTitle());
 	}
 	@FXML
 	public void handleButtonAction(ActionEvent action)
 	{
-		if (action.getSource() == goBack)
+		if (action.getSource() == goBackButton)
 			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
 	}
 	public void populateListView()

@@ -48,4 +48,18 @@ public class PublisherTableGateway
 		}
 		return pubList;
 	}
+	public Publisher fetchPubById(int pubId) throws SQLException
+	{
+		Publisher pub = new Publisher();
+		String query = "select * from Publisher where id = ?";
+		prepStatement = conn.prepareStatement(query);
+		prepStatement.setInt(1, pubId);
+		rs = prepStatement.executeQuery();
+		if (rs.next())
+		{
+			pub.setPublisherName(rs.getString("publisher_name"));
+			pub.setId(pubId);
+		}
+		return pub;
+	}
 }

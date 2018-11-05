@@ -7,26 +7,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import controllers.BookDetailController;
-import controllers.MenuController;
 import exceptions.GatewayException;
-import gateways.BookTableGateway;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.Book;
 import singleton.ViewManager;
 /**
  * 
- * CS 4743 Assignment2 by Brian Le
+ * CS 4743 Assignment 3 by Brian Le
  * 
  * @author Brian
  *

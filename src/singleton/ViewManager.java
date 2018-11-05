@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import controllers.AuditTrailController;
 import controllers.BookDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
@@ -28,7 +29,8 @@ public class ViewManager
 	private BookTableGateway bookGateway;
 	private PublisherTableGateway pubGateway;
 	private BookDetailController currController = null;
-
+	private AuditTrailController auditController = null;
+	private FXMLLoader loader = null;
 	// Setup database connection
 	private ViewManager()
 	{
@@ -97,7 +99,20 @@ public class ViewManager
 				else
 					switchToDetailView(book, newRoot, currRoot);
 			}
-		} catch (IOException ie)
+			else if (view == ViewType.AUDIT_TRAIL)
+			{
+				loader = new FXMLLoader(getClass().getResource("/fxml/AuditTrailView.fxml"));
+				this.auditController = new AuditTrailController(currController.getSelectedBook(), currController.getSelectedBook().getAuditTrailList());
+				loader.setController(this.auditController);
+				newRoot = loader.load();
+				// Clears the view in order to prevent overlap
+				currRoot.setCenter(null);
+				// Swap to new view
+				currRoot.setCenter(newRoot);
+				this.currController = null;
+			}
+		}
+		catch (IOException ie)
 		{
 			logger.error("Failed to switch views");
 			ie.printStackTrace();
@@ -113,7 +128,7 @@ public class ViewManager
 		changedBook.validateBook();
 		// Book already exists in database, so lets update it
 		if (bookGateway.isBookInDB(changedBook.getId()))
-			bookGateway.updateBook(changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
+			bookGateway.updateBook(bdBook, changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
 		// It doesn't exist, so save it	
 		else
 			bookGateway.saveBook(changedBook);
@@ -146,7 +161,7 @@ public class ViewManager
 	}
 	public void switchToDetailView(Book book, BorderPane newRoot, BorderPane currRoot) throws IOException
 	{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
+		loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
 		currController = new BookDetailController(book, pubGateway.fetchPublishers());
 		loader.setController(currController);
 		newRoot = loader.load();
@@ -165,7 +180,9 @@ public class ViewManager
 	public BookDetailController getCurrController() {
 		return currController;
 	}
-
+	public void setCurrController(BookDetailController currController) {
+		this.currController = currController;
+	}
 	public GatewayManager getGwManager() {
 		return gwManager;
 	}
@@ -173,4 +190,9 @@ public class ViewManager
 	public BookTableGateway getBookGateway() {
 		return bookGateway;
 	}
+
+	public PublisherTableGateway getPubGateway() {
+		return pubGateway;
+	}
+	
 }

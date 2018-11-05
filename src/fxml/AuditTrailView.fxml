@@ -8,12 +8,12 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <!-- TODO Add Nodes -->
   <bottom>
-    <Button fx:id="goBack" contentDisplay="LEFT" mnemonicParsing="false" text="Back" translateX="225.0" />
+    <Button id="goBack" fx:id="goBackButton" contentDisplay="LEFT" mnemonicParsing="false" onAction="#handleButtonAction" text="Back" translateX="225.0" />
   </bottom>
   <center>
-    <ListView fx:id="auditTrailList" prefHeight="473.0" prefWidth="510.0" />
+    <ListView id="auditTrailList" fx:id="auditListView" prefHeight="473.0" prefWidth="510.0" />
   </center>
   <top>
-    <TextField fx:id="bookAuditTrail" prefHeight="63.0" prefWidth="510.0" />
+    <TextField fx:id="bookAuditTrail" prefHeight="63.0" prefWidth="510.0" text="" />
   </top>
 </BorderPane>

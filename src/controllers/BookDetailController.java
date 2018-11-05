@@ -1,13 +1,12 @@
 package controllers;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import enums.ViewType;
 import exceptions.GatewayException;
 import gateways.BookTableGateway;
 import javafx.collections.ObservableList;
@@ -30,13 +29,14 @@ public class BookDetailController
 	private static Logger log = LogManager.getLogger();
 	private Book selectedBook;
 	
-	@FXML private Button saveButton;
+	@FXML private Button saveButton, auditButton;
 	@FXML private TextField tfTitle, tfSummary, tfYearPublished, tfISBN;
 	@FXML private Label dateAdded;
 	@FXML private ComboBox<Publisher> publisherComboBox;
 	ObservableList<Publisher> publisherList;
 	
-	public BookDetailController(Book book, ObservableList<Publisher> publisherList) {
+	public BookDetailController(Book book, ObservableList<Publisher> publisherList)
+	{
 		this.selectedBook = book;
 		this.publisherList = publisherList;
 	}
@@ -67,16 +67,22 @@ public class BookDetailController
 	}
 	public void initialize() 
 	{
+		// If we are adding a new book, we want to disable the audit button
+		if (selectedBook == null)
+		{
+			auditButton.setDisable(true);
+			selectedBook = new Book();
+		}
 		tfTitle.setText(selectedBook.getTitle());
 		tfSummary.setText(selectedBook.getSummary());
 		tfYearPublished.setText(String.valueOf(selectedBook.getYearPublished()));
 		tfISBN.setText(selectedBook.getIsbn());
 		// Displays the time stamp in Month/Day/Year format
 		dateAdded.setText(new SimpleDateFormat("MM/dd/yyyy").format(selectedBook.getDateAdded()));
-		// Populate the combobox with the list of publishers
+		// Populate the combo box with the list of publishers
 		publisherComboBox.setItems(publisherList);
 		populateComboBox();
-		// Default the combobox value to whichever publisher the book has selected
+		// Default the combo box value to whichever publisher the book has selected
 		publisherComboBox.getSelectionModel().select(selectedBook.getPub().getId());
 	}
 	@FXML 
@@ -100,9 +106,12 @@ public class BookDetailController
 					gateway.saveBook(newBook);
 				// The book already exists in the database, so let's update it
 				else
-					gateway.updateBook(newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
+					gateway.updateBook(selectedBook, newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
 				// Copy the changes made to the original book
 				selectedBook = newBook;
+				// If the audit trail button is disable, enable it
+				if (auditButton.isDisabled())
+					auditButton.setDisable(false);
 			} 
 			catch (GatewayException e) 
 			{
@@ -117,9 +126,15 @@ public class BookDetailController
 				alert.showAndWait();
 			}
 		}
+		else if (action.getSource() == auditButton) 
+			ViewManager.getInstance().changeView(ViewType.AUDIT_TRAIL, selectedBook);
 	}
 	public boolean isBookDifferent()
 	{
+		// Empty so no need to check
+		if (selectedBook.getSummary() == null && tfSummary.getText() == null)
+			return false;
+		
 		// If one has an empty title and the other one doesn't
 		if (selectedBook.getTitle() == "" && !tfTitle.getText().trim().isEmpty() || selectedBook.getTitle() != "" && tfTitle.getText().trim().isEmpty())
 			return true;
@@ -135,12 +150,10 @@ public class BookDetailController
 		// The ISBNs don't match
 		if (selectedBook.getIsbn().compareTo(tfISBN.getText()) != 0)
 			return true;
-		/*
 		// Publishers don't match
-		if (!selectedBook.getPub().equals(getPublisherSelection()))
-		return true;
+		if (selectedBook.getPub().getPublisherName().compareTo(publisherComboBox.getSelectionModel().getSelectedItem().getPublisherName()) != 0)
+			return true;
 		// All the fields are similar
-		 */
 		return false;
 	}
 	/********************* Setters *******************/
