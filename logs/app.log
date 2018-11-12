@@ -1013,3 +1013,10 @@
 19:12:22.758 INFO  gateways.BookTableGateway : In Update Book
 19:12:24.124 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
 19:12:32.979 INFO  gateways.GatewayManager : Logged out of database
+19:13:04.957 INFO  gateways.GatewayManager : Connected to database
+19:13:08.383 INFO  controllers.BookListController$1 : Double clicked on: test
+19:13:09.147 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+23:46:45.236 INFO  gateways.GatewayManager : Connected to database
+23:47:05.988 INFO  controllers.BookListController$1 : Double clicked on: test
+23:47:06.783 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+23:48:41.741 INFO  gateways.GatewayManager : Logged out of database
