@@ -10,6 +10,7 @@ import controllers.AuditTrailController;
 import controllers.BookDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
+import gateways.AuthorTableGateway;
 import gateways.BookTableGateway;
 import gateways.GatewayManager;
 import gateways.PublisherTableGateway;
@@ -28,17 +29,21 @@ public class ViewManager
 	private GatewayManager gwManager;
 	private BookTableGateway bookGateway;
 	private PublisherTableGateway pubGateway;
+	private AuthorTableGateway authorGateway;
 	private BookDetailController currController = null;
 	private AuditTrailController auditController = null;
 	private FXMLLoader loader = null;
 	// Setup database connection
 	private ViewManager()
 	{
-		try {
+		try 
+		{
 			gwManager = new GatewayManager();
 			bookGateway = new BookTableGateway(gwManager.getConn());
 			pubGateway = new PublisherTableGateway(gwManager.getConn());
-		} catch (GatewayException e) {
+			authorGateway = new AuthorTableGateway(gwManager.getConn());
+		} 
+		catch (GatewayException e) {
 			e.printStackTrace();
 		}
 	}
@@ -194,5 +199,8 @@ public class ViewManager
 	public PublisherTableGateway getPubGateway() {
 		return pubGateway;
 	}
-	
+
+	public AuthorTableGateway getAuthorGateway() {
+		return authorGateway;
+	}
 }

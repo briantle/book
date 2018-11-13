@@ -14,6 +14,8 @@ import exceptions.GatewayException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.AuditTrailEntry;
+import model.Author;
+import model.AuthorBook;
 import model.Book;
 import model.Publisher;
 import singleton.ViewManager;
@@ -34,9 +36,8 @@ public class BookTableGateway
 	public void deleteBook(Book bookToDelete) 
 	{
 		logger.info("In Delete Book");
-		String query = "delete from Book where id = ?";
 		try {
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("delete from Book where id = ?");
 			prepStatement.setInt(1, bookToDelete.getId());
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -68,8 +69,7 @@ public class BookTableGateway
 				bookToSave.setId(key.getInt(1));
 			
 			// Set the last modified date for version control
-			query = "select * from Book where id = ?";
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("select * from Book where id = ?");
 			prepStatement.setInt(1, bookToSave.getId());
 			rs = prepStatement.executeQuery();
 			
@@ -78,8 +78,7 @@ public class BookTableGateway
 			logger.info("Saved " + bookToSave.getTitle());
 			
 			// Audit Trail
-			query = "insert into BookAuditTrail (book_id, entry_msg) values (?, ?)";
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("insert into BookAuditTrail (book_id, entry_msg) values (?, ?)");
 			prepStatement.setInt(1, bookToSave.getId());
 			prepStatement.setString(2, "Book Added");
 			prepStatement.execute();
@@ -154,28 +153,26 @@ public class BookTableGateway
 	public void changedValueAudit(int bookId, String attribute, String ogValue, String newValue)
 	{
 		String entryMsg = attribute + " Changed from " + ogValue + " to " + newValue;
-		String query = "insert into BookAuditTrail (book_id, entry_msg) values (?, ?)";
 		try
 		{
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("insert into BookAuditTrail (book_id, entry_msg) values (?, ?)");
 			prepStatement.setInt(1, bookId);
 			prepStatement.setString(2, entryMsg);
 			prepStatement.execute();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public boolean isBookInDB(int id) {
-		String query = "select * from Book where id = ?";
+	public boolean isBookInDB(int id) 
+	{
 		try {
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("select * from Book where id = ?");
 			prepStatement.setInt(1, id);
 			rs = prepStatement.executeQuery();
 			// Book does not currently exist in database
@@ -228,10 +225,9 @@ public class BookTableGateway
 		//"select * from BookAuditTrail audit join Book book on audit.book_id = book.id where book.id = ? order by audit.date_added asc"
 		logger.info("Getting Audit Trails for book at id: " + bookId);
 		ObservableList<AuditTrailEntry> auditTrailList = FXCollections.observableArrayList();
-		String query = "select * from BookAuditTrail where book_id = ? order by date_added asc";
 		try 
 		{
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("select * from BookAuditTrail where book_id = ? order by date_added asc");
 			prepStatement.setInt(1, bookId);
 			rs = prepStatement.executeQuery();
 			while (rs.next())
@@ -246,5 +242,30 @@ public class BookTableGateway
 			e.printStackTrace();
 		}
 		return auditTrailList;
+	}
+	public ObservableList<AuthorBook> getAuthorForBook(Book book, int bookId)
+	{
+		logger.info("Getting Authors for Book at id " + bookId);
+		AuthorBook ab = null;
+		ObservableList<AuthorBook> authorBookList = FXCollections.observableArrayList();
+		try
+		{
+			prepStatement = conn.prepareStatement("select * from AuthorBook where book_id = ?");
+			prepStatement.setInt(1, bookId);
+			rs = prepStatement.executeQuery();
+			while (rs.next())
+			{
+				ab = new AuthorBook();
+				ab.setAuthor(ViewManager.getInstance().getAuthorGateway().getAuthor(rs.getInt("author_id")));
+				ab.setBook(book);
+				ab.setRoyalty((int) (rs.getDouble("royalty") * 100000));
+				ab.setNewRecord(false);
+				authorBookList.add(ab);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return authorBookList;
 	}
 }

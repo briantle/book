@@ -1020,3 +1020,14 @@
 23:47:05.988 INFO  controllers.BookListController$1 : Double clicked on: test
 23:47:06.783 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
 23:48:41.741 INFO  gateways.GatewayManager : Logged out of database
+08:41:19.128 INFO  gateways.GatewayManager : Connected to database
+08:41:26.692 INFO  controllers.BookListController$1 : Double clicked on: test
+08:41:28.746 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+08:41:36.741 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+08:41:41.908 INFO  gateways.GatewayManager : Logged out of database
+08:41:47.235 INFO  gateways.GatewayManager : Connected to database
+08:41:51.603 INFO  controllers.BookListController$1 : Double clicked on: test
+08:41:52.829 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+08:41:57.797 INFO  controllers.BookListController$1 : Double clicked on: test
+08:41:58.672 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+08:42:01.162 INFO  gateways.GatewayManager : Logged out of database

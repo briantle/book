@@ -29,11 +29,10 @@ public class PublisherTableGateway
 	public ObservableList<Publisher> fetchPublishers()
 	{
 		ObservableList<Publisher> pubList = FXCollections.observableArrayList();
-		String query = "select * from Publisher";
 		Publisher pub;
 		try 
 		{
-			prepStatement = conn.prepareStatement(query);
+			prepStatement = conn.prepareStatement("select * from Publisher");
 			rs = prepStatement.executeQuery();
 			while (rs.next())
 			{
@@ -51,8 +50,7 @@ public class PublisherTableGateway
 	public Publisher fetchPubById(int pubId) throws SQLException
 	{
 		Publisher pub = new Publisher();
-		String query = "select * from Publisher where id = ?";
-		prepStatement = conn.prepareStatement(query);
+		prepStatement = conn.prepareStatement("select * from Publisher where id = ?");
 		prepStatement.setInt(1, pubId);
 		rs = prepStatement.executeQuery();
 		if (rs.next())

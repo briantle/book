@@ -75,12 +75,8 @@ public class Book
 	}
 	public ObservableList<AuditTrailEntry> getAuditTrailList()
 	{
-		setAuditTrailList();
-		return this.auditTrailList;
-	}
-	public void setAuditTrailList()
-	{
 		this.auditTrailList = ViewManager.getInstance().getBookGateway().getAuditTrails(this.id);
+		return this.auditTrailList;
 	}
 	public LocalDateTime getLastModified() {
 		return lastModified;
@@ -134,5 +130,8 @@ public class Book
 
 	public void setDateAdded(java.sql.Timestamp dateAdded) {
 		this.dateAdded = dateAdded;
+	}
+	public ObservableList<AuthorBook> getAuthors() {
+		return ViewManager.getInstance().getBookGateway().getAuthorForBook(this, this.id);
 	}
 }
