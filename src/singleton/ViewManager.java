@@ -10,6 +10,7 @@ import controllers.AuditTrailController;
 import controllers.BookDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
+import gateways.AuthorBookTableGateway;
 import gateways.AuthorTableGateway;
 import gateways.BookTableGateway;
 import gateways.GatewayManager;
@@ -30,6 +31,7 @@ public class ViewManager
 	private BookTableGateway bookGateway;
 	private PublisherTableGateway pubGateway;
 	private AuthorTableGateway authorGateway;
+	private AuthorBookTableGateway authorBookGateway;
 	private BookDetailController currController = null;
 	private AuditTrailController auditController = null;
 	private FXMLLoader loader = null;
@@ -42,6 +44,7 @@ public class ViewManager
 			bookGateway = new BookTableGateway(gwManager.getConn());
 			pubGateway = new PublisherTableGateway(gwManager.getConn());
 			authorGateway = new AuthorTableGateway(gwManager.getConn());
+			authorBookGateway = new AuthorBookTableGateway(gwManager.getConn());
 		} 
 		catch (GatewayException e) {
 			e.printStackTrace();
@@ -182,25 +185,27 @@ public class ViewManager
 		return instance;
 	}
 	
-	public BookDetailController getCurrController() {
-		return currController;
-	}
+	/***************** Setters ************************/
 	public void setCurrController(BookDetailController currController) {
 		this.currController = currController;
+	}
+	/************************** Getters ****************************/
+	public BookDetailController getCurrController() {
+		return currController;
 	}
 	public GatewayManager getGwManager() {
 		return gwManager;
 	}
-
 	public BookTableGateway getBookGateway() {
 		return bookGateway;
 	}
-
 	public PublisherTableGateway getPubGateway() {
 		return pubGateway;
 	}
-
 	public AuthorTableGateway getAuthorGateway() {
 		return authorGateway;
+	}
+	public AuthorBookTableGateway getAuthorBookGateway() {
+		return authorBookGateway;
 	}
 }

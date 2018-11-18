@@ -1031,3 +1031,133 @@
 08:41:57.797 INFO  controllers.BookListController$1 : Double clicked on: test
 08:41:58.672 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
 08:42:01.162 INFO  gateways.GatewayManager : Logged out of database
+13:20:06.365 ERROR singleton.ViewManager : Failed to switch views
+13:20:58.827 INFO  gateways.GatewayManager : Connected to database
+13:21:03.162 INFO  controllers.BookListController$1 : Double clicked on: test
+13:21:08.060 INFO  controllers.BookDetailController : Clicked on save button
+13:21:08.182 INFO  gateways.BookTableGateway : In Update Book
+13:21:10.525 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+13:21:22.448 INFO  gateways.GatewayManager : Logged out of database
+14:23:28.626 INFO  gateways.GatewayManager : Connected to database
+14:23:34.966 INFO  controllers.BookListController$1 : Double clicked on: test
+14:23:43.524 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+14:23:52.501 INFO  controllers.BookDetailController : Clicked on save button
+14:23:52.537 INFO  gateways.BookTableGateway : In Update Book
+14:23:57.479 INFO  gateways.GatewayManager : Logged out of database
+14:27:50.901 INFO  gateways.GatewayManager : Connected to database
+14:28:10.556 INFO  controllers.BookDetailController : Clicked on save button
+14:28:10.599 INFO  gateways.BookTableGateway : In Save Book
+14:28:10.752 INFO  gateways.BookTableGateway : Saved fjdshfskhdh
+14:28:10.839 INFO  gateways.BookTableGateway : Created Audit Trail for fjdshfskhdh
+14:28:12.724 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 4
+14:28:19.512 INFO  gateways.BookTableGateway : In Delete Book
+14:28:29.810 INFO  gateways.GatewayManager : Logged out of database
+14:29:57.988 INFO  gateways.GatewayManager : Connected to database
+14:30:16.792 INFO  controllers.BookDetailController : Clicked on save button
+14:30:16.826 INFO  gateways.BookTableGateway : In Save Book
+14:30:16.967 INFO  gateways.BookTableGateway : Saved fdskjfdslkjfls
+14:30:17.053 INFO  gateways.BookTableGateway : Created Audit Trail for fdskjfdslkjfls
+14:30:18.912 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 5
+14:30:23.573 INFO  gateways.BookTableGateway : In Delete Book
+14:30:32.840 INFO  gateways.GatewayManager : Logged out of database
+14:42:28.929 INFO  gateways.GatewayManager : Connected to database
+14:42:31.817 INFO  controllers.BookListController : Item Count: 0
+14:42:58.769 INFO  gateways.GatewayManager : Connected to database
+14:43:01.824 INFO  controllers.BookListController : Item Count: 0
+14:43:35.890 INFO  gateways.GatewayManager : Connected to database
+14:43:39.768 INFO  controllers.BookListController : Item Count: 0
+14:43:42.724 INFO  gateways.GatewayManager : Logged out of database
+14:44:09.825 INFO  gateways.GatewayManager : Connected to database
+14:44:12.878 INFO  controllers.BookListController$2 : Item Count: 0
+14:44:12.895 INFO  controllers.BookListController$2 : Item Count: 1
+14:44:12.902 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.905 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.908 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.911 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.914 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.916 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.920 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.922 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.925 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.927 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.930 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.933 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.936 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.940 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.943 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.946 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.949 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.951 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:12.955 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:16.358 INFO  gateways.GatewayManager : Logged out of database
+14:44:23.341 INFO  gateways.GatewayManager : Connected to database
+14:44:27.972 INFO  controllers.BookListController$2 : Item Count: 0
+14:44:27.990 INFO  controllers.BookListController$2 : Item Count: 1
+14:44:27.997 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.001 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.005 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.008 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.010 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.013 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.016 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.019 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.023 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.026 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.029 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.049 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.052 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.055 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.059 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.062 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.065 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.067 INFO  controllers.BookListController$2 : Item Count: 2
+14:44:28.078 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:31.068 INFO  gateways.GatewayManager : Connected to database
+14:45:34.930 INFO  controllers.BookListController$2 : Item Count: 0
+14:45:34.933 INFO  controllers.BookListController$2$1 : WTF: test
+14:45:34.948 INFO  controllers.BookListController$2 : Item Count: 1
+14:45:34.949 INFO  controllers.BookListController$2$1 : WTF: test
+14:45:34.955 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.958 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.961 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.964 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.967 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.970 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.973 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.976 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.980 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.983 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.986 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.989 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.992 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:34.994 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:35.009 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:35.012 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:35.032 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:35.037 INFO  controllers.BookListController$2 : Item Count: 2
+14:45:35.042 INFO  controllers.BookListController$2 : Item Count: 2
+14:48:54.701 INFO  gateways.GatewayManager : Connected to database
+14:48:58.091 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.110 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.117 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.121 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.125 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.128 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.130 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.133 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.136 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.138 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.141 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.145 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.147 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.150 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.153 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.155 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.158 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.161 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.164 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.167 INFO  controllers.BookListController$2 : Total: 1
+14:48:58.176 INFO  controllers.BookListController$2 : Total: 1
+14:49:14.500 INFO  gateways.GatewayManager : Connected to database
+14:49:17.501 INFO  controllers.BookListController : Total: 1
+14:49:20.127 INFO  gateways.GatewayManager : Logged out of database

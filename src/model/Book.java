@@ -132,6 +132,6 @@ public class Book
 		this.dateAdded = dateAdded;
 	}
 	public ObservableList<AuthorBook> getAuthors() {
-		return ViewManager.getInstance().getBookGateway().getAuthorForBook(this, this.id);
+		return ViewManager.getInstance().getAuthorBookGateway().getAuthorsForBook(this, this.id);
 	}
 }

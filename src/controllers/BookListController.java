@@ -24,9 +24,7 @@ public class BookListController
 	public void initialize() throws GatewayException
 	{
 		// Get the list of books from the database and then display them on the listView
-		bookList.setItems(ViewManager.getInstance().getBookGateway().getBooks());
-		populateListView();
-		
+		resetListView();
 		// is called when the user clicks somewhere on the list view
 		bookList.setOnMouseClicked(new EventHandler<MouseEvent>()
 		{
@@ -43,7 +41,20 @@ public class BookListController
 			}
 		});
 	}
-	
+	/****************************************************
+	*  Gets the list of books from the database and then 
+	*  populates the list view with the booklist. 
+	******************************************************/
+	public void resetListView()
+	{
+		// Get the list of books from the database
+		bookList.setItems(ViewManager.getInstance().getBookGateway().getBooks());
+		// Populate the list view with the books
+		populateListView();		
+	}
+	/********************************************
+	* Populates the list view with the book list.
+	**********************************************/
 	public void populateListView()
 	{
 		// Display the data in the list view
@@ -63,10 +74,13 @@ public class BookListController
 						// to the list view
 						if (b != null)
 						{
+							// Set the title of the book on the list view
 							setText(b.getTitle());
+							// Add a delete button to that book item, set it to the far right and display it
 							Button btn = new Button("Delete");
 							btn.setTranslateX(800);
 							setGraphic(btn);
+							// Handles the delete button when it's clicked on
 							btn.setOnMouseClicked(new EventHandler<MouseEvent>()
 							{
 								@Override
@@ -77,7 +91,7 @@ public class BookListController
 									// Delete the book
 									gw.deleteBook(b);
 									// Update the listview to reflect changes
-									ViewManager.getInstance().changeView(ViewType.BOOK_LIST, null);
+									resetListView();
 								}
 							});
 						}

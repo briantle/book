@@ -21,6 +21,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
+import model.AuthorBook;
 import model.Book;
 import model.Publisher;
 import singleton.ViewManager;
@@ -29,17 +30,20 @@ public class BookDetailController
 	private static Logger log = LogManager.getLogger();
 	private Book selectedBook;
 	
-	@FXML private Button saveButton, auditButton;
+	@FXML private Button saveButton, auditButton, addAuthorButton;
 	@FXML private TextField tfTitle, tfSummary, tfYearPublished, tfISBN;
 	@FXML private Label dateAdded;
 	@FXML private ComboBox<Publisher> publisherComboBox;
+	@FXML private ListView<AuthorBook> authorBookLV;
 	ObservableList<Publisher> publisherList;
+	ObservableList<AuthorBook> authorBookList;
 	
 	public BookDetailController(Book book, ObservableList<Publisher> publisherList)
 	{
 		this.selectedBook = book;
 		this.publisherList = publisherList;
 	}
+	
 	private void populateComboBox()
 	{
 		Callback<ListView<Publisher>, ListCell<Publisher>> cellFactory = new Callback<ListView<Publisher>, ListCell<Publisher>>() 

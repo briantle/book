@@ -97,16 +97,14 @@ public class BookTableGateway
 		try 
 		{
 			logger.info("In Update Book");
-			String selectQuery = "select * from Book where id = ?";
-			String updateQuery = "update Book set title = ?, summary = ?, year_published = ?, publisher_id = ?, isbn = ? where id = ?";
 			
-			prepStatement = conn.prepareStatement(selectQuery);
+			prepStatement = conn.prepareStatement("select * from Book where id = ?");
 			prepStatement.setInt(1, bookToUpdate.getId());
 			rs = prepStatement.executeQuery();
 			// Our query returned back a result
 			if (rs.next()) 
 			{
-				prepStatement = conn.prepareStatement(updateQuery);
+				prepStatement = conn.prepareStatement("update Book set title = ?, summary = ?, year_published = ?, publisher_id = ?, isbn = ? where id = ?");
 				// We are trying to update an out of date book
 				if (!bookToUpdate.getLastModified().equals(rs.getTimestamp("last_modified").toLocalDateTime()))
 					throw new GatewayException(errMsg);
@@ -120,8 +118,7 @@ public class BookTableGateway
 				prepStatement.executeUpdate();
 				
 				// Update the last modified date for the book in the detail controller
-				selectQuery = "select * from Book where id = ?";
-				prepStatement = conn.prepareStatement(selectQuery);
+				prepStatement = conn.prepareStatement("select * from Book where id = ?");
 				prepStatement.setInt(1, bookToUpdate.getId());
 				rs = prepStatement.executeQuery();
 				
@@ -242,30 +239,5 @@ public class BookTableGateway
 			e.printStackTrace();
 		}
 		return auditTrailList;
-	}
-	public ObservableList<AuthorBook> getAuthorForBook(Book book, int bookId)
-	{
-		logger.info("Getting Authors for Book at id " + bookId);
-		AuthorBook ab = null;
-		ObservableList<AuthorBook> authorBookList = FXCollections.observableArrayList();
-		try
-		{
-			prepStatement = conn.prepareStatement("select * from AuthorBook where book_id = ?");
-			prepStatement.setInt(1, bookId);
-			rs = prepStatement.executeQuery();
-			while (rs.next())
-			{
-				ab = new AuthorBook();
-				ab.setAuthor(ViewManager.getInstance().getAuthorGateway().getAuthor(rs.getInt("author_id")));
-				ab.setBook(book);
-				ab.setRoyalty((int) (rs.getDouble("royalty") * 100000));
-				ab.setNewRecord(false);
-				authorBookList.add(ab);
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return authorBookList;
 	}
 }
