@@ -20,10 +20,10 @@ public class Book
 	private Timestamp dateAdded;
 	private Publisher pub;
 	private ObservableList<AuditTrailEntry> auditTrailList;
-	/**
-	 * Empty Book Constructor
-	 * Called when clicking Add Book or getting book info from the database
-	 */
+	/**********************************************************************
+	* Empty Book Constructor
+	* Called when clicking Add Book or getting book info from the database
+	************************************************************************/
 	public Book()
 	{
 		id = 0;

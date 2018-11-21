@@ -20,7 +20,10 @@ public class BookListController
 {
 	@FXML private ListView<Book> bookList;
 	private static Logger log = LogManager.getLogger();
-	
+	/**************************************************
+	* Displays the books in the list view
+	* @throws GatewayException
+	****************************************************/
 	public void initialize() throws GatewayException
 	{
 		// Get the list of books from the database and then display them on the listView
@@ -34,8 +37,10 @@ public class BookListController
 				// If the user double clicks on a book title in the list view
 				if (click.getClickCount() == 2 && bookList.getSelectionModel().getSelectedItem() != null)
 				{
+					// Get the book that was clicked on
 					Book selectedBook = bookList.getSelectionModel().getSelectedItem();
 					log.info("Double clicked on: " + selectedBook.getTitle());
+					// Switch to detail view and display the values of the selected book.
 					ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
 				}
 			}
@@ -66,16 +71,16 @@ public class BookListController
 				ListCell<Book> bCell = new ListCell<Book>()
 				{
 					@Override
-					protected void updateItem(Book b, boolean empty)
+					protected void updateItem(Book book, boolean empty)
 					{	
 						// Checks if we passed in a null object
-						super.updateItem(b, empty);
+						super.updateItem(book, empty);
 						// If the book we passed in is not null, then we can display the book's title
 						// to the list view
-						if (b != null)
+						if (book != null)
 						{
 							// Set the title of the book on the list view
-							setText(b.getTitle());
+							setText(book.getTitle());
 							// Add a delete button to that book item, set it to the far right and display it
 							Button btn = new Button("Delete");
 							btn.setTranslateX(800);
@@ -86,10 +91,8 @@ public class BookListController
 								@Override
 								public void handle(MouseEvent click) 
 								{
-									// Get a refernce to the database
-									BookTableGateway gw = ViewManager.getInstance().getBookGateway();
-									// Delete the book
-									gw.deleteBook(b);
+									// Delete the book from the database
+									ViewManager.getInstance().getBookGateway().deleteBook(book);
 									// Update the listview to reflect changes
 									resetListView();
 								}

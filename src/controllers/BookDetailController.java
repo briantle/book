@@ -37,13 +37,18 @@ public class BookDetailController
 	@FXML private ListView<AuthorBook> authorBookLV;
 	ObservableList<Publisher> publisherList;
 	ObservableList<AuthorBook> authorBookList;
-	
-	public BookDetailController(Book book, ObservableList<Publisher> publisherList)
-	{
+	/*******************************************************************************
+	* Constructor for book detail controller
+	* @param book - the book to be displayed in the detail view
+	* @param publisherList - the list of publishers that our database has
+	*******************************************************************************/
+	public BookDetailController(Book book, ObservableList<Publisher> publisherList){
 		this.selectedBook = book;
 		this.publisherList = publisherList;
 	}
-	
+	/***************************************************************************
+	* Populates the combo box with all the publishers that our database houses.
+	*****************************************************************************/
 	private void populateComboBox()
 	{
 		Callback<ListView<Publisher>, ListCell<Publisher>> cellFactory = new Callback<ListView<Publisher>, ListCell<Publisher>>() 
@@ -69,12 +74,16 @@ public class BookDetailController
 		publisherComboBox.setButtonCell(cellFactory.call(null));
 		publisherComboBox.setCellFactory(cellFactory);
 	}
+	/*******************************************************************
+	* Populates the detail view with the values from the selected book.
+	*********************************************************************/
 	public void initialize() 
 	{
 		// If we are adding a new book, we want to disable the audit button
-		if (selectedBook == null)
-		{
+		if (selectedBook == null){
+			// Disable the audit button from being clicked on
 			auditButton.setDisable(true);
+			// Set the selected book to be a new book with empty values
 			selectedBook = new Book();
 		}
 		tfTitle.setText(selectedBook.getTitle());
@@ -90,6 +99,11 @@ public class BookDetailController
 		publisherComboBox.getSelectionModel().select(selectedBook.getPub().getId());
 	}
 	@FXML 
+	/***********************************************
+	* Handles the logic behind each button click.
+	* @param action - the button that was pressed.
+	* @throws IOException
+	**************************************************/
 	public void handleButtonAction(ActionEvent action) throws IOException 
 	{
 		if (action.getSource() == saveButton) 
@@ -113,29 +127,29 @@ public class BookDetailController
 					gateway.updateBook(selectedBook, newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
 				// Copy the changes made to the original book
 				selectedBook = newBook;
-				// If the audit trail button is disable, enable it
+				// If the audit trail button is disabled, enable it
 				if (auditButton.isDisabled())
 					auditButton.setDisable(false);
 			} 
-			catch (GatewayException e) 
-			{
+			// If an error occurred
+			catch (GatewayException e) {
+				// Display the error messages to the console
 				e.printStackTrace();
 				// Display an alert message in the book detail view
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Dialog");
-				alert.setHeaderText("Failed to save book");
-				// Get the message explaining why the save failed
-				alert.setContentText(e.getMessage());
-				// Display the error message
-				alert.showAndWait();
+				ViewManager.getInstance().showErrAlert(e.getMessage());
 			}
 		}
+		// User clicked on audit trail button, so switch to the audit trail view
 		else if (action.getSource() == auditButton) 
 			ViewManager.getInstance().changeView(ViewType.AUDIT_TRAIL, selectedBook);
 	}
+	/**************************************************************************
+	* Checks to see if the values of the book in the detail view has changed
+	* @return false - book hasn't changed, true - book values have changed
+	****************************************************************************/
 	public boolean isBookDifferent()
 	{
-		// Empty so no need to check
+		// Empty so no need to check the rest of the values
 		if (selectedBook.getSummary() == null && tfSummary.getText() == null)
 			return false;
 		

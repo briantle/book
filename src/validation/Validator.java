@@ -11,25 +11,25 @@ import java.util.Calendar;
  */
 public class Validator
 {
-	/**
-	 * 
-	 * @param title - the book title stored in the book model
-	 * @return
-	 */
+	/*****************************************************************
+	* The title of the book must be between 1 to 255 characters long
+	* @param title - the book title stored in the book model
+	* @return false if invalid, true otherwise
+	*******************************************************************/
 	public boolean validTitle(String title)
 	{
 		if (title.length() < 1 || title.length() > 255)
 			return false;
 		return true;
 	}
-	/**
-	 * 
-	 * @param summary - the book summary stored in the book model
-	 * @return
-	 */
+	/************************************************************* ******
+	* The book summary must not be empty and less than 65536 characters
+	* @param summary - the book summary stored in the book model
+	* @return false if invalid, true otherwise
+	***********************************************************************/
 	public boolean validSummary(String summary)
 	{
-		if (summary == null || summary.length() >= 65536)
+		if (summary.length() >= 65536)
 			return false;
 		return true;
 	}
@@ -59,7 +59,7 @@ public class Validator
 	 */
 	public boolean validISBN(String isbn)
 	{
-		if (isbn == null || isbn.length() > 13)
+		if (isbn.length() > 13)
 			return false;
 		return true;
 	}

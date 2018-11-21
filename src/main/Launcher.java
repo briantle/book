@@ -1,6 +1,5 @@
 package main;
 
-
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,9 +18,9 @@ import javafx.stage.WindowEvent;
 import singleton.ViewManager;
 /**
  * 
- * CS 4743 Assignment 3 by Brian Le
+ * CS 4743 Assignment 4 by Brian Le
  * 
- * @author Brian
+ * @author Brian Le
  *
  */
 public class Launcher extends Application 
@@ -34,6 +33,7 @@ public class Launcher extends Application
 	public void init() throws Exception
 	{
 		super.init();
+		// Connect to the database
 		ViewManager.getInstance();
 	}
 	
@@ -77,13 +77,18 @@ public class Launcher extends Application
 						// We want to save the changes made to the book
 						if (result.get() == ButtonType.YES)
 						{
+							// Save the changes to the book in the database
 							try{
 								ViewManager.getInstance().saveBookChanges();
 							}
+							// An issue occurred when trying to save the book in the database
 							catch (GatewayException e)
 							{
+								// Display the error in the console
 								e.printStackTrace();
+								// Prevent the application from closing
 								event.consume();
+								// Display the error message through an alert
 								ViewManager.getInstance().showErrAlert(e.getMessage());
 							}
 						}
