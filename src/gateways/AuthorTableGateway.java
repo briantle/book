@@ -92,7 +92,7 @@ public class AuthorTableGateway
 	{
 		logger.info("Inserting a new author");
 		try {
-			String query = "insert into Author (first_name, last_name, dob, gender, website) values (?, ?, ?, ?, ?)";
+			String query = "insert into Author (first_name, last_name, dob, gender, web_site) values (?, ?, ?, ?, ?)";
 			prepStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			prepStatement.setString(1, author.getFirstName());
 			prepStatement.setString(2, author.getLastName());
@@ -128,18 +128,18 @@ public class AuthorTableGateway
 			ViewManager.getInstance().showErrAlert(e.getMessage());
 		}
 	}
-	public void updateAuthor(int authorId, Author ogAuthor, Author updatedAuthor)
+	public void updateAuthor(Author ogAuthor, Author updatedAuthor)
 	{
 		logger.info("Updating an author");
 		try {
-			prepStatement = conn.prepareStatement("update Author set first_name = ?, last_name = ?, dob = ?, gender = ?, website = ? where id = ?");
+			prepStatement = conn.prepareStatement("update Author set first_name = ?, last_name = ?, dob = ?, gender = ?, web_site = ? where id = ?");
 			// Update the author record
 			prepStatement.setString(1, updatedAuthor.getFirstName());
 			prepStatement.setString(2, updatedAuthor.getLastName());
 			prepStatement.setDate(3, Date.valueOf(updatedAuthor.getDateOfBirth()));
 			prepStatement.setString(4, updatedAuthor.getGender());
 			prepStatement.setString(5, updatedAuthor.getWebsite());
-			prepStatement.setInt(6, authorId);
+			prepStatement.setInt(6, ogAuthor.getId());
 			prepStatement.executeUpdate();
 		}
 		catch (SQLException e){

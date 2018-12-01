@@ -42,7 +42,7 @@ public class AuthorListController
 					Author selectedAuthor = authorListView.getSelectionModel().getSelectedItem();
 					log.info("Double clicked on: " + selectedAuthor.getFirstName() + " " + selectedAuthor.getLastName());
 					// Switch to detail view and display the values of the selected author.
-					//ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
+					ViewManager.getInstance().changeView(ViewType.AUTHOR_DETAIL, selectedAuthor);
 				}
 			}
 		});

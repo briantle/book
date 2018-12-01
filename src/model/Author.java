@@ -10,7 +10,9 @@ public class Author
 	private LocalDate dateOfBirth;
 	private String gender;
 	private String website;
-	
+	/************************************************
+	* A No Argument Constructor for the Author model
+	**************************************************/
 	public Author()
 	{
 		id = 0;
@@ -19,6 +21,18 @@ public class Author
 		dateOfBirth = null;
 		gender = "";
 		website = null;
+	}
+	/************************************************************
+	* A constructor for the Author model that contains arguments
+	**************************************************************/
+	public Author(int id, String firstName, String lastName, LocalDate dob, String gender, String website)
+	{
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dob;
+		this.gender = gender;
+		this.website = website;
 	}
 	/**************** Setters **********************/
 	public void setId(int id) {

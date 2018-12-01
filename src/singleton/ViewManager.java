@@ -64,22 +64,21 @@ public class ViewManager
 	 */
 	public void changeView(ViewType view, Object obj)
 	{	
-		try{
-			// If we have loaded up the book detail view or if we have passed in a book object
-			if (currController != null || (Book) obj != null)
-			{
-				// If we are are swapping from a view other than the detail view, or we haven't changed any of the book values
-				if (currController == null || !currController.isBookDifferent())
-					swapViews((Book) obj, view);
-				// The values of the book have been changed
-				else
-					handleUnsavedChanges(obj, view, "BOOK");
-			}
+		try
+		{
+			// We are in the audit view, clicked on add author/book, or we haven't changed the values and therefore we just switch and don't have to check for 
+			// unsaved changes
+			if (auditController != null || currController == null && authorController == null 
+					|| currController != null && !currController.isBookDifferent() || authorController != null && !authorController.isAuthDifferent())
+				swapViews(obj, view);
+			// If we are handling books
+			else if (currController != null && currController.isBookDifferent())
+				handleUnsavedChanges(obj, view, "BOOK", "The book has been modified. Do you want to save the changes?");
 			// Related to author
-			else
-				swapViews((Author) obj, view);
+			else if (authorController != null && authorController.isAuthDifferent())
+				handleUnsavedChanges(obj, view, "AUTHOR", "The author has been modified. Do you want to save the changes?");
 		}
-		// Error occured trying to switch views
+		// Error occurred trying to switch views
 		catch (IOException ie)
 		{
 			logger.error("Failed to switch views");
@@ -87,20 +86,23 @@ public class ViewManager
 			showErrAlert(ie.getMessage());
 		}
 	}
-	public void handleUnsavedChanges(Object obj, ViewType view, String objType) throws IOException
+	public void handleUnsavedChanges(Object obj, ViewType view, String objType, String unsavedMessage) throws IOException
 	{
 		// Gets the button that the user clicked on
-		Optional<ButtonType> result = getButtonResult();
+		Optional<ButtonType> result = getButtonResult(unsavedMessage);
 		// Nothing will happen if the user presses on the cancel button
 		if (result.get() != ButtonType.CANCEL)
 		{
 			// We want to save the changes if the user clicks on YES
 			if (result.get() == ButtonType.YES)
 			{
+				// Depending on the data type, we will either save book or author changes.
 				try
 				{
 					if (objType == "BOOK")
 						saveBookChanges();
+					else if (objType == "AUTHOR")
+						saveAuthorChanges();
 				} 
 				catch (GatewayException e)
 				{
@@ -125,10 +127,12 @@ public class ViewManager
 		if (view == ViewType.BOOK_LIST)
 			switchToListView(newRoot, "/fxml/BookListView.fxml");
 		else if (view == ViewType.BOOK_DETAIL)
-			switchToDetailView((Book) obj, newRoot);
+			switchToDetailView((Book) obj, newRoot, "BOOK", "/fxml/BookDetailView.fxml");
 		// Related to Author
 		else if (view == ViewType.AUTHOR_LIST)
 			switchToListView(newRoot, "/fxml/AuthorListView.fxml");
+		else if (view == ViewType.AUTHOR_DETAIL)
+			switchToDetailView((Author) obj, newRoot, "AUTHOR", "/fxml/AuthorDetailView.fxml");
 		// Audit Trail
 		else if (view == ViewType.AUDIT_TRAIL)
 			switchToAuditTrail(newRoot);
@@ -164,6 +168,24 @@ public class ViewManager
 		else
 			bookGateway.saveBook(changedBook);
 	}
+	/**
+	* 
+	*/
+	public void saveAuthorChanges()
+	{
+		// The original author
+		Author adAuthor = authorController.getSelectedAuthor();
+		// Create an author based on the values in the detail view
+		Author currAuthor = new Author(adAuthor.getId(), authorController.getFirstNameTF().getText()
+				, authorController.getLastNameTF().getText(), authorController.getDobPicker().getValue()
+				, authorController.getGenderChoiceBox().getSelectionModel().getSelectedItem(), authorController.getWebsiteTF().getText());
+		// The author doesn't exist in the database, so insert into the database
+		if (authorGateway.getAuthorByID(currAuthor.getId()) == null)
+			authorGateway.saveAuthor(currAuthor);
+		// Author already exists in the database, so update the author
+		else
+			authorGateway.updateAuthor(adAuthor, currAuthor);
+	}
 	/*****************************************************************************
 	* Displays an error message through an alert window
 	* @param exceptionMsg - the message to displayed from the error that occurred
@@ -182,11 +204,11 @@ public class ViewManager
 	* CANCEL - the alert disappears and nothing changes. The user is still on the same view
 	* @return the button the user clicked on, is either YES, NO, or CANCEL
 	*****************************************************************************************/
-	public Optional<ButtonType> getButtonResult()
+	public Optional<ButtonType> getButtonResult(String unsavedMessage)
 	{
 		Alert confirmAlert = new Alert(AlertType.NONE);
 		confirmAlert.setHeaderText("Confirm Save Changes");
-		confirmAlert.setContentText("The book has been modified. Do you want to save the changes?");
+		confirmAlert.setContentText(unsavedMessage);
 		// Display 3 buttons to the alert, YES NO and CANCEL
 		confirmAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 		// Displays the alert and then waits for the user to click on one of the buttons
@@ -215,24 +237,40 @@ public class ViewManager
 	**********************************************************************/
 	public void switchToListView(BorderPane newRoot, String listViewPath) throws IOException
 	{
-		this.currController = null;
-		this.authorController = null;
+		setControllersNull();
 		newRoot = (BorderPane) FXMLLoader.load(getClass().getResource(listViewPath));
 		loadView(newRoot);
 	}
 	/***********************************************************************
 	* Switches to the detail view
 	*************************************************************************/
-	public void switchToDetailView(Book book, BorderPane newRoot) throws IOException
+	public void switchToDetailView(Object obj, BorderPane newRoot, String dataType, String fxmlPath) throws IOException
 	{
-		// Load the book detail fxml
-		loader = new FXMLLoader(getClass().getResource("/fxml/BookDetailView.fxml"));
-		// Create a new book detail controller with our specified book
-		currController = new BookDetailController(book, pubGateway.fetchPublishers());
-		// Set up the controller for our fxml
-		loader.setController(currController);
+		// Load the detail fxml
+		loader = new FXMLLoader(getClass().getResource(fxmlPath));
+		if (dataType == "BOOK")
+		{
+			this.authorController = null;
+			// Create a new book detail controller with our specified book
+			currController = new BookDetailController((Book) obj, pubGateway.fetchPublishers());
+			// Set up the controller for our fxml
+			loader.setController(currController);
+		}
+		else if (dataType == "AUTHOR")
+		{
+			this.currController = null;
+			authorController = new AuthorDetailController((Author) obj);
+			loader.setController(authorController);
+		}
+		this.auditController = null;
 		newRoot = loader.load();
 		loadView(newRoot);
+	}
+	public void setControllersNull()
+	{
+		this.currController = null;
+		this.auditController = null;
+		this.authorController = null;
 	}
 	/*****************************
 	 * Sets up singleton
@@ -252,6 +290,9 @@ public class ViewManager
 	/******************** Getters ********************/
 	public BookDetailController getCurrController() {
 		return currController;
+	}
+	public AuthorDetailController getAuthorController() {
+		return authorController;
 	}
 	public GatewayManager getGwManager() {
 		return gwManager;

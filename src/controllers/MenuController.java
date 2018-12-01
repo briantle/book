@@ -25,24 +25,37 @@ public class MenuController
 		// User clicks on quit button --> closes program
 		if (event.getSource() == menuQuit)
 		{
+			String unsavedMessage = "";
 			BookDetailController bdController = ViewManager.getInstance().getCurrController();
-			if (bdController != null && bdController.isBookDifferent())
+			AuthorDetailController adController = ViewManager.getInstance().getAuthorController();
+			boolean bookBool = bdController != null && bdController.isBookDifferent();
+			boolean authorBool = adController != null && adController.isAuthDifferent();
+			if (bookBool)
+				unsavedMessage = "The book has been modified. Do you want to save the changes?";
+			else if (authorBool)
+				unsavedMessage = "The author has been modified. Do you want to save the changes?";
+			if (bookBool || authorBool)
 			{
 				// Gets the button that the user clicked on
-				Optional<ButtonType> result = ViewManager.getInstance().getButtonResult();
-				if (result.get() == ButtonType.YES)
+				Optional<ButtonType> result = ViewManager.getInstance().getButtonResult(unsavedMessage);
+				if (result.get() != ButtonType.CANCEL)
 				{
-					try
+					if (result.get() == ButtonType.YES)
 					{
-						ViewManager.getInstance().saveBookChanges();
-						Platform.exit();
-					} catch (GatewayException e) {
-						e.printStackTrace();
-						ViewManager.getInstance().showErrAlert(e.getMessage());
+						try
+						{
+							if (bookBool)
+								ViewManager.getInstance().saveBookChanges();
+							else if (authorBool)
+								ViewManager.getInstance().saveAuthorChanges();
+						}
+						catch (GatewayException e) {
+							e.printStackTrace();
+							ViewManager.getInstance().showErrAlert(e.getMessage());
+						}
 					}
-				}
-				else if (result.get() == ButtonType.NO)
 					Platform.exit();
+				}
 			}
 			else
 				Platform.exit();
@@ -58,6 +71,6 @@ public class MenuController
 			ViewManager.getInstance().changeView(ViewType.AUTHOR_LIST, null);
 		// Open up author detail view with empty author information
 		if (event.getSource() == addAuthor)
-			logger.info("adddauthor");
+			ViewManager.getInstance().changeView(ViewType.AUTHOR_DETAIL, null);
 	}
 }

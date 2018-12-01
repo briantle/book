@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import controllers.AuthorDetailController;
 import controllers.BookDetailController;
 import exceptions.GatewayException;
 import javafx.application.Application;
@@ -61,12 +62,19 @@ public class Launcher extends Application
 			@Override
 			public void handle(WindowEvent event) 
 			{
+				String unsavedMessage = "";
 				BookDetailController bdController = ViewManager.getInstance().getCurrController();
-				// We are in the book detail view
-				if (bdController != null && bdController.isBookDifferent()) 
+				AuthorDetailController adController = ViewManager.getInstance().getAuthorController();
+				boolean bookBool = bdController != null && bdController.isBookDifferent();
+				boolean authorBool = adController != null && adController.isAuthDifferent();
+				if (bookBool)
+					unsavedMessage = "The book has been modified. Do you want to save the changes?";
+				else if (authorBool)
+					unsavedMessage = "The author has been modified. Do you want to save the changes?";
+				if (bookBool || authorBool)
 				{
 					// Gets the button that the user clicked on
-					Optional<ButtonType> result = ViewManager.getInstance().getButtonResult();
+					Optional<ButtonType> result = ViewManager.getInstance().getButtonResult(unsavedMessage);
 					// We don't want to save changes or close the program
 					if (result.get() == ButtonType.CANCEL) 
 						// Stops the application from closingS
@@ -74,12 +82,16 @@ public class Launcher extends Application
 					// We want to close the program
 					else
 					{
-						// We want to save the changes made to the book
+						// We want to save the changes made to the book/author
 						if (result.get() == ButtonType.YES)
 						{
-							// Save the changes to the book in the database
-							try{
-								ViewManager.getInstance().saveBookChanges();
+							// Save the changes in the database
+							try
+							{
+								if (bookBool)
+									ViewManager.getInstance().saveBookChanges();
+								else if (authorBool)
+									ViewManager.getInstance().saveAuthorChanges();
 							}
 							// An issue occurred when trying to save the book in the database
 							catch (GatewayException e)
