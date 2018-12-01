@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import controllers.AuditTrailController;
+import controllers.AuthorDetailController;
 import controllers.BookDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
@@ -21,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import main.Launcher;
+import model.Author;
 import model.Book;
 
 public class ViewManager
@@ -32,6 +34,7 @@ public class ViewManager
 	private PublisherTableGateway pubGateway;
 	private AuthorTableGateway authorGateway;
 	private AuthorBookTableGateway authorBookGateway;
+	private AuthorDetailController authorController = null;
 	private BookDetailController currController = null;
 	private AuditTrailController auditController = null;
 	private FXMLLoader loader = null;
@@ -57,39 +60,47 @@ public class ViewManager
 	/**
 	 * 
 	 * @param view
-	 * @param book
+	 * @param obj
 	 */
-	public void changeView(ViewType view, Book book)
+	public void changeView(ViewType view, Object obj)
 	{	
 		try{
-			checkForUnsavedChanges(book, view);
+			// If we have loaded up the book detail view or if we have passed in a book object
+			if (currController != null || (Book) obj != null)
+			{
+				// If we are are swapping from a view other than the detail view, or we haven't changed any of the book values
+				if (currController == null || !currController.isBookDifferent())
+					swapViews((Book) obj, view);
+				// The values of the book have been changed
+				else
+					handleUnsavedChanges(obj, view, "BOOK");
+			}
+			// Related to author
+			else
+				swapViews((Author) obj, view);
 		}
+		// Error occured trying to switch views
 		catch (IOException ie)
 		{
 			logger.error("Failed to switch views");
 			ie.printStackTrace();
+			showErrAlert(ie.getMessage());
 		}
 	}
-	/**
-	 * 
-	 * @param book
-	 * @param view
-	 * @throws IOException
-	 */
-	public void checkForUnsavedChanges(Book book, ViewType view) throws IOException
+	public void handleUnsavedChanges(Object obj, ViewType view, String objType) throws IOException
 	{
-		BorderPane newRoot = null;
-		// If the detail view is loaded and the book values have changed from the original values
-		if (currController != null && currController.isBookDifferent())
+		// Gets the button that the user clicked on
+		Optional<ButtonType> result = getButtonResult();
+		// Nothing will happen if the user presses on the cancel button
+		if (result.get() != ButtonType.CANCEL)
 		{
-			// Gets the button that the user clicked on
-			Optional<ButtonType> result = getButtonResult();
+			// We want to save the changes if the user clicks on YES
 			if (result.get() == ButtonType.YES)
 			{
 				try
 				{
-					saveBookChanges();
-					swapViews(book, view);
+					if (objType == "BOOK")
+						saveBookChanges();
 				} 
 				catch (GatewayException e)
 				{
@@ -97,13 +108,9 @@ public class ViewManager
 					showErrAlert(e.getMessage());
 				}
 			}
-			else if (result.get() == ButtonType.NO)
-				swapViews(book, view);
+			// We will switch views if the user chose either YES or NO
+			swapViews(obj, view);
 		}
-		// No changes were made, so we don't need to save/update the book
-		else
-			swapViews(book, view);
-
 	}
 	/**
 	 * 
@@ -111,13 +118,18 @@ public class ViewManager
 	 * @param view
 	 * @throws IOException
 	 */
-	public void swapViews(Book book, ViewType view) throws IOException
+	public void swapViews(Object obj, ViewType view) throws IOException
 	{
 		BorderPane newRoot = null;
+		// Related to Book
 		if (view == ViewType.BOOK_LIST)
-			switchToListView(newRoot);
+			switchToListView(newRoot, "/fxml/BookListView.fxml");
 		else if (view == ViewType.BOOK_DETAIL)
-			switchToDetailView(book, newRoot);
+			switchToDetailView((Book) obj, newRoot);
+		// Related to Author
+		else if (view == ViewType.AUTHOR_LIST)
+			switchToListView(newRoot, "/fxml/AuthorListView.fxml");
+		// Audit Trail
 		else if (view == ViewType.AUDIT_TRAIL)
 			switchToAuditTrail(newRoot);
 	}
@@ -195,23 +207,21 @@ public class ViewManager
 		newRoot = loader.load();
 		loadView(newRoot);
 		this.currController = null;
+		this.authorController = null;
 	}
-	/**********************************************************************************
-	* Switches to the list view
-	* @param newRoot - the view to be switched to
-	* @throws IOException
-	**********************************************************************************/
-	public void switchToListView(BorderPane newRoot) throws IOException
+	/*********************************************************************
+	* Switches to the list view. It could either be the author list view
+	* or the book list view.
+	**********************************************************************/
+	public void switchToListView(BorderPane newRoot, String listViewPath) throws IOException
 	{
 		this.currController = null;
-		newRoot = (BorderPane) FXMLLoader.load(getClass().getResource("/fxml/BookListView.fxml"));
+		this.authorController = null;
+		newRoot = (BorderPane) FXMLLoader.load(getClass().getResource(listViewPath));
 		loadView(newRoot);
 	}
 	/***********************************************************************
-	* Switches to the book detail view
-	* @param book - the specified book to be displayed in the detail view
-	* @param newRoot - the new view
-	* @throws IOException
+	* Switches to the detail view
 	*************************************************************************/
 	public void switchToDetailView(Book book, BorderPane newRoot) throws IOException
 	{

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="347.0" prefWidth="729.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.AuthorListController">
+  <!-- TODO Add Nodes -->
+  <center>
+    <ListView id="listBooks" fx:id="authorListView" prefHeight="375.0" prefWidth="773.0" />
+  </center>
+</BorderPane>

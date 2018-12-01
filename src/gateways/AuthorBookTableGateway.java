@@ -39,7 +39,7 @@ public class AuthorBookTableGateway
 			while (rs.next())
 			{
 				ab = new AuthorBook();
-				Author author = ViewManager.getInstance().getAuthorGateway().getAuthor(rs.getInt("author_id"));
+				Author author = ViewManager.getInstance().getAuthorGateway().getAuthorByID(rs.getInt("author_id"));
 				if (author == null)
 					throw new GatewayException("Tried to find an author that doesn't exist in the gateway");
 				ab.setAuthor(author);

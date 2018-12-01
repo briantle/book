@@ -44,7 +44,7 @@ public class AuditTrailController
 	public void handleButtonAction(ActionEvent action)
 	{
 		if (action.getSource() == goBackButton)
-			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, selectedBook);
+			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, ViewManager.getInstance().getBookGateway().getBookByID(selectedBook.getId()));
 	}
 	public void populateListView()
 	{

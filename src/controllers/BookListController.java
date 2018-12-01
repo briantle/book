@@ -13,7 +13,6 @@ import javafx.util.Callback;
 import model.Book;
 import enums.ViewType;
 import exceptions.GatewayException;
-import gateways.BookTableGateway;
 import singleton.ViewManager;
 
 public class BookListController 
@@ -83,7 +82,6 @@ public class BookListController
 							setText(book.getTitle());
 							// Add a delete button to that book item, set it to the far right and display it
 							Button btn = new Button("Delete");
-							btn.setTranslateX(800);
 							setGraphic(btn);
 							// Handles the delete button when it's clicked on
 							btn.setOnMouseClicked(new EventHandler<MouseEvent>()

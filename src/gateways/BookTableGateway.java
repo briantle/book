@@ -14,10 +14,7 @@ import exceptions.GatewayException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.AuditTrailEntry;
-import model.Author;
-import model.AuthorBook;
 import model.Book;
-import model.Publisher;
 import singleton.ViewManager;
 public class BookTableGateway 
 {
@@ -42,6 +39,7 @@ public class BookTableGateway
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			ViewManager.getInstance().showErrAlert(e.getMessage());
 		}
 	}
 	/**
@@ -216,6 +214,32 @@ public class BookTableGateway
 			e.printStackTrace();
 		}
 		return bookList;
+	}
+	public Book getBookByID(int id)
+	{
+		Book dbBook = null;
+		try
+		{
+			prepStatement = conn.prepareStatement("select * from Book where id = ?");
+			prepStatement.setInt(1, id);
+			rs = prepStatement.executeQuery();
+			if (rs.next())
+			{
+				dbBook = new Book();
+				dbBook.setId(id);
+				dbBook.setTitle(rs.getString("title"));
+				dbBook.setSummary(rs.getString("summary"));
+				dbBook.setYearPublished(rs.getInt("year_published"));
+				dbBook.setPub(ViewManager.getInstance().getPubGateway().fetchPubById(rs.getInt("publisher_id")));
+				dbBook.setIsbn(rs.getString("isbn"));
+				dbBook.setDateAdded(rs.getTimestamp("date"));
+				dbBook.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dbBook;
 	}
 	public ObservableList<AuditTrailEntry> getAuditTrails(int bookId)
 	{

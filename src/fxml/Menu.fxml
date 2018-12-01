@@ -5,19 +5,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="312.0" prefWidth="496.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.MenuController">
+<BorderPane prefHeight="312.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuController">
   <top>
     <MenuBar>
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Quit" fx:id="menuQuit" />
+            <MenuItem fx:id="menuQuit" mnemonicParsing="false" onAction="#handleMenuAction" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Books">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Book List" fx:id="bookList" />
-            <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Add Book" fx:id="addBook" />
+            <MenuItem fx:id="bookList" mnemonicParsing="false" onAction="#handleMenuAction" text="Book List" />
+            <MenuItem fx:id="addBook" mnemonicParsing="false" onAction="#handleMenuAction" text="Add Book" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Authors">
+          <items>
+            <MenuItem fx:id="authorList" mnemonicParsing="false" onAction="#handleMenuAction" text="Author List" />
+            <MenuItem fx:id="addAuthor" mnemonicParsing="false" onAction="#handleMenuAction" text="Add Author" />
           </items>
         </Menu>
       </menus>

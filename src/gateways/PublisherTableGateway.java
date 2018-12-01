@@ -21,8 +21,7 @@ public class PublisherTableGateway
 	PreparedStatement prepStatement = null;
 	ResultSet rs = null;
 	
-	public PublisherTableGateway(Connection conn)
-	{
+	public PublisherTableGateway(Connection conn){
 		this.conn = conn;
 	}
 	
@@ -32,6 +31,7 @@ public class PublisherTableGateway
 		Publisher pub;
 		try 
 		{
+			log.info("Fetching Publishers");
 			prepStatement = conn.prepareStatement("select * from Publisher");
 			rs = prepStatement.executeQuery();
 			while (rs.next())
@@ -49,6 +49,7 @@ public class PublisherTableGateway
 	}
 	public Publisher fetchPubById(int pubId) throws SQLException
 	{
+		log.info("Fetching Publisher by id " + pubId);
 		Publisher pub = new Publisher();
 		prepStatement = conn.prepareStatement("select * from Publisher where id = ?");
 		prepStatement.setInt(1, pubId);

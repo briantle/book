@@ -13,13 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
-import model.Book;
 import singleton.ViewManager;
 
 public class MenuController 
 {
 	private static Logger logger = LogManager.getLogger();
-	@FXML private MenuItem menuQuit, bookList, addBook;
+	@FXML private MenuItem menuQuit, bookList, addBook, authorList, addAuthor;
 	
 	@FXML private void handleMenuAction(ActionEvent event) throws IOException, GatewayException
 	{
@@ -54,5 +53,11 @@ public class MenuController
 		// Opens up the book detail view with empty book information
 		if (event.getSource() == addBook)
 			ViewManager.getInstance().changeView(ViewType.BOOK_DETAIL, null);
+		// Display a list of authors
+		if (event.getSource() == authorList)
+			ViewManager.getInstance().changeView(ViewType.AUTHOR_LIST, null);
+		// Open up author detail view with empty author information
+		if (event.getSource() == addAuthor)
+			logger.info("adddauthor");
 	}
 }
