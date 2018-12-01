@@ -1,7 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import gateways.AuthorTableGateway;
 import javafx.event.ActionEvent;
@@ -66,17 +65,21 @@ public class AuthorDetailController
 		// Insert 2 item choices, M for male, F for female
 		genderChoiceBox.getItems().addAll("M", "F");
 	}
+	/******************************************************************************************
+	* Checks to see if the values in the detail view are different than what it originally was
+	* @return true if the author has been changed, false if the author hasn't been changed
+	*********************************************************************************************/
 	public boolean isAuthDifferent()
 	{
-		if (!selectedAuthor.getFirstName().equals(firstNameTF.getText().trim()))
+		if (!selectedAuthor.getFirstName().equals(firstNameTF.getText()))
 			return true;
-		if (!selectedAuthor.getLastName().equals(lastNameTF.getText().trim()))
+		if (!selectedAuthor.getLastName().equals(lastNameTF.getText()))
 			return true;
-		if (!selectedAuthor.getDateOfBirth().equals(dobPicker.getValue()))
+		if (selectedAuthor.getDateOfBirth() != null || dobPicker.getValue() != null && !selectedAuthor.getDateOfBirth().equals(dobPicker.getValue()))
 			return true;
 		if (!selectedAuthor.getGender().equals(genderChoiceBox.getSelectionModel().getSelectedItem()))
 			return true;
-		if (!selectedAuthor.getWebsite().equals(websiteTF.getText().trim()))
+		if (selectedAuthor.getWebsite() != null || websiteTF.getText() != null && !selectedAuthor.getWebsite().equals(websiteTF.getText()))
 			return true;
 		return false;
 	}
@@ -102,5 +105,4 @@ public class AuthorDetailController
 	public Author getSelectedAuthor() {
 		return selectedAuthor;
 	}
-	
 }

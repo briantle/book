@@ -13,7 +13,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import model.Author;
-import model.Book;
 import singleton.ViewManager;
 
 public class AuthorListController 
