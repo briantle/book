@@ -50,7 +50,7 @@ public class AuthorDetailController
 				authorGW.saveAuthor(currAuthor);
 			// Author already exists in the database, so update the author
 			else
-				authorGW.updateAuthor(selectedAuthor, currAuthor);
+				authorGW.updateAuthor(currAuthor);
 			// Set our author to reflect the new author changes
 			selectedAuthor = currAuthor;
 		}

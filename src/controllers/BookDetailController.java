@@ -106,7 +106,7 @@ public class BookDetailController
 	{
 		if (action.getSource() == saveButton) 
 		{
-			log.info("Clicked on save button");
+			log.info("Clicked on save button in book detail");
 			try 
 			{
 				// Make a temporary book in case the validation fails
@@ -118,7 +118,7 @@ public class BookDetailController
 				// Get reference to the database
 				BookTableGateway gateway = ViewManager.getInstance().getBookGateway();
 				// This book doesn't exist in the database, so we are going to insert it into the database
-				if (!gateway.isBookInDB(newBook.getId()))
+				if (gateway.getBookByID(newBook.getId()) == null)
 					gateway.saveBook(newBook);
 				// The book already exists in the database, so let's update it
 				else

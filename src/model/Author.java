@@ -77,5 +77,4 @@ public class Author
 	public String getWebsite() {
 		return website;
 	}
-	
 }

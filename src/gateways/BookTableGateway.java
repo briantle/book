@@ -161,28 +161,6 @@ public class BookTableGateway
 	}
 	/**
 	 * 
-	 * @param id
-	 * @return
-	 */
-	public boolean isBookInDB(int id) 
-	{
-		try {
-			prepStatement = conn.prepareStatement("select * from Book where id = ?");
-			prepStatement.setInt(1, id);
-			rs = prepStatement.executeQuery();
-			// Book does not currently exist in database
-			if (rs.next() == false)
-				return false;
-			return true;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	/**
-	 * 
 	 * Stores all the book records from the database into a list and then returns that list
 	 * so that the book table view can display each book in the view.
 	 * 

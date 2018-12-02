@@ -84,10 +84,9 @@ public class AuthorTableGateway
 		}
 		return author;
 	}
-	/*********************************************
-	** 
-	* 
-	************************************************/
+	/********************************************
+	* Inserts a new author into the Author Table
+	**********************************************/
 	public void saveAuthor(Author author)
 	{
 		logger.info("Inserting a new author");
@@ -128,7 +127,11 @@ public class AuthorTableGateway
 			ViewManager.getInstance().showErrAlert(e.getMessage());
 		}
 	}
-	public void updateAuthor(Author ogAuthor, Author updatedAuthor)
+	/*******************************************************************************
+	* Updates a author in the Author table with the updated author that's passed in
+	* @param updatedAuthor - the author with changed attributes
+	**********************************************************************************/
+	public void updateAuthor(Author updatedAuthor)
 	{
 		logger.info("Updating an author");
 		try {
@@ -139,7 +142,7 @@ public class AuthorTableGateway
 			prepStatement.setDate(3, Date.valueOf(updatedAuthor.getDateOfBirth()));
 			prepStatement.setString(4, updatedAuthor.getGender());
 			prepStatement.setString(5, updatedAuthor.getWebsite());
-			prepStatement.setInt(6, ogAuthor.getId());
+			prepStatement.setInt(6, updatedAuthor.getId());
 			prepStatement.executeUpdate();
 		}
 		catch (SQLException e){

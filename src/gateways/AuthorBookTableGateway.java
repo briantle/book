@@ -54,9 +54,9 @@ public class AuthorBookTableGateway
 		} 
 		return authorBookList;
 	}
-	public void addAuthor(AuthorBook authorBook)
+	public void addAuthorBook(AuthorBook authorBook)
 	{
-		logger.info("In Add Author");
+		logger.info("In Add Author Book");
 		try {
 			prepStatement = conn.prepareStatement("insert into AuthorBook (author_id, book_id, royalty) values (?, ?, ?)");
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
@@ -65,28 +65,49 @@ public class AuthorBookTableGateway
 			prepStatement.executeUpdate();
 			logger.info("Inserted Author Into Database");
 			/******** Audit Trail ***********/
-			
+			insertAudit(authorBook.getBook().getId(), "Added Author: " + authorBook.getAuthor().getFirstName() + " " + authorBook.getAuthor().getLastName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	public void deleteAuthor(AuthorBook authorBook)
+	public void deleteAuthorBook(AuthorBook authorBook)
 	{
-		logger.info("In Delete Author");
+		logger.info("In Delete Author Book");
 		try {
 			prepStatement = conn.prepareStatement("delete from AuthorBook where author_id = ? and book_id = ?");
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
 			prepStatement.setInt(2, authorBook.getBook().getId());
 			prepStatement.executeUpdate();
 			logger.info("Deleted Author from Database");
-			/**************** Audit Trail ******************/
+			/******** Audit Trail ***********/
+			insertAudit(authorBook.getBook().getId(), "Deleted Author: " + authorBook.getAuthor().getFirstName() + " " + authorBook.getAuthor().getLastName());
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	public void updateAuthor(AuthorBook authorBook)
+	public void updateAuthorBook(double oldRoyalty, AuthorBook authorBook)
 	{
-		
+		logger.info("In Update Author Book");
+		try
+		{
+			prepStatement = conn.prepareStatement("update AuthorBook set royalty = ? where author_id = ? and book_id = ?");
+			prepStatement.setDouble(1, authorBook.getRoyalty());
+			prepStatement.setInt(2, authorBook.getAuthor().getId());
+			prepStatement.setInt(3, authorBook.getBook().getId());
+			/************************ Audit Trail **************************/
+			if (oldRoyalty != authorBook.getRoyalty())
+				insertAudit(authorBook.getBook().getId(), "Royalty changed from " + oldRoyalty + " to " + authorBook.getRoyalty());
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void insertAudit(int bookId, String entryMsg) throws SQLException
+	{
+		prepStatement = conn.prepareStatement("insert into BookAuditTrail (book_id, entry_msg) values (?, ?)");
+		prepStatement.setInt(1, bookId);
+		prepStatement.setString(2, entryMsg);
+		prepStatement.execute();
 	}
 }

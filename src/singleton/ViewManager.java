@@ -162,15 +162,15 @@ public class ViewManager
 		// Before we insert or update the book, we want to validate the input first
 		changedBook.validateBook();
 		// Book already exists in database, so lets update it
-		if (bookGateway.isBookInDB(changedBook.getId()))
+		if (bookGateway.getBookByID(changedBook.getId()) != null)
 			bookGateway.updateBook(bdBook, changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
 		// It doesn't exist, so save it	
 		else
 			bookGateway.saveBook(changedBook);
 	}
-	/**
+	/******************************
 	* 
-	*/
+	*********************************/
 	public void saveAuthorChanges()
 	{
 		// The original author
@@ -184,7 +184,7 @@ public class ViewManager
 			authorGateway.saveAuthor(currAuthor);
 		// Author already exists in the database, so update the author
 		else
-			authorGateway.updateAuthor(adAuthor, currAuthor);
+			authorGateway.updateAuthor(currAuthor);
 	}
 	/*****************************************************************************
 	* Displays an error message through an alert window
@@ -279,8 +279,10 @@ public class ViewManager
 	public static ViewManager getInstance()
 	{
 		// If we don't have a singleton reference to our view manager, create one
-		if (instance == null)
+		if (instance == null) {
+			logger.info("Singleton instance is NULL");
 			instance = new ViewManager();
+		}
 		return instance;
 	}
 	/***************** Setters ************************/

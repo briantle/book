@@ -1490,3 +1490,5 @@
 16:13:06.047 INFO  gateways.GatewayManager : Logged out of database
 16:13:10.234 INFO  gateways.GatewayManager : Connected to database
 16:13:22.671 INFO  gateways.GatewayManager : Logged out of database
+19:29:59.522 ERROR singleton.ViewManager : Failed to switch views
+19:30:05.937 ERROR singleton.ViewManager : Failed to switch views
