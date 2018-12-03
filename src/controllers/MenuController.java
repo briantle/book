@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert.AlertType;
 import singleton.ViewManager;
 
 public class MenuController 
@@ -45,13 +46,13 @@ public class MenuController
 						try
 						{
 							if (bookBool)
-								ViewManager.getInstance().saveBookChanges();
+								ViewManager.getInstance().getCurrController().saveBookChanges();
 							else if (authorBool)
-								ViewManager.getInstance().saveAuthorChanges();
+								ViewManager.getInstance().getAuthorController().saveAuthorChanges();
 						}
 						catch (GatewayException e) {
 							e.printStackTrace();
-							ViewManager.getInstance().showErrAlert(e.getMessage());
+							ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 						}
 					}
 					Platform.exit();

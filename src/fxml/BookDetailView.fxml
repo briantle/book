@@ -7,20 +7,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <bottom>
-    <ListView fx:id="authorBookLV" prefHeight="200.0" prefWidth="200.0" />
-  </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="1092.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <left>
-    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Authors" translateX="5.0" translateY="45.0">
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Authors" translateX="5.0" translateY="57.0">
       <font>
         <Font size="20.0" />
       </font>
     </Text>
   </left>
-  <right>
-    <Button fx:id="addAuthorButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Add Author" translateX="-3.0" translateY="43.0" />
-  </right>
   <top>
     <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="862.0" translateX="3.0">
       <children>
@@ -46,6 +40,7 @@
         </ComboBox>
         <Button fx:id="saveButton" minHeight="-1.0" minWidth="-1.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Save" translateX="915.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Button fx:id="auditButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Audit Trail" translateX="900.0" translateY="230.0" translateZ="0.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="royaltyTextField" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Enter royalty amount" translateX="700.0" translateY="321.0" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -61,4 +56,19 @@
       </rowConstraints>
     </GridPane>
   </top>
+   <bottom>
+      <TableView fx:id="authorBookTable" prefHeight="276.0" prefWidth="1041.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="authorNameColumn" prefWidth="422.0" text="Author Name" />
+            <TableColumn fx:id="royaltyColumn" minWidth="0.0" onEditCommit="#onEditChanged" prefWidth="280.0" text="Royalty" />
+            <TableColumn fx:id="deleteColumn" prefWidth="389.0" text="Delete" />
+        </columns>
+      </TableView>
+   </bottom>
+   <center>
+      <ComboBox fx:id="authorComboBox" prefHeight="31.0" prefWidth="172.0" promptText="Pick an author" translateX="80.0" translateY="25.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <Button fx:id="addAuthorButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Save Author" translateX="-95.0" translateY="24.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

@@ -13,6 +13,7 @@ import com.mysql.jdbc.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert.AlertType;
 import model.Author;
 import singleton.ViewManager;
 
@@ -124,7 +125,7 @@ public class AuthorTableGateway
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			ViewManager.getInstance().showErrAlert(e.getMessage());
+			ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 		}
 	}
 	/*******************************************************************************

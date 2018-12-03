@@ -1492,3 +1492,844 @@
 16:13:22.671 INFO  gateways.GatewayManager : Logged out of database
 19:29:59.522 ERROR singleton.ViewManager : Failed to switch views
 19:30:05.937 ERROR singleton.ViewManager : Failed to switch views
+19:47:59.294 INFO  singleton.ViewManager : Singleton instance is NULL
+20:05:29.246 INFO  singleton.ViewManager : Singleton instance is NULL
+20:05:29.998 INFO  gateways.GatewayManager : Connected to database
+20:05:34.510 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:05:42.191 INFO  gateways.AuthorTableGateway : Updating an author
+20:05:45.858 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek45454545 Of Siwa
+20:05:53.149 INFO  gateways.AuthorTableGateway : Updating an author
+20:05:53.273 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:05:53.306 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:06:38.260 INFO  singleton.ViewManager : Singleton instance is NULL
+20:06:38.977 INFO  gateways.GatewayManager : Connected to database
+20:06:41.058 INFO  gateways.GatewayManager : Logged out of database
+20:11:40.772 INFO  singleton.ViewManager : Singleton instance is NULL
+20:11:41.467 INFO  gateways.GatewayManager : Connected to database
+20:13:37.702 INFO  singleton.ViewManager : Singleton instance is NULL
+20:13:38.334 INFO  gateways.GatewayManager : Connected to database
+20:13:44.953 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:13:44.987 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:13:45.650 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:13:45.652 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:13:53.850 INFO  gateways.GatewayManager : Logged out of database
+20:14:19.038 INFO  singleton.ViewManager : Singleton instance is NULL
+20:14:19.657 INFO  gateways.GatewayManager : Connected to database
+20:14:29.414 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:14:29.454 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:14:30.333 INFO  controllers.BookListController$1 : Double clicked on: jklkjlkjlk
+20:14:30.335 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:14:33.528 INFO  gateways.GatewayManager : Logged out of database
+20:18:37.550 INFO  singleton.ViewManager : Singleton instance is NULL
+20:18:38.169 INFO  gateways.GatewayManager : Connected to database
+20:18:41.822 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:41.867 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:42.885 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:18:42.886 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:18:59.269 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+20:19:01.610 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:19:01.644 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:19:05.087 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+20:19:08.517 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:19:17.415 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:19:22.867 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:19:27.660 INFO  gateways.GatewayManager : Logged out of database
+20:20:53.486 INFO  singleton.ViewManager : Singleton instance is NULL
+20:20:54.099 INFO  gateways.GatewayManager : Connected to database
+20:20:57.229 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:21:02.345 INFO  gateways.GatewayManager : Logged out of database
+20:21:32.955 INFO  singleton.ViewManager : Singleton instance is NULL
+20:21:33.599 INFO  gateways.GatewayManager : Connected to database
+20:21:36.792 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:26:53.856 INFO  singleton.ViewManager : Singleton instance is NULL
+20:26:54.449 INFO  gateways.GatewayManager : Connected to database
+20:28:17.224 INFO  singleton.ViewManager : Singleton instance is NULL
+20:28:17.923 INFO  gateways.GatewayManager : Connected to database
+20:28:43.253 INFO  singleton.ViewManager : Singleton instance is NULL
+20:28:43.837 INFO  gateways.GatewayManager : Connected to database
+20:28:50.392 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:28:57.680 INFO  gateways.GatewayManager : Logged out of database
+20:29:31.238 INFO  singleton.ViewManager : Singleton instance is NULL
+20:29:31.834 INFO  gateways.GatewayManager : Connected to database
+20:29:39.796 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:29:45.380 INFO  gateways.GatewayManager : Logged out of database
+20:30:05.998 INFO  singleton.ViewManager : Singleton instance is NULL
+20:30:06.694 INFO  gateways.GatewayManager : Connected to database
+20:30:25.580 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:30:34.204 INFO  gateways.GatewayManager : Logged out of database
+20:30:42.955 INFO  singleton.ViewManager : Singleton instance is NULL
+20:30:43.585 INFO  gateways.GatewayManager : Connected to database
+20:30:47.092 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:30:57.234 INFO  gateways.GatewayManager : Logged out of database
+20:32:35.868 INFO  singleton.ViewManager : Singleton instance is NULL
+20:32:36.511 INFO  gateways.GatewayManager : Connected to database
+20:32:40.134 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:32:51.397 INFO  gateways.GatewayManager : Logged out of database
+20:33:19.092 INFO  singleton.ViewManager : Singleton instance is NULL
+20:33:19.727 INFO  gateways.GatewayManager : Connected to database
+20:33:23.024 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:33:28.040 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:34:32.467 INFO  singleton.ViewManager : Singleton instance is NULL
+20:34:33.087 INFO  gateways.GatewayManager : Connected to database
+20:34:36.735 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:34:41.711 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:34:48.608 INFO  gateways.GatewayManager : Logged out of database
+20:35:14.418 INFO  singleton.ViewManager : Singleton instance is NULL
+20:35:15.015 INFO  gateways.GatewayManager : Connected to database
+20:35:18.075 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:35:22.887 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:35:28.725 INFO  gateways.GatewayManager : Logged out of database
+20:37:01.820 INFO  singleton.ViewManager : Singleton instance is NULL
+20:37:02.426 INFO  gateways.GatewayManager : Connected to database
+20:37:05.320 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:37:09.985 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:37:15.706 INFO  gateways.GatewayManager : Logged out of database
+20:38:16.865 INFO  singleton.ViewManager : Singleton instance is NULL
+20:38:17.483 INFO  gateways.GatewayManager : Connected to database
+20:38:20.189 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:38:23.393 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:38:26.038 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+20:38:47.854 INFO  gateways.AuthorTableGateway : Inserting a new author
+20:38:51.391 INFO  controllers.AuthorListController$1 : Double clicked on:  
+20:38:57.013 INFO  gateways.AuthorTableGateway : In Delete Author
+20:39:00.294 INFO  gateways.GatewayManager : Logged out of database
+13:09:31.045 INFO  singleton.ViewManager : Singleton instance is NULL
+13:09:32.530 INFO  gateways.GatewayManager : Connected to database
+13:09:41.551 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:09:48.698 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:09:48.766 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:09:49.982 INFO  controllers.BookListController$1 : Double clicked on: jklkjlkjlk
+13:09:49.983 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:10:08.346 INFO  gateways.GatewayManager : Logged out of database
+13:43:08.390 INFO  gateways.GatewayManager : Connected to database
+13:43:12.196 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:12.235 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:13.109 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:43:13.111 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:43:20.069 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:20.104 INFO  gateways.BookTableGateway : In Update Book
+13:43:20.357 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:20.389 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:22.153 INFO  controllers.BookListController$1 : Double clicked on: test123456
+13:43:22.154 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:43:30.777 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:43:30.813 INFO  gateways.BookTableGateway : In Update Book
+13:43:31.046 INFO  gateways.GatewayManager : Logged out of database
+14:57:05.064 INFO  gateways.GatewayManager : Connected to database
+14:57:11.316 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+14:57:11.356 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+14:57:12.375 INFO  controllers.BookListController$1 : Double clicked on: test123
+14:57:12.377 INFO  gateways.PublisherTableGateway : Fetching Publishers
+14:57:12.570 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+14:57:12.654 ERROR singleton.ViewManager : Failed to switch views
+14:57:27.915 INFO  gateways.GatewayManager : Logged out of database
+14:59:35.073 INFO  gateways.GatewayManager : Connected to database
+14:59:37.422 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+14:59:37.463 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+14:59:38.674 INFO  controllers.BookListController$1 : Double clicked on: test123
+14:59:38.676 INFO  gateways.PublisherTableGateway : Fetching Publishers
+14:59:38.711 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+14:59:38.938 ERROR singleton.ViewManager : Failed to switch views
+15:00:01.484 INFO  gateways.GatewayManager : Logged out of database
+15:00:31.653 INFO  gateways.GatewayManager : Connected to database
+15:00:33.711 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:00:33.754 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:00:34.570 INFO  controllers.BookListController$1 : Double clicked on: test123
+15:00:34.572 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:00:34.606 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+15:00:59.059 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:00:59.094 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:00:59.853 INFO  controllers.BookListController$1 : Double clicked on: jklkjlkjlk
+15:00:59.854 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:00:59.892 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 6
+15:01:02.463 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:09.849 INFO  gateways.GatewayManager : Logged out of database
+15:02:14.447 INFO  gateways.GatewayManager : Connected to database
+15:02:19.628 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:23.136 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:23.175 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:25.271 INFO  controllers.BookListController$1 : Double clicked on: test123
+15:02:25.272 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:25.434 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+15:02:26.908 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:28.418 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:28.452 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:29.439 INFO  controllers.BookListController$1 : Double clicked on: jklkjlkjlk
+15:02:29.440 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:29.525 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 6
+15:02:30.711 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:31.703 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:31.734 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+15:02:32.705 INFO  controllers.BookListController$1 : Double clicked on: test123
+15:02:32.706 INFO  gateways.PublisherTableGateway : Fetching Publishers
+15:02:32.787 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+15:02:36.593 INFO  gateways.GatewayManager : Logged out of database
+16:09:55.361 INFO  gateways.GatewayManager : Connected to database
+16:09:57.521 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:09:57.563 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:09:58.423 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:09:58.425 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:09:58.624 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:10:05.605 INFO  gateways.GatewayManager : Logged out of database
+16:10:13.315 INFO  gateways.GatewayManager : Connected to database
+16:10:15.371 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:10:15.411 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:10:16.459 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:10:16.461 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:10:16.661 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:10:30.150 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+16:10:31.520 INFO  gateways.GatewayManager : Logged out of database
+16:12:16.083 INFO  gateways.GatewayManager : Connected to database
+16:12:18.254 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:12:24.485 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:12:24.531 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:12:25.422 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:12:25.423 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:12:25.527 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:12:42.308 INFO  gateways.GatewayManager : Logged out of database
+16:18:49.017 INFO  gateways.GatewayManager : Connected to database
+16:18:51.415 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:18:51.453 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:18:52.562 INFO  controllers.BookListController$1 : Double clicked on: jklkjlkjlk
+16:18:52.563 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:18:52.772 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 6
+16:18:55.775 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:18:55.810 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:18:57.618 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:18:57.618 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:18:57.775 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:19:12.126 INFO  gateways.GatewayManager : Logged out of database
+16:24:45.040 INFO  gateways.GatewayManager : Connected to database
+16:24:47.489 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:24:47.530 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:24:48.386 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:24:48.388 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:24:48.585 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:25:08.060 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+16:25:16.599 INFO  gateways.GatewayManager : Logged out of database
+16:28:22.121 INFO  gateways.GatewayManager : Connected to database
+16:28:24.672 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:28:24.711 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:28:25.539 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:28:25.541 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:28:25.734 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:28:34.685 INFO  controllers.AuthorListController$1 : Double clicked on: Bayek Of Siwa
+16:28:36.615 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:28:36.669 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:28:37.717 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:28:37.718 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:28:37.799 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:28:39.808 INFO  gateways.GatewayManager : Logged out of database
+16:30:58.603 INFO  gateways.GatewayManager : Connected to database
+16:31:01.177 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:31:01.211 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:31:02.095 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:31:02.097 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:31:02.303 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:31:08.265 INFO  gateways.GatewayManager : Logged out of database
+16:34:33.680 INFO  gateways.GatewayManager : Connected to database
+16:34:36.798 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:34:36.835 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+16:34:37.621 INFO  controllers.BookListController$1 : Double clicked on: test123
+16:34:37.622 INFO  gateways.PublisherTableGateway : Fetching Publishers
+16:34:37.823 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+16:35:19.982 INFO  gateways.GatewayManager : Logged out of database
+17:05:47.298 INFO  gateways.GatewayManager : Connected to database
+17:05:50.067 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:05:50.110 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:05:51.089 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:05:51.091 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:05:51.296 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:05:57.440 INFO  gateways.GatewayManager : Logged out of database
+17:06:20.146 INFO  gateways.GatewayManager : Connected to database
+17:06:22.989 INFO  gateways.GatewayManager : Connected to database
+17:06:23.015 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:06:23.062 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:06:24.147 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:06:24.150 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:06:24.363 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:06:46.036 INFO  gateways.GatewayManager : Logged out of database
+17:07:29.835 INFO  gateways.GatewayManager : Connected to database
+17:07:36.505 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:07:36.548 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:07:37.461 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:07:37.463 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:07:37.663 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:08:25.333 INFO  gateways.GatewayManager : Logged out of database
+17:08:42.190 INFO  gateways.GatewayManager : Logged out of database
+17:09:45.861 INFO  gateways.GatewayManager : Connected to database
+17:09:48.366 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:09:48.401 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:09:50.175 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:09:50.176 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:09:50.369 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:10:00.682 INFO  gateways.GatewayManager : Logged out of database
+17:14:00.417 INFO  gateways.GatewayManager : Connected to database
+17:14:03.045 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:14:03.097 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:14:04.118 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:14:04.120 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:14:04.326 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:14:49.476 INFO  gateways.GatewayManager : Logged out of database
+17:23:54.165 INFO  gateways.GatewayManager : Connected to database
+17:23:56.406 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:23:56.452 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:23:57.752 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:23:57.755 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:23:58.022 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:24:27.613 INFO  gateways.GatewayManager : Logged out of database
+17:25:02.671 INFO  gateways.GatewayManager : Connected to database
+17:25:05.495 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:25:05.536 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:25:07.029 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:25:07.031 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:25:07.237 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:25:22.437 INFO  gateways.GatewayManager : Logged out of database
+17:31:16.921 INFO  gateways.GatewayManager : Connected to database
+17:31:22.251 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:31:22.288 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:31:23.255 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:31:23.257 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:31:23.448 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:31:40.955 INFO  gateways.GatewayManager : Logged out of database
+17:32:07.579 INFO  gateways.GatewayManager : Connected to database
+17:32:10.165 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:32:10.208 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:32:11.381 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:32:11.383 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:32:11.588 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:32:24.689 INFO  gateways.GatewayManager : Logged out of database
+17:35:26.616 INFO  gateways.GatewayManager : Connected to database
+17:35:29.120 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:35:29.160 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:35:30.325 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:35:30.327 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:35:30.524 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:35:45.006 INFO  gateways.GatewayManager : Logged out of database
+17:40:41.766 INFO  gateways.GatewayManager : Connected to database
+17:40:44.407 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:40:44.449 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:40:45.542 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:40:45.544 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:40:45.745 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:41:06.916 INFO  gateways.GatewayManager : Logged out of database
+17:41:51.555 INFO  gateways.GatewayManager : Connected to database
+17:41:53.692 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:41:53.731 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:41:54.468 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:41:54.470 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:41:54.672 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:42:09.383 INFO  gateways.GatewayManager : Logged out of database
+17:43:21.396 INFO  gateways.GatewayManager : Connected to database
+17:43:23.356 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:43:23.394 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:43:24.405 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:43:24.407 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:43:24.602 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:44:06.359 INFO  gateways.GatewayManager : Logged out of database
+17:46:49.065 INFO  gateways.GatewayManager : Connected to database
+17:46:51.132 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:46:51.165 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:46:52.176 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:46:52.178 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:46:52.370 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:47:11.188 INFO  gateways.GatewayManager : Logged out of database
+17:47:27.535 INFO  gateways.GatewayManager : Connected to database
+17:47:29.774 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:47:29.815 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:47:30.764 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:47:30.766 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:47:30.968 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:47:39.216 INFO  gateways.GatewayManager : Logged out of database
+17:47:48.127 INFO  gateways.GatewayManager : Connected to database
+17:47:51.520 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:47:51.558 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:47:52.222 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:47:52.224 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:47:52.419 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:47:57.225 INFO  gateways.GatewayManager : Logged out of database
+17:48:04.648 INFO  gateways.GatewayManager : Connected to database
+17:48:06.779 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:48:06.818 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:48:07.716 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:48:07.718 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:48:07.919 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:48:17.843 INFO  gateways.GatewayManager : Logged out of database
+17:49:31.945 INFO  gateways.GatewayManager : Connected to database
+17:49:34.083 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:49:34.135 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:49:35.141 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:49:35.143 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:49:35.338 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:49:47.120 INFO  gateways.GatewayManager : Logged out of database
+17:52:06.323 INFO  gateways.GatewayManager : Connected to database
+17:52:09.212 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:52:09.253 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:52:10.385 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:52:10.388 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:52:10.633 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:52:18.325 INFO  gateways.GatewayManager : Logged out of database
+17:52:46.151 INFO  gateways.GatewayManager : Connected to database
+17:52:48.389 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:52:48.427 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:52:49.455 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:52:49.458 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:52:49.657 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:52:55.005 INFO  gateways.GatewayManager : Logged out of database
+17:54:27.346 INFO  gateways.GatewayManager : Connected to database
+17:54:29.721 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:54:29.766 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:54:30.651 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:54:30.653 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:54:30.843 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:54:41.157 INFO  gateways.GatewayManager : Logged out of database
+17:55:16.419 INFO  gateways.GatewayManager : Connected to database
+17:55:32.475 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:55:32.517 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:55:33.631 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:55:33.633 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:55:33.823 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:55:57.234 INFO  gateways.GatewayManager : Logged out of database
+17:56:22.125 INFO  gateways.GatewayManager : Connected to database
+17:56:24.410 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:56:24.455 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+17:56:25.379 INFO  controllers.BookListController$1 : Double clicked on: test123
+17:56:25.381 INFO  gateways.PublisherTableGateway : Fetching Publishers
+17:56:25.570 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+17:56:32.197 INFO  gateways.GatewayManager : Logged out of database
+18:00:15.184 INFO  gateways.GatewayManager : Connected to database
+18:00:17.263 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:00:17.298 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:00:18.235 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:00:18.237 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:00:18.437 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:00:25.434 INFO  gateways.GatewayManager : Logged out of database
+18:02:29.959 INFO  gateways.GatewayManager : Connected to database
+18:02:32.530 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:02:32.586 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:02:33.476 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:02:33.478 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:02:33.675 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:02:39.668 INFO  gateways.GatewayManager : Logged out of database
+18:05:33.142 INFO  gateways.GatewayManager : Connected to database
+18:05:35.395 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:05:35.441 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:05:36.348 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:05:36.350 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:05:36.546 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:05:41.968 INFO  gateways.GatewayManager : Logged out of database
+18:06:04.860 INFO  gateways.GatewayManager : Connected to database
+18:06:07.373 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:06:07.412 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:06:08.411 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:06:08.413 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:06:08.614 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:06:13.880 INFO  gateways.GatewayManager : Logged out of database
+18:08:13.395 INFO  gateways.GatewayManager : Connected to database
+18:08:15.621 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:08:15.657 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:08:16.644 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:08:16.647 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:08:16.833 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:09:45.458 INFO  gateways.GatewayManager : Connected to database
+18:09:47.858 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:09:47.900 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+18:09:48.810 INFO  controllers.BookListController$1 : Double clicked on: test123
+18:09:48.812 INFO  gateways.PublisherTableGateway : Fetching Publishers
+18:09:49.003 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+18:10:00.222 INFO  gateways.GatewayManager : Logged out of database
+18:10:34.230 INFO  gateways.GatewayManager : Logged out of database
+19:59:56.873 INFO  gateways.GatewayManager : Connected to database
+20:00:05.331 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:00:05.372 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:00:06.304 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:00:06.306 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:00:06.703 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:00:56.267 INFO  gateways.GatewayManager : Logged out of database
+20:11:09.272 INFO  gateways.GatewayManager : Connected to database
+20:11:11.908 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:11:11.970 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:11:12.872 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:11:12.876 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:11:13.227 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:11:19.256 INFO  gateways.GatewayManager : Logged out of database
+20:11:22.909 INFO  gateways.GatewayManager : Connected to database
+20:11:25.433 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:11:25.475 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:11:26.932 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:11:26.934 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:11:27.200 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:11:29.688 INFO  gateways.GatewayManager : Logged out of database
+20:14:26.573 INFO  gateways.GatewayManager : Connected to database
+20:14:31.066 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:14:31.111 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:14:31.887 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:14:31.889 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:14:32.125 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:14:37.070 INFO  gateways.GatewayManager : Logged out of database
+20:15:46.992 INFO  gateways.GatewayManager : Connected to database
+20:15:53.585 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:15:53.627 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:15:54.595 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:15:54.597 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:15:54.855 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:16:12.974 INFO  gateways.GatewayManager : Logged out of database
+20:18:42.047 INFO  gateways.GatewayManager : Connected to database
+20:18:46.138 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:46.194 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:47.015 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:18:47.017 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:18:47.258 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:18:49.854 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+20:18:51.641 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:51.680 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:18:51.834 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:18:57.424 INFO  controllers.BookDetailController : Clicked on save button in book detail
+20:18:57.524 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:18:57.564 INFO  gateways.BookTableGateway : In Update Book
+20:19:03.409 INFO  gateways.GatewayManager : Logged out of database
+20:21:28.241 INFO  gateways.GatewayManager : Connected to database
+20:21:32.375 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:21:32.424 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:21:33.191 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:21:33.193 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:21:33.441 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:21:39.028 INFO  gateways.GatewayManager : Logged out of database
+20:22:19.238 INFO  gateways.GatewayManager : Connected to database
+20:22:21.542 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:22:21.591 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:22:22.321 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:22:22.326 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:22:22.602 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:22:24.575 INFO  controllers.BookDetailController : add author button
+20:22:27.932 INFO  controllers.BookDetailController : add author button
+20:22:28.709 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+20:22:30.120 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:22:30.160 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:22:30.296 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:22:31.608 INFO  controllers.BookDetailController : add author button
+20:22:32.464 INFO  gateways.BookTableGateway : Getting Audit Trails for book at id: 3
+20:22:34.060 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:22:34.100 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:22:34.237 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:22:46.186 INFO  controllers.BookDetailController : add author button
+20:22:46.668 INFO  controllers.BookDetailController : add author button
+20:22:49.822 INFO  gateways.GatewayManager : Logged out of database
+20:24:00.360 INFO  gateways.GatewayManager : Connected to database
+20:24:03.748 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:24:03.796 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:24:04.859 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:24:04.862 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:24:05.154 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:24:07.882 INFO  controllers.BookDetailController : add author button
+20:24:08.442 INFO  controllers.BookDetailController : add author button
+20:24:08.598 INFO  controllers.BookDetailController : add author button
+20:24:13.634 INFO  controllers.BookDetailController : add author button
+20:24:22.668 INFO  gateways.GatewayManager : Logged out of database
+20:32:00.156 INFO  gateways.GatewayManager : Connected to database
+20:32:04.561 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:32:04.608 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:32:05.493 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:32:05.495 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:32:05.750 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:32:09.271 INFO  controllers.BookDetailController : add author button
+20:32:10.804 INFO  controllers.BookDetailController : add author button
+20:32:11.277 INFO  controllers.BookDetailController : add author button
+20:32:11.956 INFO  controllers.BookDetailController : add author button
+20:32:12.110 INFO  controllers.BookDetailController : add author button
+20:32:12.241 INFO  controllers.BookDetailController : add author button
+20:32:12.383 INFO  controllers.BookDetailController : add author button
+20:32:14.777 INFO  controllers.BookDetailController : add author button
+20:32:18.962 INFO  gateways.GatewayManager : Logged out of database
+20:34:11.890 INFO  gateways.GatewayManager : Connected to database
+20:34:17.191 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:34:17.622 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+20:34:18.446 INFO  controllers.BookListController$1 : Double clicked on: test123
+20:34:18.448 INFO  gateways.PublisherTableGateway : Fetching Publishers
+20:34:18.714 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+20:34:24.159 INFO  controllers.BookDetailController : add author button
+20:34:36.672 INFO  gateways.GatewayManager : Logged out of database
+21:00:46.444 INFO  gateways.GatewayManager : Connected to database
+21:00:49.240 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:00:49.292 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:00:50.746 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:00:50.748 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:00:50.992 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:00:56.370 INFO  controllers.BookDetailController : add author button
+21:01:00.891 INFO  gateways.GatewayManager : Logged out of database
+21:01:37.197 INFO  gateways.GatewayManager : Connected to database
+21:01:39.756 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:01:39.803 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:01:41.269 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:01:41.272 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:01:41.517 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:01:46.785 INFO  controllers.BookDetailController : add author button
+21:01:48.161 INFO  controllers.BookDetailController : add author button
+21:01:53.041 INFO  controllers.BookDetailController : add author button
+21:01:54.561 INFO  gateways.GatewayManager : Logged out of database
+21:05:07.938 INFO  gateways.GatewayManager : Connected to database
+21:05:11.862 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:11.911 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:13.544 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:05:13.546 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:05:13.808 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:05:15.068 INFO  controllers.BookDetailController : add author button
+21:05:19.679 INFO  controllers.BookDetailController : add author button
+21:05:22.324 INFO  gateways.GatewayManager : Logged out of database
+21:05:33.515 INFO  gateways.GatewayManager : Connected to database
+21:05:36.617 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:36.944 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:37.767 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:05:37.769 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:05:38.015 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:05:40.373 INFO  controllers.BookDetailController : add author button
+21:05:41.761 INFO  gateways.GatewayManager : Logged out of database
+21:05:52.138 INFO  gateways.GatewayManager : Connected to database
+21:05:54.039 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:54.085 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:05:54.909 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:05:54.911 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:05:55.163 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:05:57.881 INFO  controllers.BookDetailController : add author button
+21:06:02.241 INFO  gateways.GatewayManager : Logged out of database
+21:07:58.007 INFO  gateways.GatewayManager : Connected to database
+21:08:03.401 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:08:03.447 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:08:05.177 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:08:05.179 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:08:05.441 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:08:47.934 INFO  gateways.AuthorTableGateway : Inserting a new author
+21:08:53.407 INFO  gateways.AuthorTableGateway : Updating an author
+21:08:56.811 INFO  controllers.AuthorListController$1 : Double clicked on: bddfgdf gdfgdgdgd
+21:09:29.845 INFO  gateways.AuthorTableGateway : Inserting a new author
+21:09:31.739 INFO  gateways.AuthorTableGateway : Updating an author
+21:09:35.561 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:09:35.901 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:09:37.010 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:09:37.011 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:09:37.119 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:09:57.476 INFO  gateways.GatewayManager : Logged out of database
+21:14:12.880 INFO  gateways.GatewayManager : Connected to database
+21:14:15.553 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:14:15.593 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+21:14:16.951 INFO  controllers.BookListController$1 : Double clicked on: test123
+21:14:16.952 INFO  gateways.PublisherTableGateway : Fetching Publishers
+21:14:17.206 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+21:15:01.924 INFO  gateways.GatewayManager : Logged out of database
+11:31:26.189 INFO  gateways.GatewayManager : Connected to database
+11:31:31.625 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:31:31.690 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:31:33.165 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:31:33.169 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:31:33.819 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:32:25.559 INFO  gateways.GatewayManager : Logged out of database
+11:33:16.059 INFO  gateways.GatewayManager : Connected to database
+11:33:20.319 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:33:20.356 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:33:21.263 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:33:21.265 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:33:21.518 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:33:52.711 INFO  gateways.GatewayManager : Logged out of database
+11:41:51.077 INFO  gateways.GatewayManager : Connected to database
+11:41:53.957 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:41:53.996 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:41:54.968 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:41:54.970 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:41:55.210 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:42:25.514 INFO  gateways.GatewayManager : Logged out of database
+11:45:05.599 INFO  gateways.GatewayManager : Connected to database
+11:45:39.899 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:45:39.946 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:45:40.802 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:45:40.806 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:45:41.120 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:46:24.969 INFO  gateways.GatewayManager : Logged out of database
+11:50:28.848 INFO  gateways.GatewayManager : Connected to database
+11:50:31.514 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:31.559 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:32.514 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:50:32.517 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:50:32.800 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:50:34.707 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:34.745 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:35.963 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:50:35.964 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:50:36.111 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:50:41.731 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:41.768 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:42.628 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:50:42.628 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:50:42.784 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:50:47.448 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:47.484 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:50:49.681 INFO  gateways.GatewayManager : Logged out of database
+11:55:01.092 INFO  gateways.GatewayManager : Connected to database
+11:55:05.179 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:05.220 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:06.409 INFO  controllers.BookListController$1 : Double clicked on: test123
+11:55:06.411 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:55:06.747 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+11:55:15.174 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+11:55:15.282 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:15.312 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+11:55:15.405 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:20.820 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:20.901 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+11:55:25.254 INFO  gateways.GatewayManager : Logged out of database
+13:16:01.150 INFO  gateways.GatewayManager : Connected to database
+13:16:03.339 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:03.378 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:04.739 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:16:04.742 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:16:04.997 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:16:12.990 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:16:13.096 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:13.131 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:16:13.252 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:13.296 INFO  gateways.GatewayManager : Logged out of database
+13:16:49.567 INFO  gateways.GatewayManager : Connected to database
+13:16:52.095 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:52.388 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:16:53.147 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:16:53.150 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:16:53.402 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:17:01.331 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:17:01.442 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:17:01.471 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:17:01.572 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:17:01.621 INFO  gateways.GatewayManager : Logged out of database
+13:21:37.732 INFO  gateways.GatewayManager : Connected to database
+13:21:39.947 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:21:39.991 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:21:41.027 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:21:41.030 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:21:41.277 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:21:48.365 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:21:48.474 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:21:48.509 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:21:48.615 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:21:48.656 INFO  gateways.GatewayManager : Logged out of database
+13:25:57.341 INFO  gateways.GatewayManager : Connected to database
+13:25:59.975 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:26:00.016 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:26:00.974 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:26:00.977 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:26:01.224 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:26:12.937 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:26:13.492 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:26:13.524 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:26:13.622 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:26:13.662 INFO  gateways.GatewayManager : Logged out of database
+13:27:48.754 INFO  gateways.GatewayManager : Connected to database
+13:27:51.194 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:27:51.237 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:27:52.432 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:27:52.436 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:27:52.700 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:27:56.339 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:27:56.442 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:27:56.476 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:27:56.577 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:27:56.622 INFO  gateways.GatewayManager : Logged out of database
+13:28:32.531 INFO  gateways.GatewayManager : Connected to database
+13:28:38.559 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:28:38.598 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:28:39.296 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:28:39.300 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:28:39.573 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:28:42.258 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:28:42.367 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:28:42.403 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:28:42.508 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:28:42.541 INFO  gateways.GatewayManager : Logged out of database
+13:34:08.963 INFO  gateways.GatewayManager : Connected to database
+13:34:11.835 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:34:12.177 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:34:12.891 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:34:12.893 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:34:13.136 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:34:19.029 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:34:19.135 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:34:19.168 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:34:19.271 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:34:19.313 INFO  gateways.GatewayManager : Logged out of database
+13:39:58.821 INFO  gateways.GatewayManager : Connected to database
+13:40:01.856 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:01.901 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:02.621 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:40:02.624 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:40:02.870 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:40:11.984 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:40:12.086 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:12.121 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:40:12.221 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:12.267 INFO  gateways.GatewayManager : Logged out of database
+13:40:34.980 INFO  gateways.GatewayManager : Connected to database
+13:40:37.122 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:37.408 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:38.402 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:40:38.404 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:40:38.648 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:40:48.244 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:40:48.348 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:48.385 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:40:48.486 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:40:48.530 INFO  gateways.GatewayManager : Logged out of database
+13:41:08.749 INFO  gateways.GatewayManager : Connected to database
+13:41:10.851 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:41:10.893 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:41:11.865 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:41:11.868 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:41:12.120 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:41:22.990 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:41:23.186 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:41:23.223 INFO  gateways.GatewayManager : Logged out of database
+13:41:30.720 INFO  gateways.GatewayManager : Connected to database
+13:41:33.406 INFO  gateways.GatewayManager : Logged out of database
+13:49:22.670 INFO  gateways.GatewayManager : Connected to database
+13:49:24.962 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:25.002 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:25.923 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:49:25.925 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:49:26.172 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:49:30.618 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:49:30.817 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:30.846 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:49:30.954 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:30.992 INFO  gateways.GatewayManager : Logged out of database
+13:49:55.750 INFO  gateways.GatewayManager : Connected to database
+13:49:58.221 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:58.264 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:49:59.551 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:49:59.554 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:49:59.840 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:50:04.758 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:50:04.922 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:50:04.956 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:50:05.056 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:50:05.093 INFO  gateways.GatewayManager : Logged out of database
+13:52:26.766 INFO  gateways.GatewayManager : Connected to database
+13:52:29.605 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:52:29.646 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:52:30.479 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:52:30.481 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:52:30.729 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:52:35.991 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 3 book id: 3
+13:52:36.103 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:52:36.135 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:52:36.231 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:52:36.279 INFO  gateways.GatewayManager : Logged out of database
+13:53:39.368 INFO  gateways.GatewayManager : Connected to database
+13:53:41.693 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:53:41.736 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:53:43.196 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:53:43.199 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:53:43.467 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:53:47.771 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:53:47.811 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:53:48.472 INFO  controllers.BookListController$1 : Double clicked on: test123
+13:53:48.473 INFO  gateways.PublisherTableGateway : Fetching Publishers
+13:53:48.628 INFO  gateways.AuthorBookTableGateway : Getting Authors for Book at id 3
+13:53:54.398 INFO  gateways.AuthorBookTableGateway : Attempting to get authorBook at author id: 5 book id: 3
+13:53:54.505 INFO  gateways.PublisherTableGateway : Fetching Publisher by id 2
+13:53:54.540 INFO  gateways.GatewayManager : Logged out of database

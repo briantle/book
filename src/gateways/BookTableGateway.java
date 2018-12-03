@@ -13,6 +13,7 @@ import com.mysql.jdbc.Statement;
 import exceptions.GatewayException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert.AlertType;
 import model.AuditTrailEntry;
 import model.Book;
 import singleton.ViewManager;
@@ -39,7 +40,7 @@ public class BookTableGateway
 			prepStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			ViewManager.getInstance().showErrAlert(e.getMessage());
+			ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 		}
 	}
 	/**

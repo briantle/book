@@ -39,21 +39,23 @@ public class AuthorDetailController
 	public void handleButtonAction(ActionEvent action) throws IOException 
 	{
 		if (action.getSource() == saveButton)
-		{
-			// Create an author based on the values in the detail view
-			Author currAuthor = new Author(selectedAuthor.getId(), firstNameTF.getText().trim(), lastNameTF.getText().trim()
-					, dobPicker.getValue(), genderChoiceBox.getSelectionModel().getSelectedItem(), websiteTF.getText().trim());
-			// Used to checked if the author exists in the database, and either saves/updates the author
-			AuthorTableGateway authorGW = ViewManager.getInstance().getAuthorGateway();
-			// The author doesn't exist in the database, so insert into the database
-			if (authorGW.getAuthorByID(currAuthor.getId()) == null)
-				authorGW.saveAuthor(currAuthor);
-			// Author already exists in the database, so update the author
-			else
-				authorGW.updateAuthor(currAuthor);
-			// Set our author to reflect the new author changes
-			selectedAuthor = currAuthor;
-		}
+			saveAuthorChanges();
+	}
+	public void saveAuthorChanges()
+	{
+		// Create an author based on the values in the detail view
+		Author currAuthor = new Author(selectedAuthor.getId(), firstNameTF.getText().trim(), lastNameTF.getText().trim()
+				, dobPicker.getValue(), genderChoiceBox.getSelectionModel().getSelectedItem(), websiteTF.getText().trim());
+		// Used to checked if the author exists in the database, and either saves/updates the author
+		AuthorTableGateway authorGW = ViewManager.getInstance().getAuthorGateway();
+		// The author doesn't exist in the database, so insert into the database
+		if (authorGW.getAuthorByID(currAuthor.getId()) == null)
+			authorGW.saveAuthor(currAuthor);
+		// Author already exists in the database, so update the author
+		else
+			authorGW.updateAuthor(currAuthor);
+		// Set our author to reflect the new author changes
+		selectedAuthor = currAuthor;
 	}
 	/************************************************************
 	* Populate the gender choice box with MALE and FEMALE option
@@ -71,15 +73,17 @@ public class AuthorDetailController
 	*********************************************************************************************/
 	public boolean isAuthDifferent()
 	{
-		if (!selectedAuthor.getFirstName().equals(firstNameTF.getText()))
+		if (!selectedAuthor.getFirstName().equals(firstNameTF.getText().trim()))
 			return true;
-		if (!selectedAuthor.getLastName().equals(lastNameTF.getText()))
+		if (!selectedAuthor.getLastName().equals(lastNameTF.getText().trim()))
 			return true;
-		if (selectedAuthor.getDateOfBirth() != null || dobPicker.getValue() != null && !selectedAuthor.getDateOfBirth().equals(dobPicker.getValue()))
+		if (selectedAuthor.getDateOfBirth() != null && dobPicker.getValue() == null || selectedAuthor.getDateOfBirth() == null && dobPicker.getValue() != null || 
+		selectedAuthor.getDateOfBirth() != null && dobPicker.getValue() != null && !selectedAuthor.getDateOfBirth().toString().equals(dobPicker.getValue().toString()))
 			return true;
-		if (!selectedAuthor.getGender().equals(genderChoiceBox.getSelectionModel().getSelectedItem()))
+		if (!selectedAuthor.getGender().equals(genderChoiceBox.getSelectionModel().getSelectedItem())) 
 			return true;
-		if (selectedAuthor.getWebsite() != null || websiteTF.getText() != null && !selectedAuthor.getWebsite().equals(websiteTF.getText()))
+		if (selectedAuthor.getWebsite() != null && websiteTF.getText() == null || selectedAuthor.getWebsite() == null && websiteTF.getText() != null || 
+				selectedAuthor.getWebsite() != null && websiteTF.getText() != null && !selectedAuthor.getWebsite().equals(websiteTF.getText().trim()))
 			return true;
 		return false;
 	}

@@ -71,10 +71,10 @@ public class ViewManager
 			if (auditController != null || currController == null && authorController == null 
 					|| currController != null && !currController.isBookDifferent() || authorController != null && !authorController.isAuthDifferent())
 				swapViews(obj, view);
-			// If we are handling books
+			// If we are in the book detail view and have changed values
 			else if (currController != null && currController.isBookDifferent())
 				handleUnsavedChanges(obj, view, "BOOK", "The book has been modified. Do you want to save the changes?");
-			// Related to author
+			// If we are in the author detail view and have changed values
 			else if (authorController != null && authorController.isAuthDifferent())
 				handleUnsavedChanges(obj, view, "AUTHOR", "The author has been modified. Do you want to save the changes?");
 		}
@@ -83,7 +83,7 @@ public class ViewManager
 		{
 			logger.error("Failed to switch views");
 			ie.printStackTrace();
-			showErrAlert(ie.getMessage());
+			showAlert(AlertType.ERROR, "ERROR", ie.getMessage());
 		}
 	}
 	public void handleUnsavedChanges(Object obj, ViewType view, String objType, String unsavedMessage) throws IOException
@@ -100,14 +100,14 @@ public class ViewManager
 				try
 				{
 					if (objType == "BOOK")
-						saveBookChanges();
+						currController.saveBookChanges();
 					else if (objType == "AUTHOR")
-						saveAuthorChanges();
+						authorController.saveAuthorChanges();
 				} 
 				catch (GatewayException e)
 				{
 					e.printStackTrace();
-					showErrAlert(e.getMessage());
+					showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 				}
 			}
 			// We will switch views if the user chose either YES or NO
@@ -149,52 +149,15 @@ public class ViewManager
 		// Swap to new view
 		currRoot.setCenter(newRoot);
 	}
-	/******************************************************
-	* 
-	* @throws GatewayException
-	*****************************************************/
-	public void saveBookChanges() throws GatewayException
-	{
-		Book bdBook = currController.getSelectedBook();
-		Book changedBook = new Book(bdBook.getId(), currController.getTfTitle().getText(), currController.getTfSummary().getText()
-		, Integer.valueOf(currController.getTfYearPublished().getText()) 
-		, currController.getTfISBN().getText(), bdBook.getLastModified(), bdBook.getDateAdded(), currController.getPublisherSelection());
-		// Before we insert or update the book, we want to validate the input first
-		changedBook.validateBook();
-		// Book already exists in database, so lets update it
-		if (bookGateway.getBookByID(changedBook.getId()) != null)
-			bookGateway.updateBook(bdBook, changedBook, "The changes made to the book could not be saved! Return to the book list and try again.");
-		// It doesn't exist, so save it	
-		else
-			bookGateway.saveBook(changedBook);
-	}
-	/******************************
-	* 
-	*********************************/
-	public void saveAuthorChanges()
-	{
-		// The original author
-		Author adAuthor = authorController.getSelectedAuthor();
-		// Create an author based on the values in the detail view
-		Author currAuthor = new Author(adAuthor.getId(), authorController.getFirstNameTF().getText()
-				, authorController.getLastNameTF().getText(), authorController.getDobPicker().getValue()
-				, authorController.getGenderChoiceBox().getSelectionModel().getSelectedItem(), authorController.getWebsiteTF().getText());
-		// The author doesn't exist in the database, so insert into the database
-		if (authorGateway.getAuthorByID(currAuthor.getId()) == null)
-			authorGateway.saveAuthor(currAuthor);
-		// Author already exists in the database, so update the author
-		else
-			authorGateway.updateAuthor(currAuthor);
-	}
 	/*****************************************************************************
-	* Displays an error message through an alert window
-	* @param exceptionMsg - the message to displayed from the error that occurred
+	* Displays an message through an alert window
+	* Could either be an info alert, or a error alert
 	*******************************************************************************/
-	public void showErrAlert(String exceptionMsg)
+	public void showAlert(AlertType alertType, String headerText, String msg)
 	{
-		Alert errAlert = new Alert(AlertType.ERROR);
-		errAlert.setHeaderText("ERROR");
-		errAlert.setContentText(exceptionMsg);
+		Alert errAlert = new Alert(alertType);
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
 		errAlert.showAndWait();
 	}
 	/****************************************************************************************
@@ -279,10 +242,8 @@ public class ViewManager
 	public static ViewManager getInstance()
 	{
 		// If we don't have a singleton reference to our view manager, create one
-		if (instance == null) {
-			logger.info("Singleton instance is NULL");
+		if (instance == null)
 			instance = new ViewManager();
-		}
 		return instance;
 	}
 	/***************** Setters ************************/

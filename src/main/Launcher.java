@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -89,9 +90,9 @@ public class Launcher extends Application
 							try
 							{
 								if (bookBool)
-									ViewManager.getInstance().saveBookChanges();
+									ViewManager.getInstance().getCurrController().saveBookChanges();
 								else if (authorBool)
-									ViewManager.getInstance().saveAuthorChanges();
+									ViewManager.getInstance().getAuthorController().saveAuthorChanges();
 							}
 							// An issue occurred when trying to save the book in the database
 							catch (GatewayException e)
@@ -101,7 +102,7 @@ public class Launcher extends Application
 								// Prevent the application from closing
 								event.consume();
 								// Display the error message through an alert
-								ViewManager.getInstance().showErrAlert(e.getMessage());
+								ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 							}
 						}
 					}
@@ -117,5 +118,9 @@ public class Launcher extends Application
 	}
 	public static void setMainPane(BorderPane mainPane) {
 		Launcher.mainPane = mainPane;
+	}
+
+	public static Stage getStage() {
+		return stage;
 	}	
 }

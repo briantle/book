@@ -30,6 +30,7 @@ public class AuthorBookTableGateway
 	{
 		logger.info("Getting Authors for Book at id " + bookId);
 		AuthorBook ab = null;
+		Author author;
 		ObservableList<AuthorBook> authorBookList = FXCollections.observableArrayList();
 		try
 		{
@@ -39,12 +40,12 @@ public class AuthorBookTableGateway
 			while (rs.next())
 			{
 				ab = new AuthorBook();
-				Author author = ViewManager.getInstance().getAuthorGateway().getAuthorByID(rs.getInt("author_id"));
+				author = ViewManager.getInstance().getAuthorGateway().getAuthorByID(rs.getInt("author_id"));
 				if (author == null)
 					throw new GatewayException("Tried to find an author that doesn't exist in the gateway");
 				ab.setAuthor(author);
 				ab.setBook(book);
-				ab.setRoyalty((int) (rs.getDouble("royalty") * 100000));
+				ab.setRoyalty(rs.getDouble("royalty"));
 				ab.setNewRecord(false);
 				authorBookList.add(ab);
 			}
@@ -54,6 +55,34 @@ public class AuthorBookTableGateway
 		} 
 		return authorBookList;
 	}
+	public AuthorBook getAuthorBookByID(int authorID, int bookID)
+	{
+		logger.info("Attempting to get authorBook at author id: " + authorID + " book id: " + bookID);
+		Author author;
+		Book book;
+		AuthorBook authorBookdb = null;
+		try
+		{
+			prepStatement = conn.prepareStatement("select * from AuthorBook where author_id = ? and book_id = ?");
+			prepStatement.setInt(1, authorID);
+			prepStatement.setInt(2, bookID);
+			rs = prepStatement.executeQuery();
+			if (rs.next())
+			{
+				authorBookdb = new AuthorBook();
+				author = ViewManager.getInstance().getAuthorGateway().getAuthorByID(authorID);
+				book = ViewManager.getInstance().getBookGateway().getBookByID(bookID);
+				authorBookdb.setAuthor(author);
+				authorBookdb.setBook(book);
+				authorBookdb.setNewRecord(false);
+				authorBookdb.setRoyalty(rs.getDouble("royalty"));
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return authorBookdb;
+	}
 	public void addAuthorBook(AuthorBook authorBook)
 	{
 		logger.info("In Add Author Book");
@@ -61,7 +90,7 @@ public class AuthorBookTableGateway
 			prepStatement = conn.prepareStatement("insert into AuthorBook (author_id, book_id, royalty) values (?, ?, ?)");
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
 			prepStatement.setInt(2, authorBook.getBook().getId());
-			prepStatement.setDouble(3, authorBook.getRoyalty());
+			prepStatement.setDouble(3, ( ((double) authorBook.getRoyalty()) / 100000));
 			prepStatement.executeUpdate();
 			logger.info("Inserted Author Into Database");
 			/******** Audit Trail ***********/
@@ -86,15 +115,17 @@ public class AuthorBookTableGateway
 			e.printStackTrace();
 		}
 	}
-	public void updateAuthorBook(double oldRoyalty, AuthorBook authorBook)
+	public void updateAuthorBook(AuthorBook authorBook)
 	{
 		logger.info("In Update Author Book");
 		try
 		{
+			int oldRoyalty = getAuthorBookByID(authorBook.getAuthor().getId(), authorBook.getBook().getId()).getRoyalty();
 			prepStatement = conn.prepareStatement("update AuthorBook set royalty = ? where author_id = ? and book_id = ?");
 			prepStatement.setDouble(1, authorBook.getRoyalty());
 			prepStatement.setInt(2, authorBook.getAuthor().getId());
 			prepStatement.setInt(3, authorBook.getBook().getId());
+			prepStatement.executeUpdate();
 			/************************ Audit Trail **************************/
 			if (oldRoyalty != authorBook.getRoyalty())
 				insertAudit(authorBook.getBook().getId(), "Royalty changed from " + oldRoyalty + " to " + authorBook.getRoyalty());
