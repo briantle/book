@@ -1,5 +1,6 @@
 package validation;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 /**
  * 
@@ -11,6 +12,24 @@ import java.util.Calendar;
  */
 public class Validator
 {
+	public boolean validName(String firstName, String lastName)
+	{
+		if (firstName.length() < 1 || firstName.length() > 100 || lastName.length() < 1 || lastName.length() > 100)
+			return false;
+		return true;
+	}
+	public boolean validDate(LocalDate date)
+	{
+		if (date == null)
+			return false;
+		return true;
+	}
+	public boolean ValidWebsite(String website)
+	{
+		if (website.length() > 100)
+			return false;
+		return true;
+	}
 	/*****************************************************************
 	* The title of the book must be between 1 to 255 characters long
 	* @param title - the book title stored in the book model

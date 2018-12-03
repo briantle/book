@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 
+import exceptions.GatewayException;
 import gateways.AuthorTableGateway;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import model.Author;
 import singleton.ViewManager;
 
@@ -39,13 +41,18 @@ public class AuthorDetailController
 	public void handleButtonAction(ActionEvent action) throws IOException 
 	{
 		if (action.getSource() == saveButton)
-			saveAuthorChanges();
+			try {
+				saveAuthorChanges();
+			} catch (GatewayException e) {
+				ViewManager.getInstance().showAlert(AlertType.ERROR, "Error", e.getMessage());
+			}
 	}
-	public void saveAuthorChanges()
+	public void saveAuthorChanges() throws GatewayException
 	{
 		// Create an author based on the values in the detail view
-		Author currAuthor = new Author(selectedAuthor.getId(), firstNameTF.getText().trim(), lastNameTF.getText().trim()
-				, dobPicker.getValue(), genderChoiceBox.getSelectionModel().getSelectedItem(), websiteTF.getText().trim());
+		Author currAuthor = new Author(selectedAuthor.getId(), firstNameTF.getText(), lastNameTF.getText()
+				, dobPicker.getValue(), genderChoiceBox.getSelectionModel().getSelectedItem(), websiteTF.getText());
+		currAuthor.validateAuthor();
 		// Used to checked if the author exists in the database, and either saves/updates the author
 		AuthorTableGateway authorGW = ViewManager.getInstance().getAuthorGateway();
 		// The author doesn't exist in the database, so insert into the database

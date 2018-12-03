@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDate;
 
+import exceptions.GatewayException;
+import validation.Validator;
+
 public class Author 
 {
 	private int id;
@@ -20,7 +23,7 @@ public class Author
 		lastName = "";
 		dateOfBirth = null;
 		gender = "";
-		website = null;
+		website = "";
 	}
 	/************************************************************
 	* A constructor for the Author model that contains arguments
@@ -33,6 +36,16 @@ public class Author
 		this.dateOfBirth = dob;
 		this.gender = gender;
 		this.website = website;
+	}
+	public void validateAuthor() throws GatewayException 
+	{
+		Validator val = new Validator();
+		if (!val.validName(this.firstName, this.lastName))
+			throw new GatewayException("Invalid Author Name: Author not saved!");
+		if (!val.validDate(this.dateOfBirth))
+			throw new GatewayException("Invalid Date of Birth: Author not saved!");
+		if (!val.ValidWebsite(this.website))
+			throw new GatewayException("Invalid Website: Author not saved!");
 	}
 	/**************** Setters **********************/
 	public void setId(int id) {

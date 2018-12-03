@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import enums.ViewType;
 import exceptions.GatewayException;
+import gateways.AuthorBookTableGateway;
 import gateways.BookTableGateway;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -111,29 +112,8 @@ public class BookDetailController
 					ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", "You must enter an amount for the royalty");
 				else
 				{
-					// Check to see if the user actually passed in a number, an exception will occur if it's not a number
-					Integer.parseInt(royaltyTextField.getText());
-					// Check to see if user is trying to add an author that already exists in the authorBook list
-					for (int i = 0; i < authorBookList.size(); i++)
-					{
-						// User has attempted to add an author that already exists, show an error message and leave function
-						if (authorComboBox.getSelectionModel().getSelectedItem().getId() == authorBookList.get(i).getAuthor().getId())
-						{
-							ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", "You are trying to add an author that is already associated with the book");
-							return;
-						}
-					}
-					// Create a new authorBook based on the combo box and text field
-					AuthorBook authorBook = new AuthorBook();
-					authorBook.setAuthor(authorComboBox.getSelectionModel().getSelectedItem());
-					authorBook.setBook(selectedBook);
-					authorBook.setNewRecord(true);
-					authorBook.setRoyalty( ((double) Integer.parseInt(royaltyTextField.getText()) / 100000));
-					// Add the new authorBook to the list and then refresh the table view to show the new authorBook
-					authorBookList.add(authorBook);
-					populateTableColumns();
-					// Clear the fields after adding in a new author to the list
-					clearAddAuthorFields();
+					isAuthorFieldsValid();
+					addAuthorToTable();
 				}
 			}
 			// The user either entered in words/letters or a number that is either too large to too small
@@ -141,6 +121,8 @@ public class BookDetailController
 			{
 				e.printStackTrace();
 				ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", "You entered in an invalid royalty amount!");
+			} catch (GatewayException e) {
+				ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", e.getMessage());
 			}
 		}
 		// User clicked on audit trail button, so switch to the audit trail view
@@ -333,36 +315,138 @@ public class BookDetailController
 			}
 		}
 		// Check to see if we've removed an author from the authorBook list
-		
+		boolean isRemoved = false;
+		ObservableList<AuthorBook> authorBookDB = ViewManager.getInstance().getAuthorBookGateway().getAuthorsForBook(selectedBook, selectedBook.getId());
+		for (int i = 0; i < authorBookDB.size(); i++)
+		{
+			isRemoved = true;
+			for (int j = 0; j < authorBookList.size(); j++)
+			{
+				if (authorBookDB.get(i).getAuthor().getId() == authorBookList.get(j).getAuthor().getId())
+				{
+					isRemoved = false;
+					break;
+				}
+			}
+			if (isRemoved)
+				return true;
+		}
 		// All the fields are similar
 		return false;
 	}
 	public void saveBookChanges() throws GatewayException
 	{
-		// Make a temporary book in case the validation fails
-		Book newBook = new Book(selectedBook.getId(), tfTitle.getText(), tfSummary.getText(), Integer.valueOf(tfYearPublished.getText()), tfISBN.getText()
-				               , selectedBook.getLastModified(), selectedBook.getDateAdded(), getPublisherSelection());
-		
-		// Make sure the values in the book are valid before saving them in the database
-		newBook.validateBook();
-		// Get reference to the database
-		BookTableGateway gateway = ViewManager.getInstance().getBookGateway();
-		// This book doesn't exist in the database, so we are going to insert it into the database
-		if (gateway.getBookByID(newBook.getId()) == null)
-			gateway.saveBook(newBook);
-		// The book already exists in the database, so let's update it
-		else
-			gateway.updateBook(selectedBook, newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
-		// Copy the changes made to the original book
-		selectedBook = newBook;
-		// If the audit trail button is disabled, enable it
-		if (auditButton.isDisabled())
-			auditButton.setDisable(false);
+		try
+		{
+			// Make a temporary book in case the validation fails
+			Book newBook = new Book(selectedBook.getId(), tfTitle.getText(), tfSummary.getText(), Integer.valueOf(tfYearPublished.getText()), tfISBN.getText()
+					               , selectedBook.getLastModified(), selectedBook.getDateAdded(), getPublisherSelection());
+			
+			// Make sure the values in the book are valid before saving them in the database
+			newBook.validateBook();
+			isAuthorFieldsValid();
+			if (authorComboBox.getSelectionModel().getSelectedItem() != null && !royaltyTextField.getText().isEmpty())
+				addAuthorToTable();
+			// Get reference to the database
+			BookTableGateway gateway = ViewManager.getInstance().getBookGateway();
+			// This book doesn't exist in the database, so we are going to insert it into the database
+			if (gateway.getBookByID(newBook.getId()) == null)
+			{
+				gateway.saveBook(newBook);
+				for (int i = 0; i < authorBookList.size(); i++)
+					ViewManager.getInstance().getAuthorBookGateway().addAuthorBook(authorBookList.get(i));
+			}
+			// The book already exists in the database, so let's update it
+			else
+			{
+				gateway.updateBook(selectedBook, newBook, "Book is not up to date! Go back to the book list to get the updated version of the book.");
+				AuthorBookTableGateway authorBookGateway = ViewManager.getInstance().getAuthorBookGateway();
+				// Check if we have to add new authorBook records
+				addNewRecords(authorBookGateway);
+				// Check if we have to update or delete any authorBook records
+				updateAndDeleteRecords(authorBookGateway);
+			}
+			// Copy the changes made to the original book
+			selectedBook = newBook;
+			// Refresh Table View
+			populateAuthorBookTable();
+			// If the audit trail button is disabled, enable it
+			if (auditButton.isDisabled())
+				auditButton.setDisable(false);
+		}
+		catch(NumberFormatException e) {
+			e.printStackTrace();
+			ViewManager.getInstance().showAlert(AlertType.ERROR, "ERROR", "You entered in an invalid royalty amount!");
+		}
+	}
+	public void addNewRecords(AuthorBookTableGateway authorBookGateway)
+	{
+		for (int i = 0; i < authorBookList.size(); i++)
+		{
+			if (authorBookList.get(i).isNewRecord())
+				authorBookGateway.addAuthorBook(authorBookList.get(i));
+		}
+	}
+	public void updateAndDeleteRecords(AuthorBookTableGateway authorBookGateway)
+	{
+		// Used to check if we need to remove an authorbook from the database
+		boolean isRemoved = false;
+		ObservableList<AuthorBook> authorBookDB = authorBookGateway.getAuthorsForBook(selectedBook, selectedBook.getId());
+		for (int i = 0; i < authorBookDB.size(); i++)
+		{
+			isRemoved = true;
+			for (int j = 0; j < authorBookList.size(); j++)
+			{
+				if (authorBookDB.get(i).getAuthor().getId() == authorBookList.get(j).getAuthor().getId())
+				{
+					authorBookGateway.updateAuthorBook(authorBookList.get(j));
+					isRemoved = false;
+					break;
+				}
+			}
+			if (isRemoved)
+				authorBookGateway.deleteAuthorBook(authorBookDB.get(i));
+		}
 	}
 	public void clearAddAuthorFields()
 	{
 		authorComboBox.getSelectionModel().clearSelection();
 		royaltyTextField.clear();
+	}
+	public void isAuthorFieldsValid() throws GatewayException
+	{
+		if (authorComboBox.getSelectionModel().getSelectedItem() == null && !royaltyTextField.getText().isEmpty())
+			throw new GatewayException("You must select an author from the combo box");
+		else if (authorComboBox.getSelectionModel().getSelectedItem() != null && royaltyTextField.getText().isEmpty())
+			throw new GatewayException("You must enter an amount for the royalty");
+		else if (authorComboBox.getSelectionModel().getSelectedItem() != null && !royaltyTextField.getText().isEmpty())
+		{
+			// Check to see if the user actually passed in a number, an exception will occur if it's not a number
+			Integer.parseInt(royaltyTextField.getText());
+			// Check to see if user is trying to add an author that already exists in the authorBook list
+			for (int i = 0; i < authorBookList.size(); i++)
+			{
+				// User has attempted to add an author that already exists, show an error message and leave function
+				if (authorComboBox.getSelectionModel().getSelectedItem().getId() == authorBookList.get(i).getAuthor().getId())
+				{
+					throw new GatewayException("You are trying to add an author that is already associated with the book");
+				}
+			}
+		}
+	}
+	public void addAuthorToTable()
+	{
+		// Create a new authorBook based on the combo box and text field
+		AuthorBook authorBook = new AuthorBook();
+		authorBook.setAuthor(authorComboBox.getSelectionModel().getSelectedItem());
+		authorBook.setBook(selectedBook);
+		authorBook.setNewRecord(true);
+		authorBook.setRoyalty( ((double) Integer.parseInt(royaltyTextField.getText()) / 100000));
+		// Add the new authorBook to the list and then refresh the table view to show the new authorBook
+		authorBookList.add(authorBook);
+		populateTableColumns();
+		// Clear the fields after adding in a new author to the list
+		clearAddAuthorFields();
 	}
 	/********************* Setters *******************/
 	public void setSelectedBook(Book selectedBook) {

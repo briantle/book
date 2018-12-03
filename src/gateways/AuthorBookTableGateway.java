@@ -91,8 +91,9 @@ public class AuthorBookTableGateway
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
 			prepStatement.setInt(2, authorBook.getBook().getId());
 			prepStatement.setDouble(3, ( ((double) authorBook.getRoyalty()) / 100000));
-			prepStatement.executeUpdate();
+			prepStatement.execute();
 			logger.info("Inserted Author Into Database");
+			authorBook.setNewRecord(false);
 			/******** Audit Trail ***********/
 			insertAudit(authorBook.getBook().getId(), "Added Author: " + authorBook.getAuthor().getFirstName() + " " + authorBook.getAuthor().getLastName());
 		} catch (SQLException e) {
@@ -122,13 +123,14 @@ public class AuthorBookTableGateway
 		{
 			int oldRoyalty = getAuthorBookByID(authorBook.getAuthor().getId(), authorBook.getBook().getId()).getRoyalty();
 			prepStatement = conn.prepareStatement("update AuthorBook set royalty = ? where author_id = ? and book_id = ?");
-			prepStatement.setDouble(1, authorBook.getRoyalty());
+			prepStatement.setDouble(1, ( ((double) authorBook.getRoyalty()) / 100000));
 			prepStatement.setInt(2, authorBook.getAuthor().getId());
 			prepStatement.setInt(3, authorBook.getBook().getId());
 			prepStatement.executeUpdate();
 			/************************ Audit Trail **************************/
+			String authorName = authorBook.getAuthor().getFirstName() + " " + authorBook.getAuthor().getLastName();
 			if (oldRoyalty != authorBook.getRoyalty())
-				insertAudit(authorBook.getBook().getId(), "Royalty changed from " + oldRoyalty + " to " + authorBook.getRoyalty());
+				insertAudit(authorBook.getBook().getId(), "Royalty for " + authorName + " changed from " + oldRoyalty + " to " + authorBook.getRoyalty());
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
