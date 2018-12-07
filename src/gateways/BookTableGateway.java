@@ -169,12 +169,12 @@ public class BookTableGateway
 	 * 
 	 * @return a list of books from the database that will be displayed on the list view
 	 */
-	public ObservableList<Book> getBooks(int x, int y)
+	public ObservableList<Book> getBooks(int x, int y, String match)
 	{
 		ObservableList<Book> bookList = FXCollections.observableArrayList();
 		try 
 		{
-			prepStatement = conn.prepareStatement("select * from Book limit ?,?");
+			prepStatement = conn.prepareStatement("select * from Book where title like '%" + match + "%' limit ?,?");
 			minVal += x;
 			maxVal += y;
 			prepStatement.setInt(1, minVal);
@@ -249,11 +249,11 @@ public class BookTableGateway
 		}
 		return auditTrailList;
 	}
-	public int getCount()
+	public int getCount(String match)
 	{
 		int count = 0;
 		try {
-			prepStatement = conn.prepareStatement("select count(*) as count from Book");
+			prepStatement = conn.prepareStatement("select count(*) as count from Book where title like '%" + match + "%'");
 			rs = prepStatement.executeQuery();
 			if (rs.next())
 				count = rs.getInt("count");

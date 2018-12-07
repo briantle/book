@@ -31,6 +31,7 @@ public class BookListController
 	private BookTableGateway bGateway;
 	private static Logger log = LogManager.getLogger();
 	ObservableList<Book> bookList = FXCollections.observableArrayList();
+	private String lowerCaseFilter = "";
 	private static int maxRecord = 0;
 	/**************************************************
 	* Displays the books in the list view
@@ -43,8 +44,10 @@ public class BookListController
 		prev.setDisable(true);
 		bGateway.minVal = 0;
 		bGateway.maxVal = 0;
-		// Get the list of books from the database and then display them on the listView
-		resetListView(0, 50);
+		bookList = bGateway.getBooks(0, 50, lowerCaseFilter);
+		maxRecord = bookList.size();
+		searchHandler();
+		populateListView();
 		// is called when the user clicks somewhere on the list view
 		bookListView.setOnMouseClicked(new EventHandler<MouseEvent>()
 		{
@@ -69,20 +72,12 @@ public class BookListController
 	******************************************************/
 	public void resetListView(int x, int y)
 	{
-		bookList = bGateway.getBooks(x, y);
+		bookList = bGateway.getBooks(x, y, lowerCaseFilter);
 		// Get the list of books from the database
-		bookListView.setItems(bookList);
+		//bookListView.setItems(bookList);
+		searchHandler();
 		// Populate the list view with the books
 		populateListView();
-		/*
-		if (x == 0)
-			maxRecord = 50;
-		else if (bookList.getItems().size() >= 50)
-			maxRecord += 50;
-		else
-			maxRecord += bookList.getItems().size();
-		*/
-		//fetched.setText("Fetched records " + (bGateway.minVal+1) + " to " + maxRecord);
 	}
 	/********************************************
 	* Populates the list view with the book list.
@@ -135,48 +130,93 @@ public class BookListController
 	{
 		if (event.getSource() == first)
 		{
+			if (bGateway.minVal <= 0)
+				return;
 			prev.setDisable(true);
 			next.setDisable(false);
 			bGateway.minVal = 0;
 			bGateway.maxVal = 0;
 			resetListView(0, 50);
+			maxRecord = bookList.size();
+			displayFetched();
 		}
 		else if (event.getSource() == prev)
 		{
+			if (bGateway.minVal <= 0)
+				return;
 			next.setDisable(false);
 			resetListView(-50, 0);
+			maxRecord -= bookList.size();
+			displayFetched();
 		}
 		else if (event.getSource() == next)
 		{
+			if (bGateway.minVal >= bGateway.getCount(lowerCaseFilter)-50)
+				return;
 			prev.setDisable(false);
 			resetListView(50, 0);
+			maxRecord += bookList.size();
+			displayFetched();
 		}
 		else if (event.getSource() == last)
 		{
+			if (bookListView.getItems().size() < 50)
+				return;
 			next.setDisable(true);
 			prev.setDisable(false);
 			bGateway.minVal = 0;
-			resetListView(bGateway.getCount()-50, 0);	
+			resetListView(bGateway.getCount(lowerCaseFilter)-50, 0);	
+			maxRecord = bGateway.getCount(lowerCaseFilter);
+			displayFetched();
 		}
 		else if (event.getSource() == search)
+			searchHandler();
+	}
+	public void searchHandler()
+	{
+		// p-> true is a predicate that must be true. This is a lambda expression
+		FilteredList<Book> filteredBooks = new FilteredList<>(bookList, p-> true);
+		filteredBooks.setPredicate(book ->
 		{
-			// p-> true is a predicate that must be true. This is a lambda expression
-			FilteredList<Book> filteredBooks = new FilteredList<>(bookList, p-> true);
-			filteredBooks.setPredicate(book ->
-			{
-				// if filter is empty, display all books
-				if(searchTF.getText() == null || searchTF.getText().isEmpty()) 
-					return true;
-				
-				String lowerCaseFilter = searchTF.getText().toLowerCase();
-				
-				if(book.getTitle().toLowerCase().contains(lowerCaseFilter)) 
-					return true;
-				
-				return false;
-			});
+			// if filter is empty, display all books
+			if(searchTF.getText() == null || searchTF.getText().isEmpty()) {
+				lowerCaseFilter = "";
+				return true;
+			}
+			lowerCaseFilter = searchTF.getText().toLowerCase();
+			// filter matches, display books that contains that filter
+			if(book.getTitle().toLowerCase().contains(lowerCaseFilter)) 
+				return true;
+			return false;
+		});
+		// Adds the remaining books to the list until it reaches 50
+		if (filteredBooks.size() < 50 && bGateway.getCount(lowerCaseFilter) >= 50) 
+			bookListView.setItems(bGateway.getBooks(0, 0, lowerCaseFilter));
+		// Start at the beginning
+		else if (filteredBooks.size() < 50 && bGateway.getCount(lowerCaseFilter) < 50)
+		{
+			bGateway.minVal = 0;
+			bGateway.maxVal = 0;
+			bookListView.setItems(bGateway.getBooks(0, 50, lowerCaseFilter));
+		}
+		else
 			bookListView.setItems(filteredBooks);
-			populateListView();
+		populateListView();
+		displayFetched();
+	}
+	public void displayFetched()
+	{
+		if (bookListView.getItems().size() < 50 && bookListView.getItems().size() >= 1)
+			fetched.setText("Fetched records 1 to " + bookListView.getItems().size() + " out of " + bookListView.getItems().size());
+		else if (bookListView.getItems().size() <= 0)
+			fetched.setText("Fetched 0 records");
+		else
+		{
+			if (maxRecord > bGateway.getCount(lowerCaseFilter))
+				maxRecord = bGateway.getCount(lowerCaseFilter);
+			bGateway.minVal = maxRecord-50;
+			bGateway.maxVal = maxRecord;
+			fetched.setText("Fetched records " + (maxRecord-50) + " to " + maxRecord + " out of " + bGateway.getCount(lowerCaseFilter));
 		}
 	}
 }
