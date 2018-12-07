@@ -90,7 +90,7 @@ public class AuthorTableGateway
 	**********************************************/
 	public void saveAuthor(Author author)
 	{
-		logger.info("Inserting a new author");
+		//logger.info("Inserting a new author");
 		try {
 			String query = "insert into Author (first_name, last_name, dob, gender, web_site) values (?, ?, ?, ?, ?)";
 			prepStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -116,7 +116,7 @@ public class AuthorTableGateway
 	******************************************************************************/
 	public void deleteAuthor(int authorId)
 	{
-		logger.info("In Delete Author");
+		//logger.info("In Delete Author");
 		try 
 		{
 			prepStatement = conn.prepareStatement("delete from Author where id = ?");
@@ -134,7 +134,7 @@ public class AuthorTableGateway
 	**********************************************************************************/
 	public void updateAuthor(Author updatedAuthor)
 	{
-		logger.info("Updating an author");
+		//logger.info("Updating an author");
 		try {
 			prepStatement = conn.prepareStatement("update Author set first_name = ?, last_name = ?, dob = ?, gender = ?, web_site = ? where id = ?");
 			// Update the author record

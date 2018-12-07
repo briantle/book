@@ -49,7 +49,7 @@ public class PublisherTableGateway
 	}
 	public Publisher fetchPubById(int pubId) throws SQLException
 	{
-		log.info("Fetching Publisher by id " + pubId);
+		//log.info("Fetching Publisher by id " + pubId);
 		Publisher pub = new Publisher();
 		prepStatement = conn.prepareStatement("select * from Publisher where id = ?");
 		prepStatement.setInt(1, pubId);

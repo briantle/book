@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="347.0" prefWidth="729.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controllers.BookListController">
+<BorderPane prefHeight="347.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BookListController">
   <!-- TODO Add Nodes -->
   <center>
-    <ListView id="listBooks" fx:id="bookList" prefHeight="375.0" prefWidth="773.0" />
+    <ListView id="listBooks" fx:id="bookListView" prefHeight="375.0" prefWidth="773.0" />
   </center>
+   <top>
+      <Pane prefHeight="43.0" prefWidth="729.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="82.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" />
+            <TextField fx:id="searchTF" layoutX="166.0" layoutY="5.0" prefHeight="31.0" prefWidth="398.0" />
+            <Button fx:id="search" layoutX="599.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Search" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="63.0" prefWidth="729.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="first" layoutX="52.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonAction" text="First" />
+            <Button fx:id="prev" layoutX="150.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Prev" />
+            <Button fx:id="next" layoutX="252.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Next" />
+            <Button fx:id="last" layoutX="348.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Last" />
+            <Text fx:id="fetched" layoutX="434.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="264.6708984375" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>

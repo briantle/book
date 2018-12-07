@@ -24,6 +24,9 @@ public class BookTableGateway
 	private ResultSet rs = null;
 	private PreparedStatement prepStatement = null;
 	
+	public static int minVal = 0;
+	public static int maxVal = 0;
+	
 	public BookTableGateway(Connection conn) {
 		this.conn = conn;
 	}
@@ -33,7 +36,7 @@ public class BookTableGateway
 	 */
 	public void deleteBook(Book bookToDelete) 
 	{
-		logger.info("In Delete Book");
+		//logger.info("In Delete Book");
 		try {
 			prepStatement = conn.prepareStatement("delete from Book where id = ?");
 			prepStatement.setInt(1, bookToDelete.getId());
@@ -49,7 +52,7 @@ public class BookTableGateway
 	 */
 	public void saveBook(Book bookToSave)
 	{
-		logger.info("In Save Book");
+		//logger.info("In Save Book");
 		try 
 		{
 			// Insert book into database
@@ -74,14 +77,14 @@ public class BookTableGateway
 			
 			if (rs.next()) 
 				bookToSave.setLastModified(rs.getTimestamp("last_modified").toLocalDateTime());
-			logger.info("Saved " + bookToSave.getTitle());
+			//logger.info("Saved " + bookToSave.getTitle());
 			
 			// Audit Trail
 			prepStatement = conn.prepareStatement("insert into BookAuditTrail (book_id, entry_msg) values (?, ?)");
 			prepStatement.setInt(1, bookToSave.getId());
 			prepStatement.setString(2, "Book Added");
 			prepStatement.execute();
-			logger.info("Created Audit Trail for " + bookToSave.getTitle());
+			//logger.info("Created Audit Trail for " + bookToSave.getTitle());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -95,8 +98,7 @@ public class BookTableGateway
 	{
 		try 
 		{
-			logger.info("In Update Book");
-			
+			//logger.info("In Update Book");
 			prepStatement = conn.prepareStatement("select * from Book where id = ?");
 			prepStatement.setInt(1, bookToUpdate.getId());
 			rs = prepStatement.executeQuery();
@@ -167,12 +169,16 @@ public class BookTableGateway
 	 * 
 	 * @return a list of books from the database that will be displayed on the list view
 	 */
-	public ObservableList<Book> getBooks()
+	public ObservableList<Book> getBooks(int x, int y)
 	{
 		ObservableList<Book> bookList = FXCollections.observableArrayList();
 		try 
 		{
-			prepStatement = conn.prepareStatement("select * from Book");
+			prepStatement = conn.prepareStatement("select * from Book limit ?,?");
+			minVal += x;
+			maxVal += y;
+			prepStatement.setInt(1, minVal);
+			prepStatement.setInt(2, maxVal);
 			rs = prepStatement.executeQuery();
 			
 			while(rs.next())
@@ -223,7 +229,7 @@ public class BookTableGateway
 	public ObservableList<AuditTrailEntry> getAuditTrails(int bookId)
 	{
 		//"select * from BookAuditTrail audit join Book book on audit.book_id = book.id where book.id = ? order by audit.date_added asc"
-		logger.info("Getting Audit Trails for book at id: " + bookId);
+		//logger.info("Getting Audit Trails for book at id: " + bookId);
 		ObservableList<AuditTrailEntry> auditTrailList = FXCollections.observableArrayList();
 		try 
 		{
@@ -242,5 +248,19 @@ public class BookTableGateway
 			e.printStackTrace();
 		}
 		return auditTrailList;
+	}
+	public int getCount()
+	{
+		int count = 0;
+		try {
+			prepStatement = conn.prepareStatement("select count(*) as count from Book");
+			rs = prepStatement.executeQuery();
+			if (rs.next())
+				count = rs.getInt("count");
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

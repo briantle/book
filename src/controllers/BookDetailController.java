@@ -342,9 +342,17 @@ public class BookDetailController
 			Book newBook = new Book(selectedBook.getId(), tfTitle.getText(), tfSummary.getText(), Integer.valueOf(tfYearPublished.getText()), tfISBN.getText()
 					               , selectedBook.getLastModified(), selectedBook.getDateAdded(), getPublisherSelection());
 			
+			/*************************** Error Checking ******************/
 			// Make sure the values in the book are valid before saving them in the database
 			newBook.validateBook();
+			// Check if the user input any data to the author royalty or combo box and make sure they are valid
 			isAuthorFieldsValid();
+			// The book must have at least 1 author
+			if (authorBookList.size() <= 0)
+				throw new GatewayException("ERROR: Book must contain at least 1 author!");
+			
+			/************************** Save Changes Here ****************************/
+			// If the user filled out the author royalty and combo box but didn't save them, save them and add to the authorBook list
 			if (authorComboBox.getSelectionModel().getSelectedItem() != null && !royaltyTextField.getText().isEmpty())
 				addAuthorToTable();
 			// Get reference to the database

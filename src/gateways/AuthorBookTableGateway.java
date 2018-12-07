@@ -28,7 +28,7 @@ public class AuthorBookTableGateway
 	}
 	public ObservableList<AuthorBook> getAuthorsForBook(Book book, int bookId)
 	{
-		logger.info("Getting Authors for Book at id " + bookId);
+		//logger.info("Getting Authors for Book at id " + bookId);
 		AuthorBook ab = null;
 		Author author;
 		ObservableList<AuthorBook> authorBookList = FXCollections.observableArrayList();
@@ -57,7 +57,7 @@ public class AuthorBookTableGateway
 	}
 	public AuthorBook getAuthorBookByID(int authorID, int bookID)
 	{
-		logger.info("Attempting to get authorBook at author id: " + authorID + " book id: " + bookID);
+		//logger.info("Attempting to get authorBook at author id: " + authorID + " book id: " + bookID);
 		Author author;
 		Book book;
 		AuthorBook authorBookdb = null;
@@ -85,7 +85,7 @@ public class AuthorBookTableGateway
 	}
 	public void addAuthorBook(AuthorBook authorBook)
 	{
-		logger.info("In Add Author Book");
+		//logger.info("In Add Author Book");
 		try {
 			prepStatement = conn.prepareStatement("insert into AuthorBook (author_id, book_id, royalty) values (?, ?, ?)");
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
@@ -102,7 +102,7 @@ public class AuthorBookTableGateway
 	}
 	public void deleteAuthorBook(AuthorBook authorBook)
 	{
-		logger.info("In Delete Author Book");
+		//logger.info("In Delete Author Book");
 		try {
 			prepStatement = conn.prepareStatement("delete from AuthorBook where author_id = ? and book_id = ?");
 			prepStatement.setInt(1, authorBook.getAuthor().getId());
@@ -118,7 +118,7 @@ public class AuthorBookTableGateway
 	}
 	public void updateAuthorBook(AuthorBook authorBook)
 	{
-		logger.info("In Update Author Book");
+		//logger.info("In Update Author Book");
 		try
 		{
 			int oldRoyalty = getAuthorBookByID(authorBook.getAuthor().getId(), authorBook.getBook().getId()).getRoyalty();
