@@ -42,8 +42,7 @@ public class BookListController
 		bGateway = ViewManager.getInstance().getBookGateway();
 		// By default we start on the page that shows the first 50 books so we don't need a previous button
 		prev.setDisable(true);
-		bGateway.minVal = 0;
-		bGateway.maxVal = 0;
+		resetXandY();
 		bookList = bGateway.getBooks(0, 50, lowerCaseFilter);
 		maxRecord = bookList.size();
 		searchHandler();
@@ -134,8 +133,7 @@ public class BookListController
 				return;
 			prev.setDisable(true);
 			next.setDisable(false);
-			bGateway.minVal = 0;
-			bGateway.maxVal = 0;
+			resetXandY();
 			resetListView(0, 50);
 			maxRecord = bookList.size();
 			displayFetched();
@@ -195,8 +193,7 @@ public class BookListController
 		// Start at the beginning
 		else if (filteredBooks.size() < 50 && bGateway.getCount(lowerCaseFilter) < 50)
 		{
-			bGateway.minVal = 0;
-			bGateway.maxVal = 0;
+			resetXandY();
 			bookListView.setItems(bGateway.getBooks(0, 50, lowerCaseFilter));
 		}
 		else
@@ -214,9 +211,12 @@ public class BookListController
 		{
 			if (maxRecord > bGateway.getCount(lowerCaseFilter))
 				maxRecord = bGateway.getCount(lowerCaseFilter);
-			bGateway.minVal = maxRecord-50;
-			bGateway.maxVal = maxRecord;
 			fetched.setText("Fetched records " + (maxRecord-50) + " to " + maxRecord + " out of " + bGateway.getCount(lowerCaseFilter));
 		}
+	}
+	public void resetXandY()
+	{
+		bGateway.minVal = 0;
+		bGateway.maxVal = 0;
 	}
 }

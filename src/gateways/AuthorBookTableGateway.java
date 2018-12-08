@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import model.Author;
 import model.AuthorBook;
 import model.Book;
+import model.Publisher;
 import singleton.ViewManager;
 
 public class AuthorBookTableGateway 
@@ -53,6 +54,35 @@ public class AuthorBookTableGateway
 		catch (GatewayException | SQLException e) {
 			e.printStackTrace();
 		} 
+		return authorBookList;
+	}
+	public ObservableList<AuthorBook> getAuthorBooksByPublisher(Publisher pub)
+	{
+		AuthorBook ab;
+		Author author;
+		Book book;
+		ObservableList<AuthorBook> authorBookList = FXCollections.observableArrayList();
+		try
+		{
+			prepStatement = conn.prepareStatement("select * from Book, AuthorBook where id = book_id and publisher_id = ?");
+			prepStatement.setInt(1, pub.getId());
+			rs = prepStatement.executeQuery();
+			while (rs.next())
+			{
+				ab = new AuthorBook();
+				author = ViewManager.getInstance().getAuthorGateway().getAuthorByID(rs.getInt("author_id"));
+				ab.setAuthor(author);
+				book = new Book(rs.getInt("id"), rs.getString("title"), rs.getString("summary"), rs.getInt("year_published")
+						, rs.getString("isbn"), rs.getTimestamp("last_modified").toLocalDateTime(), rs.getTimestamp("date"), pub);
+				ab.setBook(book);
+				ab.setRoyalty(rs.getDouble("royalty"));
+				ab.setNewRecord(false);
+				authorBookList.add(ab);
+			}
+		}
+		catch (SQLException e){
+			e.printStackTrace();
+		}
 		return authorBookList;
 	}
 	public AuthorBook getAuthorBookByID(int authorID, int bookID)

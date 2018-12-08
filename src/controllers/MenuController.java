@@ -19,7 +19,7 @@ import singleton.ViewManager;
 public class MenuController 
 {
 	private static Logger logger = LogManager.getLogger();
-	@FXML private MenuItem menuQuit, bookList, addBook, authorList, addAuthor;
+	@FXML private MenuItem menuQuit, bookList, addBook, authorList, addAuthor, createExcel;
 	
 	@FXML private void handleMenuAction(ActionEvent event) throws IOException, GatewayException
 	{
@@ -73,5 +73,7 @@ public class MenuController
 		// Open up author detail view with empty author information
 		if (event.getSource() == addAuthor)
 			ViewManager.getInstance().changeView(ViewType.AUTHOR_DETAIL, null);
+		if (event.getSource() == createExcel)
+			ViewManager.getInstance().changeView(ViewType.EXCEL_SPREADSHEET, null);
 	}
 }

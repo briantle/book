@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="borderId" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane fx:id="paneId" prefHeight="319.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="publisherComboBox" layoutX="230.0" layoutY="38.0" prefWidth="150.0" />
+            <Text layoutX="271.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publishers" />
+            <TextField fx:id="saveField" layoutX="154.0" layoutY="136.0" prefHeight="31.0" prefWidth="302.0" />
+            <Text layoutX="162.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose directory to save excel spreadsheet" />
+            <Button fx:id="saveButton" layoutX="222.0" layoutY="202.0" mnemonicParsing="false" onAction="#saveHandler" text="Generate Excel Report" />
+            <Button fx:id="browseButton" layoutX="468.0" layoutY="136.0" mnemonicParsing="false" onAction="#browseHandler" text="Browse" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

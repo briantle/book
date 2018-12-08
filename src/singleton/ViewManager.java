@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import controllers.AuditTrailController;
 import controllers.AuthorDetailController;
 import controllers.BookDetailController;
+import controllers.ExcelDetailController;
 import enums.ViewType;
 import exceptions.GatewayException;
 import gateways.AuthorBookTableGateway;
@@ -37,6 +38,7 @@ public class ViewManager
 	private AuthorDetailController authorController = null;
 	private BookDetailController currController = null;
 	private AuditTrailController auditController = null;
+	private ExcelDetailController excelController = null;
 	private FXMLLoader loader = null;
 	/**********************************************************************
 	 * Constructor that gets a reference to several tables in the database.
@@ -68,7 +70,7 @@ public class ViewManager
 		{
 			// We are in the audit view, clicked on add author/book, or we haven't changed the values and therefore we just switch and don't have to check for 
 			// unsaved changes
-			if (auditController != null || currController == null && authorController == null 
+			if (auditController != null || currController == null && authorController == null && excelController == null
 					|| currController != null && !currController.isBookDifferent() || authorController != null && !authorController.isAuthDifferent())
 				swapViews(obj, view);
 			// If we are in the book detail view and have changed values
@@ -136,6 +138,8 @@ public class ViewManager
 		// Audit Trail
 		else if (view == ViewType.AUDIT_TRAIL)
 			switchToAuditTrail(newRoot);
+		else if (view == ViewType.EXCEL_SPREADSHEET)
+			switchToDetailView(null, newRoot, "", "/fxml/ExcelDetailView.fxml");
 	}
 	/**
 	 * 
@@ -186,13 +190,12 @@ public class ViewManager
 	*********************************************************************/
 	public void switchToAuditTrail(BorderPane newRoot) throws IOException
 	{
+		setControllersNull(true, true, false, true);
 		loader = new FXMLLoader(getClass().getResource("/fxml/AuditTrailView.fxml"));
 		this.auditController = new AuditTrailController(currController.getSelectedBook(), currController.getSelectedBook().getAuditTrailList());
 		loader.setController(this.auditController);
 		newRoot = loader.load();
 		loadView(newRoot);
-		this.currController = null;
-		this.authorController = null;
 	}
 	/*********************************************************************
 	* Switches to the list view. It could either be the author list view
@@ -200,7 +203,7 @@ public class ViewManager
 	**********************************************************************/
 	public void switchToListView(BorderPane newRoot, String listViewPath) throws IOException
 	{
-		setControllersNull();
+		setControllersNull(true, true, true, true);
 		newRoot = (BorderPane) FXMLLoader.load(getClass().getResource(listViewPath));
 		loadView(newRoot);
 	}
@@ -213,7 +216,7 @@ public class ViewManager
 		loader = new FXMLLoader(getClass().getResource(fxmlPath));
 		if (dataType == "BOOK")
 		{
-			this.authorController = null;
+			setControllersNull(false, true, true, true);
 			// Create a new book detail controller with our specified book
 			currController = new BookDetailController((Book) obj, pubGateway.fetchPublishers());
 			// Set up the controller for our fxml
@@ -221,19 +224,29 @@ public class ViewManager
 		}
 		else if (dataType == "AUTHOR")
 		{
-			this.currController = null;
+			setControllersNull(true, false, true, true);
 			authorController = new AuthorDetailController((Author) obj);
 			loader.setController(authorController);
 		}
-		this.auditController = null;
+		else
+		{
+			setControllersNull(true, true, true, false);
+			excelController = new ExcelDetailController(pubGateway);
+			loader.setController(excelController);
+		}
 		newRoot = loader.load();
 		loadView(newRoot);
 	}
-	public void setControllersNull()
+	public void setControllersNull(boolean setBookNull, boolean setAuthorNull, boolean setAuditNull, boolean setExcelNull)
 	{
-		this.currController = null;
-		this.auditController = null;
-		this.authorController = null;
+		if (setExcelNull)
+			this.excelController = null;
+		if (setBookNull)
+			this.currController = null;
+		if (setAuditNull)
+			this.auditController = null;
+		if (setAuthorNull)
+			this.authorController = null;
 	}
 	/*****************************
 	 * Sets up singleton

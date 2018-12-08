@@ -8126,3 +8126,271 @@
 18:02:20.721 INFO  gateways.GatewayManager : Logged out of database
 18:02:28.408 INFO  gateways.GatewayManager : Connected to database
 18:02:52.934 INFO  gateways.GatewayManager : Logged out of database
+19:13:17.088 INFO  gateways.GatewayManager : Connected to database
+19:13:41.646 INFO  gateways.GatewayManager : Logged out of database
+19:17:00.304 INFO  gateways.GatewayManager : Connected to database
+19:17:16.738 INFO  gateways.GatewayManager : Logged out of database
+19:18:31.000 INFO  gateways.GatewayManager : Connected to database
+19:19:07.784 INFO  gateways.GatewayManager : Logged out of database
+21:09:42.214 INFO  gateways.GatewayManager : Connected to database
+21:10:03.930 INFO  gateways.GatewayManager : Logged out of database
+21:10:22.689 INFO  gateways.GatewayManager : Connected to database
+21:10:37.592 INFO  gateways.GatewayManager : Logged out of database
+21:12:33.298 INFO  gateways.GatewayManager : Connected to database
+21:13:03.967 INFO  gateways.GatewayManager : Logged out of database
+21:15:18.164 INFO  gateways.GatewayManager : Connected to database
+21:17:00.273 INFO  gateways.GatewayManager : Logged out of database
+21:19:00.080 INFO  gateways.GatewayManager : Connected to database
+21:19:38.142 INFO  gateways.GatewayManager : Logged out of database
+21:22:48.654 INFO  gateways.GatewayManager : Connected to database
+21:23:12.382 INFO  gateways.GatewayManager : Logged out of database
+21:48:24.973 INFO  gateways.GatewayManager : Connected to database
+21:49:40.015 INFO  gateways.GatewayManager : Logged out of database
+21:51:13.242 INFO  gateways.GatewayManager : Connected to database
+21:51:34.563 INFO  gateways.GatewayManager : Logged out of database
+08:31:36.973 INFO  gateways.GatewayManager : Connected to database
+08:31:44.347 INFO  gateways.GatewayManager : Logged out of database
+08:32:30.763 INFO  gateways.GatewayManager : Connected to database
+08:32:37.993 INFO  gateways.GatewayManager : Logged out of database
+08:33:11.141 INFO  gateways.GatewayManager : Connected to database
+08:33:49.150 INFO  gateways.GatewayManager : Logged out of database
+08:35:50.273 INFO  gateways.GatewayManager : Connected to database
+08:35:57.520 INFO  gateways.GatewayManager : Logged out of database
+08:38:17.029 INFO  gateways.GatewayManager : Connected to database
+08:38:36.273 INFO  gateways.GatewayManager : Logged out of database
+08:43:04.064 INFO  gateways.GatewayManager : Connected to database
+08:43:37.752 INFO  gateways.GatewayManager : Logged out of database
+08:50:38.812 INFO  gateways.GatewayManager : Connected to database
+08:50:44.745 INFO  gateways.GatewayManager : Logged out of database
+08:50:55.407 INFO  gateways.GatewayManager : Connected to database
+08:51:44.767 INFO  gateways.GatewayManager : Logged out of database
+08:52:49.744 INFO  gateways.GatewayManager : Connected to database
+08:53:04.648 INFO  gateways.GatewayManager : Logged out of database
+08:54:17.414 INFO  gateways.GatewayManager : Connected to database
+08:56:19.560 INFO  gateways.GatewayManager : Connected to database
+08:56:30.670 INFO  gateways.GatewayManager : Logged out of database
+09:02:13.640 INFO  gateways.GatewayManager : Connected to database
+09:02:25.536 INFO  gateways.GatewayManager : Logged out of database
+09:03:36.289 INFO  gateways.GatewayManager : Connected to database
+09:04:03.080 INFO  gateways.GatewayManager : Logged out of database
+09:06:17.432 INFO  gateways.GatewayManager : Connected to database
+09:06:27.308 INFO  gateways.GatewayManager : Logged out of database
+09:06:52.305 INFO  gateways.GatewayManager : Connected to database
+09:07:03.203 INFO  gateways.GatewayManager : Logged out of database
+09:09:23.789 INFO  gateways.GatewayManager : Connected to database
+09:09:40.543 INFO  gateways.GatewayManager : Logged out of database
+09:10:44.870 INFO  gateways.GatewayManager : Connected to database
+09:11:00.086 INFO  gateways.GatewayManager : Logged out of database
+09:12:03.616 INFO  gateways.GatewayManager : Connected to database
+09:12:11.829 INFO  gateways.GatewayManager : Logged out of database
+09:14:12.605 INFO  gateways.GatewayManager : Connected to database
+09:14:30.737 INFO  gateways.GatewayManager : Logged out of database
+09:16:37.728 INFO  gateways.GatewayManager : Connected to database
+09:17:20.848 INFO  gateways.GatewayManager : Logged out of database
+09:17:48.981 INFO  gateways.GatewayManager : Connected to database
+09:17:58.433 INFO  gateways.GatewayManager : Logged out of database
+09:19:07.937 INFO  gateways.GatewayManager : Connected to database
+09:19:16.131 INFO  controllers.AuthorListController$1 : Double clicked on: chickenaaaaaaaaaaaaa caaaaaaaaaaaaaaaaaaaaaaacacacacacac
+09:19:24.247 INFO  controllers.BookListController$1 : Double clicked on: test123
+09:19:24.249 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:23:58.164 INFO  gateways.GatewayManager : Logged out of database
+09:31:15.531 INFO  gateways.GatewayManager : Connected to database
+09:31:18.039 INFO  gateways.GatewayManager : Logged out of database
+09:48:26.454 INFO  gateways.GatewayManager : Connected to database
+09:48:35.385 INFO  gateways.GatewayManager : Logged out of database
+10:07:18.284 INFO  gateways.GatewayManager : Connected to database
+10:07:33.896 INFO  gateways.GatewayManager : Logged out of database
+10:07:44.224 INFO  gateways.GatewayManager : Connected to database
+10:07:51.167 INFO  controllers.BookListController$1 : Double clicked on: test123
+10:07:51.171 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:08:18.977 INFO  gateways.GatewayManager : Logged out of database
+10:09:37.288 INFO  gateways.GatewayManager : Connected to database
+10:09:48.737 INFO  gateways.GatewayManager : Logged out of database
+10:09:57.057 INFO  gateways.GatewayManager : Connected to database
+10:10:34.151 INFO  gateways.GatewayManager : Logged out of database
+10:13:27.792 INFO  gateways.GatewayManager : Connected to database
+10:13:59.653 INFO  gateways.GatewayManager : Logged out of database
+10:15:00.068 INFO  gateways.GatewayManager : Connected to database
+10:15:38.022 INFO  gateways.GatewayManager : Logged out of database
+10:19:41.818 INFO  gateways.GatewayManager : Connected to database
+10:20:19.336 INFO  gateways.GatewayManager : Logged out of database
+10:24:21.193 INFO  gateways.GatewayManager : Connected to database
+10:24:42.533 INFO  gateways.GatewayManager : Logged out of database
+10:56:48.882 INFO  gateways.GatewayManager : Connected to database
+10:58:04.956 INFO  gateways.GatewayManager : Logged out of database
+11:06:07.349 INFO  gateways.GatewayManager : Connected to database
+11:06:18.061 INFO  gateways.GatewayManager : Logged out of database
+11:06:41.726 INFO  gateways.GatewayManager : Connected to database
+11:07:16.062 INFO  gateways.GatewayManager : Logged out of database
+11:08:54.875 INFO  gateways.GatewayManager : Connected to database
+11:09:39.481 INFO  gateways.GatewayManager : Logged out of database
+12:25:17.907 INFO  gateways.GatewayManager : Connected to database
+12:25:44.133 INFO  gateways.GatewayManager : Logged out of database
+13:25:10.893 INFO  gateways.GatewayManager : Connected to database
+13:25:17.413 INFO  gateways.GatewayManager : Logged out of database
+14:47:46.893 INFO  gateways.GatewayManager : Connected to database
+14:47:58.859 INFO  gateways.PublisherTableGateway : Fetching Publishers
+14:48:03.766 INFO  gateways.GatewayManager : Logged out of database
+14:50:39.197 INFO  gateways.GatewayManager : Connected to database
+14:50:41.667 INFO  gateways.PublisherTableGateway : Fetching Publishers
+14:50:55.098 INFO  gateways.GatewayManager : Logged out of database
+00:21:33.913 INFO  gateways.GatewayManager : Connected to database
+00:21:33.980 INFO  gateways.PublisherTableGateway : Fetching Publishers
+06:17:48.772 INFO  gateways.GatewayManager : Logged out of database
+08:41:41.499 INFO  gateways.GatewayManager : Connected to database
+08:42:06.201 INFO  gateways.GatewayManager : Logged out of database
+09:31:23.488 INFO  gateways.GatewayManager : Connected to database
+09:31:54.901 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:32:04.768 INFO  gateways.GatewayManager : Logged out of database
+09:33:26.943 INFO  gateways.GatewayManager : Connected to database
+09:33:29.148 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:33:50.141 INFO  gateways.GatewayManager : Logged out of database
+09:41:42.014 INFO  gateways.GatewayManager : Connected to database
+09:41:46.558 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:41:54.483 INFO  gateways.GatewayManager : Logged out of database
+09:42:25.129 INFO  gateways.GatewayManager : Connected to database
+09:42:34.128 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:42:43.099 INFO  gateways.GatewayManager : Logged out of database
+09:44:00.267 INFO  gateways.GatewayManager : Connected to database
+09:44:03.782 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:44:21.835 INFO  gateways.GatewayManager : Logged out of database
+09:45:39.253 INFO  gateways.GatewayManager : Connected to database
+09:45:43.564 INFO  gateways.PublisherTableGateway : Fetching Publishers
+09:46:36.955 INFO  gateways.GatewayManager : Logged out of database
+10:09:23.160 INFO  gateways.GatewayManager : Connected to database
+10:09:25.982 INFO  gateways.GatewayManager : Logged out of database
+10:09:46.771 INFO  gateways.GatewayManager : Connected to database
+10:09:49.432 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:09:59.291 INFO  gateways.GatewayManager : Logged out of database
+10:22:45.939 INFO  gateways.GatewayManager : Connected to database
+10:22:51.870 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:23:03.647 INFO  gateways.GatewayManager : Logged out of database
+10:26:17.989 INFO  gateways.GatewayManager : Connected to database
+10:26:20.474 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:26:30.818 INFO  gateways.GatewayManager : Logged out of database
+10:31:05.352 INFO  gateways.GatewayManager : Connected to database
+10:31:09.697 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:31:34.410 INFO  gateways.GatewayManager : Logged out of database
+10:31:47.008 INFO  gateways.GatewayManager : Connected to database
+10:31:49.352 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:32:00.213 INFO  gateways.GatewayManager : Logged out of database
+10:36:42.404 INFO  gateways.GatewayManager : Connected to database
+10:36:45.452 INFO  gateways.PublisherTableGateway : Fetching Publishers
+10:36:54.257 INFO  gateways.GatewayManager : Logged out of database
+10:41:15.417 INFO  gateways.GatewayManager : Connected to database
+10:42:00.221 INFO  gateways.GatewayManager : Logged out of database
+11:04:43.453 INFO  gateways.GatewayManager : Connected to database
+11:07:54.217 INFO  controllers.BookListController$1 : Double clicked on: Book 3
+11:07:54.221 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:08:14.883 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:08:15.965 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:08:27.933 INFO  controllers.BookListController$1 : Double clicked on: Book 20
+11:08:27.934 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:08:36.762 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:08:37.023 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:08:43.986 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+11:08:43.987 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:05.064 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:09:05.330 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:09:05.498 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:09:12.134 INFO  controllers.BookListController$1 : Double clicked on: Book 50
+11:09:12.134 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:19.112 INFO  controllers.BookListController$1 : Double clicked on: Book 8
+11:09:19.113 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:25.707 INFO  controllers.BookListController$1 : Double clicked on: Book 11
+11:09:25.708 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:32.214 INFO  controllers.BookListController$1 : Double clicked on: Book 4
+11:09:32.215 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:36.717 INFO  controllers.BookListController$1 : Double clicked on: Book 2
+11:09:36.717 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:41.812 INFO  controllers.BookListController$1 : Double clicked on: Book 25
+11:09:41.813 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:09:51.162 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:09:51.435 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:10:02.126 INFO  controllers.BookListController$1 : Double clicked on: Book 35600
+11:10:02.127 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:10:11.818 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:10:12.078 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:10:21.560 INFO  controllers.BookListController$1 : Double clicked on: Book 48000
+11:10:21.561 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:10:32.034 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:10:32.302 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:10:47.861 INFO  controllers.BookListController$1 : Double clicked on: Book 666
+11:10:47.862 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:10:55.196 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:10:55.468 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:00.620 INFO  controllers.BookListController$1 : Double clicked on: Book 18
+11:11:00.621 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:11:09.239 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:11:09.503 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:16.222 INFO  controllers.BookListController$1 : Double clicked on: Book 45
+11:11:16.222 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:11:29.850 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:11:30.103 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:30.285 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:39.388 INFO  controllers.BookListController$1 : Double clicked on: Book 777
+11:11:39.389 INFO  gateways.PublisherTableGateway : Fetching Publishers
+11:11:51.180 INFO  controllers.BookDetailController : Clicked on save button in book detail
+11:11:51.427 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:51.610 INFO  gateways.AuthorBookTableGateway : Inserted Author Into Database
+11:11:54.076 INFO  gateways.GatewayManager : Logged out of database
+12:06:36.307 INFO  gateways.GatewayManager : Connected to database
+12:06:41.591 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:06:54.409 INFO  gateways.GatewayManager : Logged out of database
+12:08:19.291 INFO  gateways.GatewayManager : Connected to database
+12:08:22.848 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:08:33.904 INFO  gateways.GatewayManager : Logged out of database
+12:09:18.383 INFO  gateways.GatewayManager : Connected to database
+12:09:20.946 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:09:31.044 INFO  gateways.GatewayManager : Logged out of database
+12:10:01.168 INFO  gateways.GatewayManager : Connected to database
+12:10:05.479 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:10:17.930 INFO  gateways.GatewayManager : Logged out of database
+12:14:02.664 INFO  gateways.GatewayManager : Connected to database
+12:14:05.328 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:14:16.844 INFO  gateways.GatewayManager : Logged out of database
+12:17:39.487 INFO  gateways.GatewayManager : Connected to database
+12:17:42.222 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:17:52.242 INFO  gateways.GatewayManager : Logged out of database
+12:19:08.559 INFO  gateways.GatewayManager : Connected to database
+12:19:13.073 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:19:22.653 INFO  gateways.GatewayManager : Logged out of database
+12:21:40.243 INFO  gateways.GatewayManager : Connected to database
+12:21:43.238 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:21:52.652 INFO  gateways.GatewayManager : Logged out of database
+12:23:22.203 INFO  gateways.GatewayManager : Connected to database
+12:23:25.003 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:23:34.421 INFO  gateways.GatewayManager : Logged out of database
+12:24:44.124 INFO  gateways.GatewayManager : Connected to database
+12:24:46.660 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:24:56.510 INFO  gateways.GatewayManager : Logged out of database
+12:25:48.183 INFO  gateways.GatewayManager : Connected to database
+12:25:52.572 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:26:05.748 INFO  gateways.GatewayManager : Logged out of database
+12:26:41.993 INFO  gateways.GatewayManager : Connected to database
+12:26:45.186 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:26:56.489 INFO  gateways.GatewayManager : Logged out of database
+12:27:51.604 INFO  gateways.GatewayManager : Connected to database
+12:27:57.611 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:28:08.001 INFO  gateways.GatewayManager : Logged out of database
+12:29:00.925 INFO  gateways.GatewayManager : Connected to database
+12:29:09.001 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:29:22.716 INFO  gateways.GatewayManager : Logged out of database
+12:33:22.688 INFO  gateways.GatewayManager : Connected to database
+12:33:24.972 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:33:40.424 INFO  gateways.GatewayManager : Logged out of database
+12:35:04.836 INFO  gateways.GatewayManager : Connected to database
+12:35:08.953 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:35:22.596 INFO  gateways.GatewayManager : Logged out of database
+12:36:06.690 INFO  gateways.GatewayManager : Connected to database
+12:36:12.347 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:36:25.541 INFO  gateways.GatewayManager : Logged out of database
+12:37:19.330 INFO  gateways.GatewayManager : Connected to database
+12:37:27.519 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:37:38.210 INFO  gateways.GatewayManager : Logged out of database
+12:42:14.272 INFO  gateways.GatewayManager : Connected to database
+12:42:16.964 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:42:27.649 INFO  gateways.GatewayManager : Logged out of database
+12:44:04.791 INFO  gateways.GatewayManager : Connected to database
+12:44:07.622 INFO  gateways.PublisherTableGateway : Fetching Publishers
+12:44:17.160 INFO  gateways.GatewayManager : Logged out of database
