@@ -29,13 +29,17 @@ public class MenuController
 			String unsavedMessage = "";
 			BookDetailController bdController = ViewManager.getInstance().getCurrController();
 			AuthorDetailController adController = ViewManager.getInstance().getAuthorController();
+			ExcelDetailController excelController = ViewManager.getInstance().getExcelController();
 			boolean bookBool = bdController != null && bdController.isBookDifferent();
 			boolean authorBool = adController != null && adController.isAuthDifferent();
+			boolean excelBool = excelController != null && excelController.isChanged();
 			if (bookBool)
 				unsavedMessage = "The book has been modified. Do you want to save the changes?";
 			else if (authorBool)
 				unsavedMessage = "The author has been modified. Do you want to save the changes?";
-			if (bookBool || authorBool)
+			else if (excelBool)
+				unsavedMessage = "The excel detail view has been modified. Do you want to save the changes?";				
+			if (bookBool || authorBool || excelBool)
 			{
 				// Gets the button that the user clicked on
 				Optional<ButtonType> result = ViewManager.getInstance().getButtonResult(unsavedMessage);
@@ -46,9 +50,11 @@ public class MenuController
 						try
 						{
 							if (bookBool)
-								ViewManager.getInstance().getCurrController().saveBookChanges();
+								bdController.saveBookChanges();
 							else if (authorBool)
-								ViewManager.getInstance().getAuthorController().saveAuthorChanges();
+								adController.saveAuthorChanges();
+							else if (excelBool)
+								excelController.saveHandler();
 						}
 						catch (GatewayException e) {
 							e.printStackTrace();

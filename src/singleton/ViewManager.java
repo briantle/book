@@ -71,7 +71,8 @@ public class ViewManager
 			// We are in the audit view, clicked on add author/book, or we haven't changed the values and therefore we just switch and don't have to check for 
 			// unsaved changes
 			if (auditController != null || currController == null && authorController == null && excelController == null
-					|| currController != null && !currController.isBookDifferent() || authorController != null && !authorController.isAuthDifferent())
+					|| currController != null && !currController.isBookDifferent() || authorController != null && !authorController.isAuthDifferent()
+					|| excelController != null && !excelController.isChanged())
 				swapViews(obj, view);
 			// If we are in the book detail view and have changed values
 			else if (currController != null && currController.isBookDifferent())
@@ -79,6 +80,8 @@ public class ViewManager
 			// If we are in the author detail view and have changed values
 			else if (authorController != null && authorController.isAuthDifferent())
 				handleUnsavedChanges(obj, view, "AUTHOR", "The author has been modified. Do you want to save the changes?");
+			else if (excelController != null && excelController.isChanged())
+				handleUnsavedChanges(obj, view, "EXCEL", "The excel view has been modified. Do you want to save the changes?");
 		}
 		// Error occurred trying to switch views
 		catch (IOException ie)
@@ -105,6 +108,8 @@ public class ViewManager
 						currController.saveBookChanges();
 					else if (objType == "AUTHOR")
 						authorController.saveAuthorChanges();
+					else if (objType == "EXCEL")
+						excelController.saveHandler();
 				} 
 				catch (GatewayException e)
 				{
@@ -285,4 +290,8 @@ public class ViewManager
 	public AuthorBookTableGateway getAuthorBookGateway() {
 		return authorBookGateway;
 	}
+	public ExcelDetailController getExcelController() {
+		return excelController;
+	}
+	
 }

@@ -47,6 +47,7 @@ public class ExcelDetailController
 	
 	public void initialize()
 	{
+		saveField.setText("");
 		publisherComboBox.setItems(publisherList);
 		populateComboBox();
 	}
@@ -77,7 +78,6 @@ public class ExcelDetailController
 		publisherComboBox.setCellFactory(cellFactory);
 	}
 	
-	@FXML
 	public void saveHandler()
 	{
 		//Create blank workbook
@@ -86,13 +86,16 @@ public class ExcelDetailController
 		XSSFSheet spreadsheet = workbook.createSheet("Publisher Royalty Report");
 	    // Create row object
 		XSSFRow row;
-		int rowId = 0;
 		Cell cell;
 		String publisherName = publisherComboBox.getSelectionModel().getSelectedItem().getPublisherName();
 		String timeStamp = new SimpleDateFormat("MMMM dd, yyyy HH:mm").format(Calendar.getInstance().getTime());
 		String headings[] = {"Royalty Report", "Publisher: " + publisherName, "Report generated on " + timeStamp};
 		String bookRows[] = {"Book Title", "ISBN", "Author", "Royalty"};
+		String prevBookName = "";
 		authorBookList = ViewManager.getInstance().getAuthorBookGateway().getAuthorBooksByPublisher(publisherComboBox.getSelectionModel().getSelectedItem());
+		int rowId = 0;
+		double currRoyalty = 0.0;
+		double totalRoyalty = 0.0;
 		for (int i = 0; i < 3; i++)
 		{
 			row = spreadsheet.createRow(rowId++);
@@ -101,16 +104,14 @@ public class ExcelDetailController
 		}
 		row = spreadsheet.createRow(rowId++);
 		row = spreadsheet.createRow(rowId++);
-		for (int i = 1; i < 5; i++)
+		for (int i = 0; i < 4; i++)
 		{
-			cell = row.createCell(i-1);
-			cell.setCellValue(bookRows[i-1]);
+			cell = row.createCell(i);
+			cell.setCellValue(bookRows[i]);
 		}
-		String prevBookName = "";
+		
 		Book book;
 		Author author;
-		double currRoyalty = 0.0;
-		double totalRoyalty = 0.0;
 		for (int i = 0; i < authorBookList.size(); i++)
 		{
 			book = authorBookList.get(i).getBook();
@@ -134,19 +135,9 @@ public class ExcelDetailController
 					row = spreadsheet.createRow(rowId++);
 				}
 				// Reset royalty amounts
-				totalRoyalty = 0.0;
-				currRoyalty = 0.0;
-				row = spreadsheet.createRow(rowId++);
-				cell = row.createCell(0);
-				cell.setCellValue(book.getTitle());
-				cell = row.createCell(1);
-				cell.setCellValue(book.getIsbn());
-				cell = row.createCell(2);
-				cell.setCellValue(author.getFirstName() + " " + author.getLastName());
-				cell = row.createCell(3);
 				currRoyalty = ((double) authorBookList.get(i).getRoyalty()) / 1000;
 				totalRoyalty += currRoyalty;
-				cell.setCellValue(currRoyalty + "%");
+				displayBookRow(spreadsheet,row, book, author, rowId, currRoyalty);
 			}
 			prevBookName = book.getTitle();
 			row = spreadsheet.createRow(rowId++);
@@ -157,9 +148,15 @@ public class ExcelDetailController
 		FileOutputStream fout;
 		try
 		{
-			fout = new FileOutputStream(new File(saveField.getText()), false);
+			Publisher pub = publisherComboBox.getSelectionModel().getSelectedItem();
+			fout = new FileOutputStream(new File(saveField.getText()  + "\\" + pub.getPublisherName() + ".xlsx"), false);
 			workbook.write(fout);
 			fout.close();
+			
+			publisherComboBox.getSelectionModel().clearSelection();
+			saveField.clear();
+			saveField.setText("");
+			
 		} 
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -176,7 +173,7 @@ public class ExcelDetailController
 		File file = dirChooser.showDialog(stage);
 		
 		if (file != null)
-			saveField.setText(file.getAbsolutePath() + "\\" + "file.xlsx");
+			saveField.setText(file.getAbsolutePath());
 	}
 	public void displayTotalRoyalty(XSSFSheet spreadsheet, XSSFRow row, double totalRoyalty)
 	{
@@ -185,5 +182,28 @@ public class ExcelDetailController
 		cell.setCellValue("Total Royalty");
 		cell = row.createCell(3);
 		cell.setCellValue(totalRoyalty + "%");
+	}
+	public void displayBookRow(XSSFSheet spreadsheet, XSSFRow row, Book book, Author author, int rowId, double currRoyalty)
+	{
+		Cell cell;
+		row = spreadsheet.createRow(rowId++);
+		cell = row.createCell(0);
+		cell.setCellValue(book.getTitle());
+		cell = row.createCell(1);
+		cell.setCellValue(book.getIsbn());
+		cell = row.createCell(2);
+		cell.setCellValue(author.getFirstName() + " " + author.getLastName());
+		cell = row.createCell(3);
+		cell.setCellValue(currRoyalty + "%");
+	}
+	public boolean isChanged()
+	{
+		if (publisherComboBox.getSelectionModel().getSelectedItem() != null) {
+			System.out.println("shit");
+			return true;
+		}
+		else if (saveField.getText().compareTo("") != 0)
+			return true;
+		return false;
 	}
 }
